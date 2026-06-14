@@ -44,6 +44,10 @@
   .card{background:var(--card);border-radius:var(--radius);padding:24px;margin:16px 0;box-shadow:var(--shadow);border:1px solid var(--border)}
   .card-accent{border-left:4px solid var(--accent)}
   .card-green{border-left:4px solid var(--green)}
+  .audio-card{background:linear-gradient(135deg,#f0f0ff,#fce8f4);border:1px solid #e0ddf5;border-radius:var(--radius);padding:18px;margin-bottom:14px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .audio-icon{font-size:2rem}
+  .audio-info h4{font-family:"Fredoka",sans-serif;font-size:0.95rem}
+  .audio-info p{font-size:0.8rem;color:var(--text-dim)}
   .card-blue{border-left:4px solid var(--blue)}
   .card-purple{border-left:4px solid var(--purple)}
   .card-pink{border-left:4px solid var(--pink)}
@@ -270,10 +274,10 @@
 <h2>🎧 Step 1 — Listen First</h2>
 <p style="font-size:0.85rem;color:var(--text-dim);margin-bottom:12px">Listen before you study. Your brain needs the sounds first!</p>
 
-<div class="card card-blue">
-  <span class="step step-blue">Audio 1 — Session Companion</span>
-  <p style="font-size:0.88rem;margin:8px 0">Essential English for Planning Birthday Parties</p>
-  <iframe src="https://drive.google.com/file/d/18JKCTYcB7iWRZ6-vjQFZBy_AvXWmgUcy/preview" allow="autoplay" style="width:100%;max-width:300px;height:60px;border:none;border-radius:8px"></iframe>
+<div class="audio-card" style="background:linear-gradient(135deg,#e8eaff,#f0f0ff);border-color:#d0d3f0">
+  <div class="audio-icon">&#x1F3A7;</div>
+  <div class="audio-info" style="flex:1"><h4>Session Companion</h4><p>Essential English for Planning Birthday Parties</p></div>
+  <iframe src="https://drive.google.com/file/d/18JKCTYcB7iWRZ6-vjQFZBy_AvXWmgUcy/preview" allow="autoplay" style="width:100%;max-width:300px;height:80px;border:none;border-radius:10px"></iframe>
   <details class="subtitle-toggle">
     <summary>📝 Show Subtitle / Transcript</summary>
     <div class="subtitle-text">
@@ -288,10 +292,10 @@
   </details>
 </div>
 
-<div class="card card-blue">
-  <span class="step step-blue">Audio 2 — My Birthday Plan (Listening 1)</span>
-  <p style="font-size:0.88rem;margin:8px 0">A conversation about choosing activities for a birthday.</p>
-  <audio controls preload="none">
+<div class="audio-card" style="background:linear-gradient(135deg,#e8f5e9,#f0fff0);border-color:#c8e6c9">
+  <div class="audio-icon">&#x1F382;</div>
+  <div class="audio-info" style="flex:1"><h4>Listening 1 — My Birthday Plan</h4><p>A conversation about choosing activities for a birthday</p></div>
+  <audio controls preload="none" style="width:100%;max-width:300px;height:40px;border-radius:10px">
     <source src="https://scemoodle.aucegypt.edu/pluginfile.php/3170025/mod_hvp/content/171743/audios/files-6a2008356aaf7.mp3" type="audio/mpeg">
   </audio>
   <p style="font-size:0.72rem;color:var(--text-dim);margin-top:4px">If blocked, <a href="https://scemoodle.aucegypt.edu/pluginfile.php/3170025/mod_hvp/content/171743/audios/files-6a2008356aaf7.mp3" target="_blank" style="color:var(--blue)">open on Moodle</a></p>
@@ -322,10 +326,10 @@
   </details>
 </div>
 
-<div class="card card-blue">
-  <span class="step step-blue">Audio 3 — Planning a Party (Listening 2)</span>
-  <p style="font-size:0.88rem;margin:8px 0">Tom, Lucy &amp; Sarah plan a party together — offering &amp; accepting help.</p>
-  <audio controls preload="none">
+<div class="audio-card" style="background:linear-gradient(135deg,#fff3e0,#fff8f0);border-color:#ffe0b2">
+  <div class="audio-icon">&#x1F389;</div>
+  <div class="audio-info" style="flex:1"><h4>Listening 2 — Planning a Party</h4><p>Tom, Lucy &amp; Sarah plan a party together — offering &amp; accepting help</p></div>
+  <audio controls preload="none" style="width:100%;max-width:300px;height:40px;border-radius:10px">
     <source src="https://scemoodle.aucegypt.edu/pluginfile.php/3170026/mod_hvp/content/171744/audios/files-681cf52494420.mp3" type="audio/mpeg">
   </audio>
   <p style="font-size:0.72rem;color:var(--text-dim);margin-top:4px">If blocked, <a href="https://scemoodle.aucegypt.edu/pluginfile.php/3170026/mod_hvp/content/171744/audios/files-681cf52494420.mp3" target="_blank" style="color:var(--blue)">open on Moodle</a></p>
@@ -1036,21 +1040,4 @@ function checkRecap(){
   document.getElementById('recap-score').textContent=correct+' / '+recapEx.length;
 }
 function retryRecap(){
-  recapEx.forEach((ex,i)=>{document.getElementById('rsel-'+i).value='';document.getElementById('rres-'+i).textContent='';const row=document.getElementById('rex-'+i);row.style.borderColor='var(--border)';row.style.background=''});
-  document.getElementById('recap-score').textContent='';
-}
-
-// ===== INIT =====
-document.addEventListener('DOMContentLoaded',()=>{
-  buildRecap();
-  buildCards(partyVocab,'party-cards');
-  buildCards(helpVocab,'help-cards');
-  buildCards(actionVocab,'action-cards');
-  buildIdioms();
-  buildGrammar();
-  buildQuiz();
-  updateProgress();
-});
-</script>
-</body>
-</html>
+  recapEx.forEach((ex,i)=>{document.getElementById('rsel-'+i).value='';document.getElementById('rres-'+i).textContent='';const row=document.getElementById('rex-'+i);row.style.borderColor='var(--border)';row.style.bac

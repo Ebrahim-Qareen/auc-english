@@ -33,12 +33,6 @@
   .card{background:var(--card);border-radius:var(--radius);padding:24px;margin:16px 0;box-shadow:var(--shadow);border:1px solid var(--border)}
   .card-accent{border-left:4px solid var(--accent)}
   .card-green{border-left:4px solid var(--green)}
-  .audio-card{background:linear-gradient(135deg,#f0f0ff,#fce8f4);border:1px solid #e0ddf5;border-radius:var(--radius);padding:18px;margin-bottom:14px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-  .audio-icon{font-size:2rem}
-  .audio-info h4{font-family:"Fredoka",sans-serif;font-size:0.95rem}
-  .audio-info p{font-size:0.8rem;color:var(--text-dim)}
-  .drive-play-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#4285f4,#3367d6);color:#fff;padding:10px 20px;border-radius:24px;text-decoration:none;font-family:'Fredoka',sans-serif;font-size:0.88rem;font-weight:600;transition:all 0.3s;box-shadow:0 2px 8px rgba(66,133,244,0.3)}
-  .drive-play-btn:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(66,133,244,0.4)}
   .card-blue{border-left:4px solid var(--blue)}
   .card-purple{border-left:4px solid var(--purple)}
   .card-pink{border-left:4px solid var(--pink)}
@@ -124,6 +118,8 @@
   .preview-box h3{color:var(--green)}
   .welcome-box{background:linear-gradient(135deg,var(--accent-light),var(--blue-light));border-radius:var(--radius);padding:22px;margin:16px 0;border:2px solid var(--accent)}
   @media(max-width:600px){.hero h1{font-size:1.5rem}.vocab-grid{grid-template-columns:1fr}.idiom-grid{grid-template-columns:1fr}.nav .container{gap:4px}.nav a{font-size:0.7rem;padding:5px 8px}}
+.drive-play-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#4285f4,#3367d6);color:#fff;padding:10px 20px;border-radius:24px;text-decoration:none;font-family:'Fredoka',sans-serif;font-size:0.88rem;font-weight:600;transition:all 0.3s;box-shadow:0 2px 8px rgba(66,133,244,0.3)}
+.drive-play-btn:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(66,133,244,0.4)}
 </style>
 </head>
 <body>
@@ -142,9 +138,9 @@
   <div class="session-nav">
     <a href="#" class="active">🎂 S1</a>
     <a href="session-2.html">🎉 S2</a>
-    <a href="../Session 3/Session-3-Street-Food-Study.html">🍜 S3</a>
-    <a href="../Session 4/Session-4-Friendship-Study.html">🤝 S4</a>
-    <a href="../Session 5/Session-5-Friendship-Stories-Study.html">📱 S5</a>
+    <a href="session-3.html">🍜 S3</a>
+    <a href="session-4.html">🤝 S4</a>
+    <a href="session-5.html">📱 S5</a>
     <a href="#" class="disabled">😊 S6</a>
     <a href="#" class="disabled">😔 S7</a>
     <a href="#" class="disabled">💰 S8</a>
@@ -208,9 +204,9 @@
 <h2>🎧 Step 1 — Listen First</h2>
 <p style="font-size:0.85rem;color:var(--text-dim);margin-bottom:12px">Listen before you study. Your brain needs the sounds first!</p>
 
-<div class="audio-card" style="background:linear-gradient(135deg,#e8eaff,#f0f0ff);border-color:#d0d3f0">
-  <div class="audio-icon">&#x1F3A7;</div>
-  <div class="audio-info" style="flex:1"><h4>Session Companion</h4><p>Birthday Vocabulary &amp; Future Grammar Guide</p></div>
+<div class="card card-blue">
+  <span class="step step-blue">Audio 1 — Session Companion</span>
+  <p style="font-size:0.88rem;margin:8px 0">Birthday Vocabulary &amp; Future Grammar Guide</p>
   <a href="https://drive.google.com/file/d/1Uaac935ee8OLTpZEySdUCNjtqpGDzoQc/view" target="_blank" class="drive-play-btn">&#9654; Play on Google Drive</a>
   <details class="subtitle-toggle">
     <summary>📝 Show Subtitle / Transcript</summary>
@@ -228,11 +224,13 @@
   </details>
 </div>
 
-<div class="audio-card" style="background:linear-gradient(135deg,#e6f7ee,#f0fff4);border-color:#b5e8c3">
-  <div class="audio-icon">&#x1F4C5;</div>
-  <div class="audio-info" style="flex:1"><h4>Months of the Year</h4><p>Listen and repeat the 12 months</p></div>
-  <audio controls preload="none" style="width:100%;max-width:280px"><source src="https://scemoodle.aucegypt.edu/pluginfile.php/3170019/mod_hvp/content/171737/audios/files-681c6bb5a5d6d.mp3" type="audio/mpeg"></audio>
-  <p style="font-size:0.72rem;color:var(--text-dim);margin-top:4px;width:100%">If blocked, <a href="https://scemoodle.aucegypt.edu/pluginfile.php/3170019/mod_hvp/content/171737/audios/files-681c6bb5a5d6d.mp3" target="_blank" style="color:var(--blue)">open on Moodle</a></p>
+<div class="card card-blue">
+  <span class="step step-blue">Audio 2 — Months of the Year</span>
+  <p style="font-size:0.88rem;margin:8px 0">Listen and repeat the 12 months.</p>
+  <audio controls preload="none">
+    <source src="https://scemoodle.aucegypt.edu/pluginfile.php/3170019/mod_hvp/content/171737/audios/files-681c6bb5a5d6d.mp3" type="audio/mpeg">
+  </audio>
+  <p style="font-size:0.72rem;color:var(--text-dim);margin-top:4px">If blocked, <a href="https://scemoodle.aucegypt.edu/pluginfile.php/3170019/mod_hvp/content/171737/audios/files-681c6bb5a5d6d.mp3" target="_blank" style="color:var(--blue)">open on Moodle</a></p>
   <details class="subtitle-toggle">
     <summary>📝 Show Subtitle / Transcript</summary>
     <div class="subtitle-text">
@@ -254,11 +252,13 @@
   </details>
 </div>
 
-<div class="audio-card" style="background:linear-gradient(135deg,#fff3e6,#fce8f4);border-color:#e0d5c5">
-  <div class="audio-icon">&#x1F389;</div>
-  <div class="audio-info" style="flex:1"><h4>Preparing for a Party</h4><p>Tips on how to plan a great birthday party</p></div>
-  <audio controls preload="none" style="width:100%;max-width:280px"><source src="https://scemoodle.aucegypt.edu/pluginfile.php/3170020/mod_hvp/content/171738/audios/files-681c71718327b.mp3" type="audio/mpeg"></audio>
-  <p style="font-size:0.72rem;color:var(--text-dim);margin-top:4px;width:100%">If blocked, <a href="https://scemoodle.aucegypt.edu/pluginfile.php/3170020/mod_hvp/content/171738/audios/files-681c71718327b.mp3" target="_blank" style="color:var(--blue)">open on Moodle</a></p>
+<div class="card card-blue">
+  <span class="step step-blue">Audio 3 — Preparing for a Party</span>
+  <p style="font-size:0.88rem;margin:8px 0">Tips on how to plan a great birthday party.</p>
+  <audio controls preload="none">
+    <source src="https://scemoodle.aucegypt.edu/pluginfile.php/3170020/mod_hvp/content/171738/audios/files-681c71718327b.mp3" type="audio/mpeg">
+  </audio>
+  <p style="font-size:0.72rem;color:var(--text-dim);margin-top:4px">If blocked, <a href="https://scemoodle.aucegypt.edu/pluginfile.php/3170020/mod_hvp/content/171738/audios/files-681c71718327b.mp3" target="_blank" style="color:var(--blue)">open on Moodle</a></p>
   <details class="subtitle-toggle">
     <summary>📝 Show Subtitle / Transcript</summary>
     <div class="subtitle-text">
@@ -801,4 +801,15 @@ function updateProgress(){
   const emailText=document.getElementById('email-textarea');
   if(emailText&&emailText.value.trim().length>20)done+=10;
   const pct=total?Math.round(done/total*100):0;
-  document.getElementById('pbar').style.widt
+  document.getElementById('pbar').style.width=pct+'%';document.getElementById('pct').textContent=pct+'%';
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  buildCards(birthdayVocab,'birthday-cards');
+  buildCards(monthVocab,'month-cards');
+  buildCards(actionVocab,'action-cards');
+  buildGrammar();buildQuiz();updateProgress();
+});
+</script>
+</body>
+</html>

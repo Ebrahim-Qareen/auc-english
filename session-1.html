@@ -96,6 +96,7 @@
   .btn{padding:8px 18px;border-radius:10px;border:none;font-weight:600;cursor:pointer;font-size:0.85rem;transition:all 0.2s}
   .btn-accent{background:var(--accent);color:#fff}.btn-accent:hover{background:#d35400}
   .btn-green{background:var(--green);color:#fff}.btn-green:hover{background:#219a52}
+  .btn-outline{background:transparent;border:2px solid var(--accent);color:var(--accent)}.btn-outline:hover{background:var(--accent-light)}
   .btn-blue{background:var(--blue);color:#fff}
   .sum-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:0.83rem}
   .sum-table th{background:var(--accent);color:#fff;padding:8px 10px;text-align:left}
@@ -207,7 +208,8 @@
 <div class="card card-blue">
   <span class="step step-blue">Audio 1 — Session Companion</span>
   <p style="font-size:0.88rem;margin:8px 0">Birthday Vocabulary &amp; Future Grammar Guide</p>
-  <a href="https://drive.google.com/file/d/1Uaac935ee8OLTpZEySdUCNjtqpGDzoQc/view" target="_blank" class="drive-play-btn">&#9654; Play on Google Drive</a>
+  <audio controls preload="none" style="width:100%;max-width:280px;margin-top:4px"><source src="https://drive.google.com/uc?export=download&id=1Uaac935ee8OLTpZEySdUCNjtqpGDzoQc" type="audio/mp4"></audio>
+      <p style="font-size:0.72rem;color:var(--text-dim);margin-top:4px">If audio doesn't play, <a href="https://drive.google.com/file/d/1Uaac935ee8OLTpZEySdUCNjtqpGDzoQc/view" target="_blank" style="color:var(--blue)">open on Google Drive</a></p>
   <details class="subtitle-toggle">
     <summary>📝 Show Subtitle / Transcript</summary>
     <div class="subtitle-text">
@@ -546,11 +548,12 @@ Best wishes,
 <section id="quiz">
 <h2>📝 Step 8 — Session Quiz</h2>
 <p style="font-size:0.85rem;color:var(--text-dim);margin-bottom:10px">Test your knowledge! No correct answer shown on wrong — think carefully.</p>
-<div class="quiz-bar">
-  <span class="score" id="quiz-score">0 / 0</span>
-  <button class="btn btn-accent" onclick="retryQuiz()">🔄 Retry Quiz</button>
-</div>
 <div id="quiz-container"></div>
+<div style="text-align:center;margin-top:20px">
+  <button class="btn btn-green" onclick="showQuizScore()" style="padding:10px 28px;font-size:0.95rem">Show My Score &#x1F3C6;</button>
+  <button class="btn btn-outline" onclick="retryQuiz()" style="margin-left:10px;padding:10px 28px;font-size:0.95rem">Retry Quiz &#x1F504;</button>
+</div>
+<div id="quiz-final" style="display:none;margin-top:16px;text-align:center;padding:20px;border:2px solid var(--border);border-radius:var(--radius);background:var(--card)"></div>
 </section>
 
 <!-- SUMMARY -->
@@ -747,7 +750,7 @@ function buildQuiz(){
   const c=document.getElementById('quiz-container');c.innerHTML='';
   quizOrder=shuffleArray([...Array(quizData.length).keys()]);
   quizAnswered=0;quizCorrect=0;
-  document.getElementById('quiz-score').textContent='0 / '+quizData.length;
+  
   quizOrder.forEach((qi,idx)=>{
     const q=quizData[qi];const div=document.createElement('div');div.className='quiz-q';div.id='qq-'+idx;
     let opts=q.o.map((o,oi)=>`<label id="ql-${idx}-${oi}" onclick="ansQ(${idx},${oi})"><input type="radio" name="q${idx}" style="margin-right:8px">${o}</label>`).join('');
@@ -761,7 +764,7 @@ function ansQ(idx,chosen){
   if(qq.dataset.done)return;
   if(chosen===q.a){document.getElementById('ql-'+idx+'-'+chosen).classList.add('correct');qq.dataset.done='1';quizAnswered++;quizCorrect++;document.getElementById('qw-btn-'+idx).style.display='inline'}
   else{document.getElementById('ql-'+idx+'-'+chosen).classList.add('wrong')}
-  document.getElementById('quiz-score').textContent=quizCorrect+' / '+quizData.length;updateProgress();
+  updateProgress();
 }
 
 function toggleWhy(idx){document.getElementById('qw-'+idx).classList.toggle('show')}

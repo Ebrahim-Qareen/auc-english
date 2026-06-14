@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Session 1 — Birthdays &amp; Future with Will | AUC A2A</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#fefcf9;--card:#ffffff;--accent:#e67e22;--accent-light:#fef5e7;--green:#27ae60;--green-light:#eafaf1;--red:#e74c3c;--red-light:#fdedec;--blue:#3498db;--blue-light:#ebf5fb;--purple:#9b59b6;--purple-light:#f4ecf7;--orange:#f39c12;--text:#2c3e50;--text-dim:#7f8c8d;--border:#e8e4df;--shadow:0 2px 12px rgba(0,0,0,0.06);--radius:16px;--pink:#e91e63;--pink-light:#fce4ec}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;padding-bottom:60px}
+  .container{max-width:800px;margin:0 auto;padding:0 16px}
+  h2{font-family:'Fredoka',sans-serif;font-size:1.5rem;margin:40px 0 16px;padding-top:20px}
+  h3{font-family:'Fredoka',sans-serif;font-size:1.15rem;margin:20px 0 10px}
+  .hero{background:linear-gradient(135deg,#e67e22 0%,#f1c40f 50%,#e74c3c 100%);color:#fff;padding:40px 20px 30px;text-align:center;border-radius:0 0 32px 32px;margin-bottom:24px}
+  .hero h1{font-family:'Fredoka',sans-serif;font-size:2rem;margin-bottom:6px}
+  .hero p{font-size:0.95rem;opacity:0.92}
+  .badge{display:inline-block;background:rgba(255,255,255,0.22);padding:4px 14px;border-radius:20px;font-size:0.78rem;font-weight:600;margin-top:10px}
+  .session-nav{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:16px 0}
+  .session-nav a{display:inline-flex;align-items:center;gap:4px;padding:6px 14px;border-radius:10px;font-size:0.8rem;font-weight:600;text-decoration:none;border:2px solid var(--border);color:var(--text-dim);transition:all 0.2s}
+  .session-nav a:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light)}
+  .session-nav a.active{border-color:var(--accent);background:var(--accent);color:#fff}
+  .session-nav a.disabled{opacity:0.4;pointer-events:none}
+  .method{background:linear-gradient(135deg,var(--blue-light),var(--purple-light));border-radius:var(--radius);padding:18px;margin:20px 0;text-align:center;font-size:0.85rem;font-weight:600;letter-spacing:0.5px}
+  .progress-wrap{background:var(--card);border-radius:var(--radius);padding:16px;margin:16px 0;box-shadow:var(--shadow)}
+  .progress-bar{height:10px;background:#eee;border-radius:8px;overflow:hidden}
+  .progress-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--blue));border-radius:8px;transition:width 0.6s;width:0%}
+  .progress-text{font-size:0.78rem;color:var(--text-dim);margin-top:6px;text-align:center}
+  .nav{background:var(--card);border-bottom:2px solid var(--border);padding:10px 0;position:sticky;top:0;z-index:100;overflow-x:auto;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
+  .nav .container{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px}
+  .nav a{flex-shrink:0;padding:6px 12px;border-radius:10px;font-size:0.75rem;font-weight:600;text-decoration:none;color:var(--text-dim);border:1.5px solid transparent;transition:all 0.2s}
+  .nav a:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-light)}
+  .card{background:var(--card);border-radius:var(--radius);padding:24px;margin:16px 0;box-shadow:var(--shadow);border:1px solid var(--border)}
+  .card-accent{border-left:4px solid var(--accent)}
+  .card-green{border-left:4px solid var(--green)}
+  .card-blue{border-left:4px solid var(--blue)}
+  .card-purple{border-left:4px solid var(--purple)}
+  .card-pink{border-left:4px solid var(--pink)}
+  .step{display:inline-block;background:var(--accent);color:#fff;padding:3px 12px;border-radius:8px;font-size:0.75rem;font-weight:700;margin-bottom:10px}
+  .step-green{background:var(--green)}
+  .step-blue{background:var(--blue)}
+  .step-purple{background:var(--purple)}
+  .step-pink{background:var(--pink)}
+  .vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+  .vocab-card{perspective:800px;height:190px;cursor:pointer}
+  .vocab-inner{position:relative;width:100%;height:100%;transition:transform 0.5s;transform-style:preserve-3d}
+  .vocab-card.flipped .vocab-inner{transform:rotateY(180deg)}
+  .vocab-front,.vocab-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:14px;padding:16px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border:1px solid var(--border);box-shadow:var(--shadow)}
+  .vocab-front{background:var(--card)}
+  .vocab-front .word{font-family:'Fredoka',sans-serif;font-size:1.25rem;font-weight:700;color:var(--accent)}
+  .vocab-front .pos{font-size:0.72rem;color:var(--text-dim);margin-top:2px}
+  .vocab-front .hint{font-size:0.7rem;color:var(--pink);margin-top:8px;font-weight:500}
+  .vocab-back{background:linear-gradient(135deg,var(--accent-light),#f3e8ff);transform:rotateY(180deg)}
+  .vocab-back .meaning{font-weight:600;font-size:0.9rem;margin-bottom:4px}
+  .vocab-back .arabic{font-size:0.82rem;color:var(--pink);margin-bottom:4px}
+  .vocab-back .example{font-size:0.8rem;color:var(--text-dim);font-style:italic}
+  .tts-btn{position:absolute;top:8px;right:8px;background:var(--blue-light);border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:0.8rem;display:flex;align-items:center;justify-content:center;transition:background 0.2s}
+  .tts-btn:hover{background:var(--blue);color:#fff}
+  .grammar-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:0.85rem}
+  .grammar-table th{background:var(--accent);color:#fff;padding:10px 12px;text-align:left;font-weight:600}
+  .grammar-table td{padding:10px 12px;border-bottom:1px solid var(--border)}
+  .grammar-table tr:nth-child(even){background:var(--accent-light)}
+  .grammar-box{background:var(--accent-light);border-radius:12px;padding:16px;margin:10px 0;font-size:0.88rem}
+  .fill-row{background:var(--card);border:1.5px solid var(--border);border-radius:12px;padding:14px;margin:8px 0;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .fill-row select{padding:6px 10px;border-radius:8px;border:1.5px solid var(--border);font-size:0.85rem;font-family:inherit}
+  .fill-row .result{font-size:0.85rem;font-weight:600;margin-left:auto}
+  .transcript{background:#faf9f6;border-radius:12px;padding:18px;margin:12px 0;font-size:0.86rem;line-height:2}
+  .subtitle-toggle{margin-top:8px}
+  .subtitle-toggle summary{cursor:pointer;font-size:0.82rem;font-weight:600;color:var(--accent);padding:6px 0;user-select:none}
+  .subtitle-toggle summary:hover{color:var(--green)}
+  .subtitle-text{background:#faf9f6;border-radius:10px;padding:14px 16px;margin-top:6px;font-size:0.82rem;line-height:1.9;color:var(--text);max-height:300px;overflow-y:auto}
+  .reading-box{background:var(--blue-light);border-radius:12px;padding:18px;margin:12px 0;font-size:0.88rem;line-height:1.9}
+  .speak-card{background:linear-gradient(135deg,var(--green-light),var(--blue-light));border-radius:var(--radius);padding:20px;margin:10px 0}
+  .speak-card h4{font-family:'Fredoka',sans-serif;font-size:1rem;margin-bottom:6px}
+  .role-card{background:var(--card);border:2px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:14px;box-shadow:var(--shadow);cursor:pointer;transition:all 0.3s}
+  .role-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.1)}
+  .role-card h4{font-family:'Fredoka',sans-serif;font-size:1.05rem;margin-bottom:8px}
+  .role-card .role-points{list-style:none;padding:0}
+  .role-card .role-points li{font-size:0.85rem;padding:3px 0;padding-left:18px;position:relative}
+  .role-card .role-points li::before{content:'•';position:absolute;left:4px;color:var(--accent);font-weight:700}
+  .role-convo{display:none;background:#faf9f6;border-radius:12px;padding:16px;margin-top:12px;font-size:0.86rem;line-height:1.9}
+  .role-convo.show{display:block}
+  .email-box{background:var(--card);border:2px solid var(--border);border-radius:var(--radius);padding:20px;margin:12px 0;font-size:0.88rem}
+  .email-box .label{font-weight:700;color:var(--accent);font-size:0.78rem;text-transform:uppercase;margin-bottom:4px}
+  .quiz-q{background:var(--card);border:2px solid var(--border);border-radius:14px;padding:18px;margin:10px 0}
+  .quiz-q h4{font-family:'Fredoka',sans-serif;font-size:0.95rem;margin-bottom:10px}
+  .quiz-q label{display:block;padding:8px 12px;margin:4px 0;border-radius:10px;cursor:pointer;font-size:0.85rem;border:1.5px solid transparent;transition:all 0.2s}
+  .quiz-q label:hover{background:var(--accent-light);border-color:var(--accent)}
+  .quiz-q label.correct{background:var(--green-light);border-color:var(--green);color:var(--green)}
+  .quiz-q label.wrong{background:var(--red-light);border-color:var(--red);color:var(--red)}
+  .quiz-q .why-btn{background:none;border:none;color:var(--blue);font-size:0.78rem;cursor:pointer;margin-top:6px;text-decoration:underline}
+  .quiz-q .why-box{display:none;background:var(--blue-light);border-radius:10px;padding:12px;margin-top:8px;font-size:0.82rem}
+  .quiz-q .why-box.show{display:block}
+  .quiz-bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:16px 0}
+  .quiz-bar .score{font-family:'Fredoka',sans-serif;font-size:1.1rem;font-weight:700}
+  .btn{padding:8px 18px;border-radius:10px;border:none;font-weight:600;cursor:pointer;font-size:0.85rem;transition:all 0.2s}
+  .btn-accent{background:var(--accent);color:#fff}.btn-accent:hover{background:#d35400}
+  .btn-green{background:var(--green);color:#fff}.btn-green:hover{background:#219a52}
+  .btn-blue{background:var(--blue);color:#fff}
+  .sum-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:0.83rem}
+  .sum-table th{background:var(--accent);color:#fff;padding:8px 10px;text-align:left}
+  .sum-table td{padding:8px 10px;border-bottom:1px solid var(--border)}
+  .sum-table tr:nth-child(even){background:var(--accent-light)}
+  .cheat{background:linear-gradient(135deg,#ffeaa7,#fdcb6e);border-radius:var(--radius);padding:20px;margin:16px 0}
+  .cheat h3{color:#2d3436}
+  .cheat ul{list-style:none;padding:0}
+  .cheat li{padding:4px 0;font-size:0.85rem;padding-left:20px;position:relative}
+  .cheat li::before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:700}
+  .idiom-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin:12px 0}
+  .idiom-card{background:var(--purple-light);border-radius:12px;padding:14px;text-align:center}
+  .idiom-card .idiom-phrase{font-family:'Fredoka',sans-serif;font-size:0.95rem;color:var(--purple);font-weight:600}
+  .idiom-card .idiom-mean{font-size:0.8rem;margin-top:4px;color:var(--text)}
+  audio{width:100%;margin:8px 0;border-radius:10px}
+  .checklist{list-style:none;padding:0}
+  .checklist li{padding:6px 0;font-size:0.85rem;padding-left:24px;position:relative}
+  .checklist li::before{content:'☐';position:absolute;left:0;font-size:1rem}
+  .preview-box{background:linear-gradient(135deg,var(--green-light),var(--blue-light));border-radius:var(--radius);padding:20px;margin:16px 0;text-align:center}
+  .preview-box h3{color:var(--green)}
+  .welcome-box{background:linear-gradient(135deg,var(--accent-light),var(--blue-light));border-radius:var(--radius);padding:22px;margin:16px 0;border:2px solid var(--accent)}
+  @media(max-width:600px){.hero h1{font-size:1.5rem}.vocab-grid{grid-template-columns:1fr}.idiom-grid{grid-template-columns:1fr}.nav .container{gap:4px}.nav a{font-size:0.7rem;padding:5px 8px}}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>🎂 Session 1: Birthdays</h1>
+  <p>Birthday vocabulary, future with "will" &amp; party planning</p>
+  <span class="badge">A2A — AUC English Course</span>
+</div>
+
+<div class="container">
+
+<!-- Session Navigator -->
+<div style="text-align:center">
+  <div class="session-nav">
+    <a href="#" class="active">🎂 S1</a>
+    <a href="session-2.html">🎉 S2</a>
+    <a href="../Session 3/Session-3-Street-Food-Study.html">🍜 S3</a>
+    <a href="../Session 4/Session-4-Friendship-Study.html">🤝 S4</a>
+    <a href="../Session 5/Session-5-Friendship-Stories-Study.html">📱 S5</a>
+    <a href="#" class="disabled">😊 S6</a>
+    <a href="#" class="disabled">😔 S7</a>
+    <a href="#" class="disabled">💰 S8</a>
+    <a href="#" class="disabled">🏝 S9</a>
+    <a href="#" class="disabled">🏝 S10</a>
+    <a href="#" class="disabled">👕 S11</a>
+    <a href="#" class="disabled">👕 S12</a>
+  </div>
+  <p style="font-size:0.72rem;color:var(--text-dim)">Sessions unlock as you send me materials. Navigate between ready sessions!</p>
+</div>
+
+<!-- Method Banner -->
+<div class="method">
+  🎧 Listen → 📖 Read &amp; Learn → 🗣 Speak → ✍️ Write → 📝 Test
+  <br><span style="font-size:0.75rem;font-weight:400">Science-backed sequence for maximum retention</span>
+</div>
+
+<!-- Progress Bar -->
+<div class="progress-wrap">
+  <div style="display:flex;justify-content:space-between;font-size:0.8rem;font-weight:600;margin-bottom:6px">
+    <span>Session Progress</span><span id="pct">0%</span>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="pbar"></div></div>
+  <p class="progress-text">Complete all sections to reach 100%</p>
+</div>
+
+</div>
+
+<!-- NAV BAR -->
+<nav class="nav">
+  <div class="container">
+    <a href="#welcome">Welcome</a>
+    <a href="#listen">1. Listen</a>
+    <a href="#vocab">2. Vocab</a>
+    <a href="#grammar">3. Grammar</a>
+    <a href="#reading">4. Read</a>
+    <a href="#speaking">5. Speak</a>
+    <a href="#roleplay">6. Roleplay</a>
+    <a href="#writing">7. Write</a>
+    <a href="#quiz">8. Quiz</a>
+    <a href="#summary">Summary</a>
+    <a href="#cheat">Cheat Sheet</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- WELCOME -->
+<section id="welcome">
+<h2>👋 Welcome to A2A!</h2>
+<div class="welcome-box">
+  <h3 style="color:var(--accent);margin-bottom:8px">This is your first session!</h3>
+  <p style="font-size:0.88rem">In this course, you will learn to communicate in English about real-life topics: birthdays, parties, street food, friendship, feelings, money, travel, and fashion. Each session builds on the one before it.</p>
+  <p style="font-size:0.88rem;margin-top:8px"><strong>Session 1 focuses on:</strong> Birthday vocabulary, the months of the year, how to use <strong>"will"</strong> for future plans, and planning your dream birthday party.</p>
+  <p style="font-size:0.85rem;margin-top:10px;color:var(--text-dim)">Follow the steps in order: Listen → Read → Speak → Write → Test. This is the scientifically proven way to learn a language!</p>
+</div>
+</section>
+
+<!-- STEP 1: LISTEN -->
+<section id="listen">
+<h2>🎧 Step 1 — Listen First</h2>
+<p style="font-size:0.85rem;color:var(--text-dim);margin-bottom:12px">Listen before you study. Your brain needs the sounds first!</p>
+
+<div class="card card-blue">
+  <span class="step step-blue">Audio 1 — Session Companion</span>
+  <p style="font-size:0.88rem;margin:8px 0">Birthday Vocabulary &amp; Future Grammar Guide</p>
+  <audio controls preload="none">
+    <source src="https://drive.google.com/uc?export=download&id=1Uaac935ee8OLTpZEySdUCNjtqpGDzoQc" type="audio/mpeg">
+    <source src="https://drive.google.com/uc?export=download&id=1Uaac935ee8OLTpZEySdUCNjtqpGDzoQc" type="audio/mpeg">
+  </audio>
+  <p style="font-size:0.72rem;color:var(--text-dim);margin-top:4px">If audio doesn't play, try a different browser or <a href="https://drive.google.com/uc?export=download&id=1Uaac935ee8OLTpZEySdUCNjtqpGDzoQc" download style="color:var(--blue)">download the file</a>.</p>
+  <details class="subtitle-toggle">
+    <summary>📝 Show Subtitle / Transcript</summary>
+    <div class="subtitle-text">
+      <p>Welcome to Session 1 — Birthdays and the Future with "Will".</p>
+      <p>In this session, you will learn vocabulary about birthdays: words like <strong>birthday, cake, candle, balloon, present, gift, surprise, decoration, invitation, guest, celebrate, blow out</strong>.</p>
+      <p>You will also learn the months of the year: <strong>January, February, March, April, May, June, July, August, September, October, November, December</strong>.</p>
+      <p>For grammar, we will study the future with "will". We use "will" to talk about plans and decisions about the future.</p>
+      <p><strong>Positive:</strong> I will bring a cake. She will come to the party.</p>
+      <p><strong>Negative:</strong> I will not (won't) be late. He won't forget the present.</p>
+      <p><strong>Questions:</strong> Will you come? Will she bring a gift?</p>
+      <p><strong>Short answers:</strong> Yes, I will. / No, I won't.</p>
+      <p>Listen carefully and try to repeat the words you hear.</p>
+    </div>
+  </details>
+</div>
+
+<div class="card card-blue">
+  <span class="step step-blue">Audio 2 — Months of the Year</span>
+  <p style="font-size:0.88rem;margin:8px 0">Listen and repeat the 12 months.</p>
+  <audio controls preload="none">
+    <source src="https://scemoodle.aucegypt.edu/pluginfile.php/3170019/mod_hvp/content/171737/audios/files-681c6bb5a5d6d.mp3" type="audio/mpeg">
+  </audio>
+  <p style="font-size:0.72rem;color:var(--text-dim);margin-top:4px">If blocked, <a href="https://scemoodle.aucegypt.edu/pluginfile.php/3170019/mod_hvp/content/171737/audios/files-681c6bb5a5d6d.mp3" target="_blank" style="color:var(--blue)">open on Moodle</a></p>
+  <details class="subtitle-toggle">
+    <summary>📝 Show Subtitle / Transcript</summary>
+    <div class="subtitle-text">
+      <p>The twelve months of the year are:</p>
+      <p><strong>January</strong> — the first month of the year.</p>
+      <p><strong>February</strong> — the second month. Valentine's Day is in February.</p>
+      <p><strong>March</strong> — the third month. Spring begins in March.</p>
+      <p><strong>April</strong> — the fourth month.</p>
+      <p><strong>May</strong> — the fifth month.</p>
+      <p><strong>June</strong> — the sixth month. Summer starts in June.</p>
+      <p><strong>July</strong> — the seventh month.</p>
+      <p><strong>August</strong> — the eighth month.</p>
+      <p><strong>September</strong> — the ninth month. School often starts in September.</p>
+      <p><strong>October</strong> — the tenth month.</p>
+      <p><strong>November</strong> — the eleventh month.</p>
+      <p><strong>December</strong> — the twelfth and last month. Many holidays are in December.</p>
+      <p>Now listen again and repeat each month out loud.</p>
+    </div>
+  </details>
+</div>
+
+<div class="card card-blue">
+  <span class="step step-blue">Audio 3 — Preparing for a Party</span>
+  <p style="font-size:0.88rem;margin:8px 0">Tips on how to plan a great birthday party.</p>
+  <audio controls preload="none">
+    <source src="https://scemoodle.aucegypt.edu/pluginfile.php/3170020/mod_hvp/content/171738/audios/files-681c71718327b.mp3" type="audio/mpeg">
+  </audio>
+  <p style="font-size:0.72rem;color:var(--text-dim);margin-top:4px">If blocked, <a href="https://scemoodle.aucegypt.edu/pluginfile.php/3170020/mod_hvp/content/171738/audios/files-681c71718327b.mp3" target="_blank" style="color:var(--blue)">open on Moodle</a></p>
+  <details class="subtitle-toggle">
+    <summary>📝 Show Subtitle / Transcript</summary>
+    <div class="subtitle-text">
+      <p>Planning a party is exciting, but you need to get ready to make it fun and special! Here are some tips to help you.</p>
+      <p>First, you need to find a place for the party. Will it be at your home, in a park, or at another special place? Next, you should send invitations to your friends and family. Make sure to tell them the date, time, and place.</p>
+      <p>Speaking of time, you need to decide what time the party will start. Is it in the afternoon or in the evening? Then, make a list of who will come. How many people are coming? This helps you plan for food and space.</p>
+      <p>Food is very important! Think about what to eat at the party. Will there be snacks, pizza, or a big meal? Don't forget about the cake — a birthday party is not the same without a cake!</p>
+      <p>Music can make the party more fun, so think about what music to play. Will you play your favorite songs or something everyone likes? You also need to plan activities to do at the party. Maybe you can play games, dance, or do something creative like drawing or singing.</p>
+      <p>If you plan these things, your party will be amazing, and everyone will have a great time!</p>
+    </div>
+  </details>
+</div>
+
+</section>
+
+<!-- STEP 2: VOCABULARY -->
+<section id="vocab">
+<h2>📚 Step 2 — Vocabulary Flashcards</h2>
+<p style="font-size:0.85rem;color:var(--text-dim);margin-bottom:6px">Click any card to flip it. Use the 🔊 button to hear pronunciation.</p>
+
+<h3>🎂 Birthday &amp; Party Words</h3>
+<div class="vocab-grid" id="birthday-cards"></div>
+
+<h3>📅 Months of the Year</h3>
+<div class="vocab-grid" id="month-cards"></div>
+
+<h3>🎉 Celebration Actions</h3>
+<div class="vocab-grid" id="action-cards"></div>
+</section>
+
+<!-- STEP 3: GRAMMAR -->
+<section id="grammar">
+<h2>📐 Step 3 — Grammar: Future with "Will"</h2>
+
+<div class="card card-accent">
+<h3>When Do We Use "Will"?</h3>
+<div class="grammar-box" style="border-left:4px solid var(--accent)">
+<strong>1. Plans:</strong> To talk about decisions made now → <em>"I'll buy a cake for the party."</em><br>
+<strong>2. Predictions:</strong> To express what you think will happen → <em>"It will be a fun celebration!"</em><br>
+<strong>3. Promises:</strong> To make commitments → <em>"I'll help you decorate the room."</em>
+</div>
+
+<h3 style="margin-top:16px">Time Markers with "Will"</h3>
+<div class="grammar-box" style="border-left:4px solid var(--blue)">
+tomorrow, the day after tomorrow, next week/month/year, in a couple of days, in # days/weeks/months/years, on Monday/Tuesday/Wednesday...
+</div>
+</div>
+
+<div class="card card-green">
+<h3>✅ Positive: Subject + will + base verb</h3>
+<table class="grammar-table">
+<thead><tr><th>Subject</th><th>Will</th><th>Base Verb</th></tr></thead>
+<tbody>
+<tr><td>I</td><td>will</td><td>invite my friends.</td></tr>
+<tr><td>He / She</td><td>will</td><td>dance and sing.</td></tr>
+<tr><td>They</td><td>will</td><td>eat cake.</td></tr>
+<tr><td>We</td><td>will</td><td>play fun games at the party.</td></tr>
+</tbody>
+</table>
+<p style="font-size:0.82rem;color:var(--text-dim);margin-top:6px">More examples: I will decorate the room. / We will have a big chocolate cake. / She will love the gift. / They will arrive at 6 o'clock.</p>
+</div>
+
+<div class="card card-accent" style="border-left-color:var(--red)">
+<h3>❌ Negative: Subject + will + not + base verb</h3>
+<table class="grammar-table">
+<thead><tr><th>Subject</th><th>Will + not</th><th>Base Verb</th></tr></thead>
+<tbody>
+<tr><td>I</td><td>will not (won't)</td><td>come.</td></tr>
+<tr><td>He</td><td>will not (won't)</td><td>sleep.</td></tr>
+<tr><td>We</td><td>will not (won't)</td><td>forget the cake.</td></tr>
+</tbody>
+</table>
+<p style="font-size:0.82rem;color:var(--text-dim);margin-top:6px"><strong>won't</strong> = will not (short form). "We won't have the party at my house."</p>
+</div>
+
+<div class="card card-blue">
+<h3>❓ Questions: Will + subject + base verb?</h3>
+<table class="grammar-table">
+<thead><tr><th>Question</th><th>Yes Answer</th><th>No Answer</th></tr></thead>
+<tbody>
+<tr><td>Will you have a party?</td><td>Yes, I will.</td><td>No, I won't.</td></tr>
+<tr><td>Will they bring a gift?</td><td>Yes, they will.</td><td>No, they won't.</td></tr>
+<tr><td>Will we celebrate tomorrow?</td><td>Yes, we will.</td><td>No, we won't.</td></tr>
+</tbody>
+</table>
+
+<h3 style="margin-top:14px">Wh- Questions with Will</h3>
+<div class="grammar-box" style="border-left:4px solid var(--purple)">
+• What <strong>will</strong> you wear to the birthday party? → <em>I will wear jeans.</em><br>
+• When <strong>will</strong> the birthday party start? → <em>It will start at 7pm.</em><br>
+• Who <strong>will</strong> be at the birthday party? → <em>All my friends will be there.</em>
+</div>
+</div>
+
+<div class="card card-purple">
+<h3>✏️ Grammar Practice — Fill in the Blanks</h3>
+<p style="font-size:0.82rem;color:var(--text-dim);margin-bottom:10px">Choose the correct form.</p>
+<div id="grammar-exercises"></div>
+<div style="margin-top:14px;display:flex;gap:10px">
+  <button class="btn btn-accent" onclick="checkGrammar()">Check Answers</button>
+  <button class="btn btn-blue" onclick="retryGrammar()">Retry</button>
+  <span id="grammar-score" style="font-family:'Fredoka',sans-serif;font-size:1rem;font-weight:700;margin-left:auto;display:flex;align-items:center"></span>
+</div>
+</div>
+</section>
+
+<!-- STEP 4: READING -->
+<section id="reading">
+<h2>📖 Step 4 — Reading</h2>
+
+<div class="card card-blue">
+<span class="step step-blue">Reading — Birthday Party Invitation</span>
+<div class="reading-box">
+  <h4 style="text-align:center;margin-bottom:10px">🎉 Come to Our Birthday Party!</h4>
+  <p style="text-align:center">Hello everyone,</p>
+  <p style="text-align:center;margin-top:6px">I am happy to invite you to a fun and exciting birthday party!</p>
+  <p style="text-align:center;margin-top:8px"><strong>When?</strong> Thursday, 21 December, at 5:00 PM<br><strong>Where?</strong> The Student Center, Room 12</p>
+  <p style="text-align:center;margin-top:8px">There will be:</p>
+  <p style="text-align:center">🎮 Fun games &nbsp; 🎵 Music and dancing &nbsp; 🍿 Snacks and drinks</p>
+  <p style="text-align:center;margin-top:8px">Bring your friends and join me for a great time. I can't wait to see you there!</p>
+  <p style="text-align:center;margin-top:6px">Please reply by Monday if you can come.</p>
+  <p style="text-align:center;margin-top:8px">Email: Amira@auc.eg<br><strong>Best wishes,<br>Amira</strong></p>
+</div>
+</div>
+
+<div class="card card-green">
+<span class="step step-green">Transcript — Preparing for a Party</span>
+<div class="transcript">
+<p>Planning a party is exciting, but you need to get ready to make it fun and special! Here are some tips to help you.</p>
+<p style="margin-top:8px">First, you need to find a place for the party. Will it be at your home, in a park, or at another special place? Next, you should send invitations to your friends and family. Make sure to tell them the date, time, and place.</p>
+<p style="margin-top:8px">Speaking of time, you need to decide what time the party will start. Is it in the afternoon or in the evening? Then, make a list of who will come. How many people are coming? This helps you plan for food and space.</p>
+<p style="margin-top:8px">Food is very important! Think about what to eat at the party. Will there be snacks, pizza, or a big meal? Don't forget about the cake — a birthday party is not the same without a cake!</p>
+<p style="margin-top:8px">Music can make the party more fun, so think about what music to play. Will you play your favorite songs or something everyone likes? You also need to plan activities to do at the party. Maybe you can play games, dance, or do something creative like drawing or singing.</p>
+<p style="margin-top:8px">If you plan these things, your party will be amazing, and everyone will have a great time!</p>
+</div>
+</div>
+
+<div class="card card-purple">
+<span class="step step-purple">Transcript — The Birthday Party</span>
+<div class="transcript">
+<p>Everyone loves to celebrate a birthday with friends and family members. It's part of most cultures, but not everyone celebrates the same way. There are different things that can make a cultural celebration like a birthday party special and fun. What are some of those things? Special foods, music, and games can make a cultural celebration special and fun.</p>
+<p style="margin-top:8px">Some cultures have cake to celebrate a birthday. What kind of food do you eat at your birthday party? In a lot of cultures, there is a special song or kind of music; for example, the Happy Birthday song is popular in many countries around the world. Do you listen to any special music at your birthday party? If so, what is it?</p>
+<p style="margin-top:8px">Birthday games are another really common thing to do at birthday parties in many different cultures. Playing hide-and-seek, pin the tail on the donkey, and hitting a piñata are just some of the more popular ones. What kinds of games do you play at your birthday party?</p>
+</div>
+</div>
+</section>
+
+<!-- STEP 5: SPEAKING -->
+<section id="speaking">
+<h2>🗣 Step 5 — Speaking Challenge</h2>
+
+<div class="speak-card">
+  <h4>🎉 Plan Your Dream Birthday Party!</h4>
+  <p style="font-size:0.88rem">Individually, imagine you are planning your BEST birthday party. Think about:</p>
+  <ul style="font-size:0.85rem;margin:8px 0 0 18px">
+    <li><strong>Where</strong> will the party be?</li>
+    <li><strong>What food and drinks</strong> will be served?</li>
+    <li><strong>What activities or games</strong> will be at the party?</li>
+    <li><strong>Who</strong> will be invited?</li>
+    <li><strong>What decorations and music</strong> will be there?</li>
+  </ul>
+  <p style="font-size:0.85rem;margin-top:10px"><strong>In teams of 4:</strong> Share your ideas. Ask follow-up questions using <em>"will"</em>: "What games <em>will</em> you play?" / "Who <em>will</em> you invite?" / "What food <em>will</em> you serve?"</p>
+  <p style="font-size:0.85rem;margin-top:8px"><strong>Then:</strong> From all the ideas you heard, which birthday party <em>will</em> be the best? Share your opinion!</p>
+</div>
+</section>
+
+<!-- STEP 6: ROLEPLAY -->
+<section id="roleplay">
+<h2>🎭 Step 6 — Roleplay Cards</h2>
+<p style="font-size:0.85rem;color:var(--text-dim);margin-bottom:12px">Click each card to see the example conversation.</p>
+
+<div class="role-card" onclick="toggleRole('dreamer')">
+  <h4>🌟 The Big Dreamer</h4>
+  <ul class="role-points">
+    <li>You are planning the most amazing birthday party ever</li>
+    <li>Describe everything you will do — food, games, music, decorations</li>
+    <li>Use "will" in every sentence: "I will invite 50 friends!"</li>
+    <li>Your friends ask follow-up questions</li>
+  </ul>
+  <div class="role-convo" id="dreamer-convo">
+    <p><strong>You:</strong> For my birthday, I will have a huge party at the beach!</p>
+    <p><strong>Friend:</strong> That sounds amazing! What food will you serve?</p>
+    <p><strong>You:</strong> I will order pizza and we will have a big chocolate cake.</p>
+    <p><strong>Friend:</strong> Who will you invite?</p>
+    <p><strong>You:</strong> I will invite all my friends from university. It will be the best party!</p>
+  </div>
+</div>
+
+<div class="role-card" onclick="toggleRole('questioner')">
+  <h4>🤔 The Curious Questioner</h4>
+  <ul class="role-points">
+    <li>Your friend is planning a party — you want to know everything!</li>
+    <li>Ask at least 5 questions using "will"</li>
+    <li>Use Wh- questions: What will...? Where will...? When will...? Who will...?</li>
+    <li>React to answers: "That sounds great!" / "I will come for sure!"</li>
+  </ul>
+  <div class="role-convo" id="questioner-convo">
+    <p><strong>Planner:</strong> I'm planning my birthday party for next Saturday!</p>
+    <p><strong>You:</strong> Oh, exciting! Where will you have it?</p>
+    <p><strong>Planner:</strong> I will have it at my house.</p>
+    <p><strong>You:</strong> What time will the party start?</p>
+    <p><strong>Planner:</strong> It will start at 6 p.m.</p>
+    <p><strong>You:</strong> Will there be music?</p>
+    <p><strong>Planner:</strong> Yes! I will make a great playlist.</p>
+    <p><strong>You:</strong> That sounds great! I will definitely be there!</p>
+  </div>
+</div>
+
+<div class="role-card" onclick="toggleRole('judge')">
+  <h4>🏆 The Party Judge</h4>
+  <ul class="role-points">
+    <li>Listen to two friends describe their party plans</li>
+    <li>Compare them: "Your party will have better food, but their party will have more games"</li>
+    <li>Choose the best party and explain why using "will"</li>
+    <li>Use: "I think [name]'s party will be the best because..."</li>
+  </ul>
+  <div class="role-convo" id="judge-convo">
+    <p><strong>Friend A:</strong> My party will be at a restaurant. We will eat sushi!</p>
+    <p><strong>Friend B:</strong> My party will be at home. We will play video games all night!</p>
+    <p><strong>You:</strong> Hmm... Friend A's party will have delicious food, but Friend B's party will be more fun.</p>
+    <p><strong>You:</strong> I think Friend B's party will be the best because we will play games and eat snacks!</p>
+  </div>
+</div>
+
+<div class="role-card" onclick="toggleRole('negative')">
+  <h4>😅 The "Won't" Person</h4>
+  <ul class="role-points">
+    <li>Your friend invites you, but you have funny excuses for everything</li>
+    <li>Practice negative: "I won't eat cake — I'm on a diet!"</li>
+    <li>Use "won't" at least 5 times, then finally agree to come</li>
+    <li>End positively: "Okay, I will come! It will be fun!"</li>
+  </ul>
+  <div class="role-convo" id="negative-convo">
+    <p><strong>Friend:</strong> Will you come to my birthday party?</p>
+    <p><strong>You:</strong> I won't come... just kidding! But I won't eat the cake.</p>
+    <p><strong>Friend:</strong> Why not?</p>
+    <p><strong>You:</strong> I won't eat sugar this week. But I will bring some fruit!</p>
+    <p><strong>Friend:</strong> Will you dance at the party?</p>
+    <p><strong>You:</strong> I won't dance... well, maybe I will! Okay, I will come and it will be amazing!</p>
+  </div>
+</div>
+</section>
+
+<!-- STEP 7: WRITING -->
+<section id="writing">
+<h2>✍️ Step 7 — Writing Practice</h2>
+<div class="card card-accent" style="background:var(--accent-light);border:2px solid var(--accent)">
+  <p style="font-size:0.82rem;font-weight:600;color:var(--accent)">📌 EMAIL SKILL BUILDING — Your assessment in Session 5 is writing an email! Practice here from Session 1.</p>
+</div>
+
+<div class="card card-green">
+<h3>📝 Write a Birthday Party Invitation (50-60 words)</h3>
+
+<div class="email-box" style="margin-top:10px;border-color:var(--green)">
+  <div class="label" style="color:var(--green)">Model Answer — Read First</div>
+  <p style="text-align:center"><strong>Come to My Birthday Party!</strong></p>
+  <p style="margin-top:6px">Hi everyone! I will have a birthday party next Friday at 7 p.m. at my house. There will be pizza, cake, and lots of snacks. We will play fun games and listen to music. I will also prepare a photo corner!</p>
+  <p style="margin-top:6px">Please tell me by Wednesday if you will come. I can't wait to see you!</p>
+</div>
+
+<h3 style="margin-top:16px">✅ Checklist — Check each item as you write</h3>
+<div id="email-checklist" style="margin:10px 0">
+  <label style="display:block;padding:6px 0;font-size:0.85rem;cursor:pointer"><input type="checkbox" onchange="updateEmailCheck()" style="margin-right:8px"> Has a greeting (Hi/Dear + name)</label>
+  <label style="display:block;padding:6px 0;font-size:0.85rem;cursor:pointer"><input type="checkbox" onchange="updateEmailCheck()" style="margin-right:8px"> Says WHEN the party will be (date + time)</label>
+  <label style="display:block;padding:6px 0;font-size:0.85rem;cursor:pointer"><input type="checkbox" onchange="updateEmailCheck()" style="margin-right:8px"> Says WHERE the party will be</label>
+  <label style="display:block;padding:6px 0;font-size:0.85rem;cursor:pointer"><input type="checkbox" onchange="updateEmailCheck()" style="margin-right:8px"> Describes what there WILL be (food, games, music)</label>
+  <label style="display:block;padding:6px 0;font-size:0.85rem;cursor:pointer"><input type="checkbox" onchange="updateEmailCheck()" style="margin-right:8px"> Uses "will" at least 3 times</label>
+  <label style="display:block;padding:6px 0;font-size:0.85rem;cursor:pointer"><input type="checkbox" onchange="updateEmailCheck()" style="margin-right:8px"> Has a closing (Best wishes / See you there)</label>
+  <label style="display:block;padding:6px 0;font-size:0.85rem;cursor:pointer"><input type="checkbox" onchange="updateEmailCheck()" style="margin-right:8px"> Word count: 50-60 words</label>
+</div>
+<div id="email-check-result" style="font-family:'Fredoka',sans-serif;font-size:0.9rem;margin:8px 0"></div>
+
+<h3 style="margin-top:16px">✏️ Write Your Invitation Here</h3>
+<textarea id="email-textarea" style="width:100%;min-height:160px;border:2px solid var(--border);border-radius:12px;padding:14px;font-family:inherit;font-size:0.88rem;line-height:1.7;resize:vertical" placeholder="Hi everyone!
+
+I will have a birthday party...
+
+Best wishes,
+[your name]" oninput="updateEmailWC()"></textarea>
+<div style="font-size:0.78rem;color:var(--text-dim);margin-top:4px">Words: <span id="email-wc" style="font-weight:700">0</span> / 50-60 target</div>
+</div>
+</section>
+
+<!-- STEP 8: QUIZ -->
+<section id="quiz">
+<h2>📝 Step 8 — Session Quiz</h2>
+<p style="font-size:0.85rem;color:var(--text-dim);margin-bottom:10px">Test your knowledge! No correct answer shown on wrong — think carefully.</p>
+<div class="quiz-bar">
+  <span class="score" id="quiz-score">0 / 0</span>
+  <button class="btn btn-accent" onclick="retryQuiz()">🔄 Retry Quiz</button>
+</div>
+<div id="quiz-container"></div>
+</section>
+
+<!-- SUMMARY -->
+<section id="summary">
+<h2>📊 Summary Tables</h2>
+
+<div class="card">
+<h3>Vocabulary Summary</h3>
+<table class="sum-table">
+<thead><tr><th>Word</th><th>Meaning</th><th>Example with "will"</th></tr></thead>
+<tbody>
+<tr><td>birthday</td><td>the day you were born</td><td>My birthday will be next month.</td></tr>
+<tr><td>celebrate</td><td>do something special</td><td>We will celebrate with a big party.</td></tr>
+<tr><td>invitation</td><td>asking someone to come</td><td>I will send the invitations tomorrow.</td></tr>
+<tr><td>decorate</td><td>make look nice</td><td>She will decorate the room.</td></tr>
+<tr><td>gift / present</td><td>something you give someone</td><td>I will buy a nice gift.</td></tr>
+<tr><td>candle</td><td>small stick with fire on cake</td><td>There will be 20 candles on the cake.</td></tr>
+<tr><td>balloon</td><td>colorful air-filled decoration</td><td>We will hang balloons everywhere.</td></tr>
+<tr><td>guest</td><td>person who comes to the party</td><td>30 guests will come to the party.</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="card">
+<h3>Grammar Summary — "Will"</h3>
+<table class="sum-table">
+<thead><tr><th>Form</th><th>Structure</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td>Positive</td><td>Subject + will + base verb</td><td>I will invite my friends.</td></tr>
+<tr><td>Negative</td><td>Subject + will not (won't) + base verb</td><td>He won't come to the party.</td></tr>
+<tr><td>Question</td><td>Will + subject + base verb?</td><td>Will you bring a gift?</td></tr>
+<tr><td>Short Yes</td><td>Yes, + subject + will.</td><td>Yes, I will.</td></tr>
+<tr><td>Short No</td><td>No, + subject + won't.</td><td>No, I won't.</td></tr>
+<tr><td>Wh- Question</td><td>Wh- + will + subject + base verb?</td><td>What will you wear?</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<!-- CHEAT SHEET -->
+<section id="cheat">
+<h2>📋 Quick Cheat Sheet</h2>
+<div class="cheat">
+<h3>🎂 Session 1 — Birthdays &amp; "Will"</h3>
+<ul>
+  <li><strong>will + base verb</strong> for future plans: I will invite my friends.</li>
+  <li><strong>won't + base verb</strong> for negative: I won't forget the cake.</li>
+  <li><strong>Will + subject + base verb?</strong> for questions: Will you come?</li>
+  <li><strong>Short answers:</strong> Yes, I will. / No, I won't.</li>
+  <li><strong>Wh- questions:</strong> What will you bring? Where will you have it?</li>
+  <li><strong>Time markers:</strong> tomorrow, next week, in a couple of days, on Saturday</li>
+  <li><strong>Uses:</strong> plans, predictions, promises</li>
+  <li><strong>Key vocab:</strong> birthday, celebrate, invitation, decorate, gift, candle, balloon, guest, host</li>
+  <li><strong>Months:</strong> January → December (12 months)</li>
+</ul>
+</div>
+</section>
+
+<!-- PREVIEW S2 -->
+<div class="preview-box">
+  <h3>🎉 Coming Next: Session 2 — Birthday Parties</h3>
+  <p style="font-size:0.88rem;margin-top:6px">Learn to offer, accept &amp; refuse help using the <strong>-ing form</strong>. Plan a party with your friends!</p>
+  <p style="font-size:0.82rem;margin-top:4px;color:var(--text-dim)">You'll use everything from Session 1 (will + vocabulary) plus new grammar!</p>
+  <a href="session-2.html" style="display:inline-block;margin-top:10px;padding:8px 20px;background:var(--green);color:#fff;border-radius:10px;text-decoration:none;font-weight:600">Go to Session 2 →</a>
+</div>
+
+</div>
+
+<script>
+// ===== VOCABULARY DATA =====
+const birthdayVocab=[
+  {w:"birthday",pos:"noun",m:"the day you were born each year",ar:"عيد ميلاد",ex:"My birthday is in March.",col:"birthday party, birthday cake"},
+  {w:"celebrate",pos:"verb",m:"do something special for a happy event",ar:"يحتفل",ex:"We will celebrate with a big party!",col:"celebrate a birthday, celebrate together"},
+  {w:"cake",pos:"noun",m:"sweet baked food, usually with candles on birthdays",ar:"كيكة / تورتة",ex:"She will bake a big chocolate cake.",col:"birthday cake, bake a cake"},
+  {w:"candle",pos:"noun",m:"small stick that burns with light, put on cake",ar:"شمعة",ex:"There will be 20 candles on the cake.",col:"blow out candles, birthday candles"},
+  {w:"gift / present",pos:"noun",m:"something you give to someone special",ar:"هدية",ex:"I will buy a nice gift for her.",col:"birthday gift, give a present"},
+  {w:"balloon",pos:"noun",m:"colorful air-filled party decoration",ar:"بالونة",ex:"We will hang balloons everywhere.",col:"blow up balloons, colorful balloons"},
+  {w:"decoration",pos:"noun",m:"things used to make a place look nice",ar:"زينة",ex:"The party decorations will be amazing!",col:"party decorations, hang decorations"},
+  {w:"guest",pos:"noun",m:"a person who comes to an event",ar:"ضيف",ex:"30 guests will come to the party.",col:"party guest, invite a guest"},
+  {w:"host",pos:"noun/verb",m:"the person who organizes a party",ar:"المضيف / يستضيف",ex:"She will host the party at her house.",col:"host a party, the host"},
+  {w:"invitation",pos:"noun",m:"a request asking someone to come",ar:"دعوة",ex:"I will send the invitations on Monday.",col:"send an invitation, party invitation"},
+  {w:"surprise",pos:"noun/adj",m:"something unexpected and exciting",ar:"مفاجأة",ex:"It will be a surprise party!",col:"surprise party, what a surprise"},
+  {w:"wish",pos:"noun/verb",m:"to want something / a hope",ar:"أمنية / يتمنى",ex:"Make a wish before you blow out the candles!",col:"birthday wish, make a wish"}
+];
+
+const monthVocab=[
+  {w:"January",pos:"noun",m:"month 1 of the year",ar:"يناير",ex:"My birthday is in January.",col:"in January"},
+  {w:"February",pos:"noun",m:"month 2 — Valentine's Day",ar:"فبراير",ex:"Valentine's Day is in February.",col:"in February"},
+  {w:"March",pos:"noun",m:"month 3 — spring begins",ar:"مارس",ex:"Spring will start in March.",col:"in March"},
+  {w:"April",pos:"noun",m:"month 4",ar:"أبريل",ex:"We will have a picnic in April.",col:"in April"},
+  {w:"May",pos:"noun",m:"month 5",ar:"مايو",ex:"My sister's birthday is in May.",col:"in May"},
+  {w:"June",pos:"noun",m:"month 6 — summer begins",ar:"يونيو",ex:"Summer vacation will start in June.",col:"in June"},
+  {w:"July",pos:"noun",m:"month 7",ar:"يوليو",ex:"We will travel in July.",col:"in July"},
+  {w:"August",pos:"noun",m:"month 8",ar:"أغسطس",ex:"It will be very hot in August.",col:"in August"},
+  {w:"September",pos:"noun",m:"month 9 — school starts",ar:"سبتمبر",ex:"Classes will start in September.",col:"in September"},
+  {w:"October",pos:"noun",m:"month 10",ar:"أكتوبر",ex:"Halloween is in October.",col:"in October"},
+  {w:"November",pos:"noun",m:"month 11",ar:"نوفمبر",ex:"It will be cold in November.",col:"in November"},
+  {w:"December",pos:"noun",m:"month 12 — holidays",ar:"ديسمبر",ex:"We will celebrate New Year in December.",col:"in December"}
+];
+
+const actionVocab=[
+  {w:"invite",pos:"verb",m:"ask someone to come to an event",ar:"يدعو",ex:"I will invite all my friends.",col:"invite to a party, invite friends"},
+  {w:"blow out",pos:"phrasal verb",m:"push air to stop candle fire",ar:"يطفئ (الشموع)",ex:"She will blow out the candles.",col:"blow out candles"},
+  {w:"decorate",pos:"verb",m:"make a place look nice",ar:"يزيّن",ex:"We will decorate the room with balloons.",col:"decorate the room, decorate for a party"},
+  {w:"organize",pos:"verb",m:"plan and arrange something",ar:"ينظم",ex:"He will organize fun games.",col:"organize a party, organize games"},
+  {w:"prepare",pos:"verb",m:"get ready for something",ar:"يحضّر",ex:"I will prepare snacks for everyone.",col:"prepare food, prepare for a party"},
+  {w:"sing",pos:"verb",m:"make music with your voice",ar:"يغني",ex:"We will sing Happy Birthday together.",col:"sing a song, sing Happy Birthday"},
+  {w:"dance",pos:"verb",m:"move your body to music",ar:"يرقص",ex:"Everyone will dance at the party!",col:"dance at a party, dance to music"},
+  {w:"arrive",pos:"verb",m:"come to a place",ar:"يوصل / يصل",ex:"The guests will arrive at 6 o'clock.",col:"arrive at, arrive on time"}
+];
+
+// ===== GRAMMAR EXERCISES =====
+const grammarEx=[
+  {q:'I ______ invite my best friends to the party.',opts:['will','won\'t','am'],ans:0},
+  {q:'She ______ bake a big chocolate cake for the birthday.',opts:['will','won\'t','is'],ans:0},
+  {q:'We ______ forget to buy balloons. (negative)',opts:['will','won\'t','don\'t'],ans:1},
+  {q:'______ you come to my birthday party?',opts:['Will','Do','Are'],ans:0},
+  {q:'What time ______ the party start?',opts:['does','is','will'],ans:2},
+  {q:'They ______ not come to the party. They are busy.',opts:['will','do','are'],ans:0},
+  {q:'A: Will you bring a gift? B: Yes, I ______.',opts:['do','will','am'],ans:1},
+  {q:'A: Will they dance at the party? B: No, they ______.',opts:['don\'t','won\'t','aren\'t'],ans:1},
+  {q:'Where ______ you have your birthday party?',opts:['do','are','will'],ans:2},
+  {q:'I ______ prepare some snacks for everyone tomorrow.',opts:['will','am','do'],ans:0},
+  {q:'A: Do you sleep late on weekends? B: No, I ______.',opts:['do','don\'t','won\'t'],ans:1},
+  {q:'A: Does she play tennis? B: No, she ______.',opts:['doesn\'t','don\'t','won\'t'],ans:0}
+];
+
+// ===== QUIZ =====
+const quizData=[
+  {q:"What do you usually do at a birthday party?",o:["Go to sleep","Talk to friends and have fun","Do homework"],a:1,w:"Birthday parties are for celebrating — talking, eating, playing games!"},
+  {q:"What is a 'guest'?",o:["The person who organizes","Someone who comes to the party","A type of cake"],a:1,w:"A guest is someone who is invited and attends the party."},
+  {q:"What is the correct positive form of 'will'?",o:["Subject + will + base verb","Subject + will + verb-ing","Will + subject + base verb"],a:0,w:"Positive: Subject + will + base verb → 'I will invite my friends.'"},
+  {q:"What is the negative short form of 'will not'?",o:["willn't","won't","wouldn't"],a:1,w:"won't = will not. 'I won't forget the cake.'"},
+  {q:"Complete: '______ you come to my party?'",o:["Do","Are","Will"],a:2,w:"Questions about future plans use 'Will + subject + base verb?'"},
+  {q:"Which is a correct short answer?",o:["Yes, I will.","Yes, I do will.","Yes, I am will."],a:0,w:"Short answer: 'Yes, I will.' or 'No, I won't.'"},
+  {q:"Which is a time marker for the future?",o:["Yesterday","Last week","Tomorrow"],a:2,w:"'Tomorrow' is a future time marker. Yesterday and last week are past."},
+  {q:"We use 'will' for:",o:["Past events","Plans, predictions, and promises","Things happening now"],a:1,w:"Will is for future: plans, predictions, promises."},
+  {q:"What kind of food do many cultures have at birthdays?",o:["Soup","Cake","Salad"],a:1,w:"Cake is the most common birthday food across cultures."},
+  {q:"What is the Happy Birthday song?",o:["A birthday game","A popular birthday song worldwide","A type of food"],a:1,w:"The Happy Birthday song is sung in many countries around the world."},
+  {q:"Who is having a birthday party in the invitation?",o:["Everyone","The Student Center","Amira"],a:2,w:"The invitation is from Amira for her birthday party."},
+  {q:"Where is Amira's birthday party?",o:["The Student Center","At home","In the park"],a:0,w:"The invitation says: The Student Center, Room 12."},
+  {q:"When does Amira's party start?",o:["5:00 PM","6:00 PM","7:00 PM"],a:0,w:"The invitation says the party is at 5:00 PM."},
+  {q:"What will people do at Amira's party?",o:["Study","Play games","Cook"],a:1,w:"The invitation lists: fun games, music and dancing, snacks and drinks."},
+  {q:"Complete: 'She ______ decorate the room tomorrow.'",o:["will","won't","is"],a:0,w:"Positive future: She WILL decorate the room."},
+  {q:"Which month comes after June?",o:["May","July","August"],a:1,w:"The order is: June → July → August."},
+  {q:"What does 'blow out the candles' mean?",o:["Light the candles","Push air to put out the candle fire","Eat the candles"],a:1,w:"You blow out candles by pushing air from your mouth to stop the fire."},
+  {q:"Complete: 'A: Does she play tennis? B: No, she ______.'",o:["don't","doesn't","won't"],a:1,w:"For he/she/it in present simple: 'doesn't'. For future: 'won't'."}
+];
+
+// ===== BUILD FUNCTIONS =====
+function buildCards(data,containerId){
+  const c=document.getElementById(containerId);if(!c)return;
+  data.forEach(v=>{
+    const d=document.createElement('div');d.className='vocab-card';
+    d.onclick=(e)=>{if(e.target.classList.contains('tts-btn'))return;d.classList.toggle('flipped');updateProgress()};
+    d.innerHTML=`<div class="vocab-inner"><div class="vocab-front"><div class="word">${v.w} <button class="tts-btn" onclick="event.stopPropagation();speak('${v.w.replace(/'/g,"\\'")}',this)" title="Listen">🔊</button></div><div class="pos">${v.pos}</div><div class="hint">Tap to flip • 🔊 to hear</div></div><div class="vocab-back"><div class="meaning">${v.m}</div><div class="arabic">${v.ar}</div><div class="example">"${v.ex}"</div><button class="tts-btn" onclick="event.stopPropagation();speak('${v.w.replace(/'/g,"\\'")}',this)" title="Listen again" style="margin-top:6px;font-size:1.3rem">🔊</button></div></div>`;
+    c.appendChild(d);
+  });
+}
+
+function buildGrammar(){
+  const c=document.getElementById('grammar-exercises');
+  grammarEx.forEach((ex,i)=>{
+    const row=document.createElement('div');row.className='fill-row';row.id='gex-'+i;
+    let opts=ex.opts.map(o=>`<option value="${o}">${o}</option>`).join('');
+    row.innerHTML=`<span style="font-size:0.85rem;flex:1">${i+1}. ${ex.q.replace('______','<select id="gsel-'+i+'"><option value="">—</option>'+opts+'</select>')}</span><span class="result" id="gres-${i}"></span>`;
+    c.appendChild(row);
+  });
+}
+
+function checkGrammar(){
+  let correct=0;
+  grammarEx.forEach((ex,i)=>{
+    const sel=document.getElementById('gsel-'+i);
+    const res=document.getElementById('gres-'+i);
+    const row=document.getElementById('gex-'+i);
+    if(sel.value===ex.opts[ex.ans]){correct++;res.textContent='✅';res.style.color='var(--green)';row.style.borderColor='var(--green)';row.style.background='var(--green-light)'}
+    else{res.textContent='❌';res.style.color='var(--red)';row.style.borderColor='var(--red)';row.style.background='var(--red-light)'}
+  });
+  document.getElementById('grammar-score').textContent=correct+' / '+grammarEx.length;
+  updateProgress();
+}
+
+function retryGrammar(){
+  grammarEx.forEach((ex,i)=>{document.getElementById('gsel-'+i).value='';document.getElementById('gres-'+i).textContent='';const row=document.getElementById('gex-'+i);row.style.borderColor='var(--border)';row.style.background=''});
+  document.getElementById('grammar-score').textContent='';updateProgress();
+}
+
+// ===== QUIZ =====
+let quizOrder=[],quizAnswered=0,quizCorrect=0;
+function shuffleArray(arr){for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]]}return arr}
+
+function buildQuiz(){
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  quizOrder=shuffleArray([...Array(quizData.length).keys()]);
+  quizAnswered=0;quizCorrect=0;
+  document.getElementById('quiz-score').textContent='0 / '+quizData.length;
+  quizOrder.forEach((qi,idx)=>{
+    const q=quizData[qi];const div=document.createElement('div');div.className='quiz-q';div.id='qq-'+idx;
+    let opts=q.o.map((o,oi)=>`<label id="ql-${idx}-${oi}" onclick="ansQ(${idx},${oi})"><input type="radio" name="q${idx}" style="margin-right:8px">${o}</label>`).join('');
+    div.innerHTML=`<h4>${idx+1}. ${q.q}</h4>${opts}<button class="why-btn" id="qw-btn-${idx}" style="display:none" onclick="toggleWhy(${idx})">💡 Why is this correct?</button><div class="why-box" id="qw-${idx}">${q.w}</div>`;
+    c.appendChild(div);
+  });
+}
+
+function ansQ(idx,chosen){
+  const qi=quizOrder[idx];const q=quizData[qi];const qq=document.getElementById('qq-'+idx);
+  if(qq.dataset.done)return;
+  if(chosen===q.a){document.getElementById('ql-'+idx+'-'+chosen).classList.add('correct');qq.dataset.done='1';quizAnswered++;quizCorrect++;document.getElementById('qw-btn-'+idx).style.display='inline'}
+  else{document.getElementById('ql-'+idx+'-'+chosen).classList.add('wrong')}
+  document.getElementById('quiz-score').textContent=quizCorrect+' / '+quizData.length;updateProgress();
+}
+
+function toggleWhy(idx){document.getElementById('qw-'+idx).classList.toggle('show')}
+function retryQuiz(){buildQuiz();updateProgress()}
+function toggleRole(role){document.getElementById(role+'-convo').classList.toggle('show')}
+
+// ===== EMAIL FUNCTIONS =====
+function updateEmailWC(){
+  const t=document.getElementById('email-textarea').value.trim();
+  const c=t?t.split(/\s+/).length:0;
+  document.getElementById('email-wc').textContent=c;
+  updateProgress();
+}
+function updateEmailCheck(){
+  const ch=[...document.querySelectorAll('#email-checklist input')];
+  const n=ch.filter(c=>c.checked).length;
+  const res=document.getElementById('email-check-result');
+  if(n===ch.length)res.innerHTML='<span style="color:var(--green)">🎉 All checked! Great email!</span>';
+  else res.innerHTML='<span style="color:var(--text-dim)">'+n+'/'+ch.length+' items checked</span>';
+}
+
+function speak(word,btn){
+  if(!('speechSynthesis' in window))return;window.speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(word);u.lang='en-US';u.rate=0.85;
+  btn.textContent='🔈';u.onend=()=>{btn.textContent='🔊'};window.speechSynthesis.speak(u);
+}
+
+function updateProgress(){
+  let total=0,done=0;
+  const allFlash=document.querySelectorAll('.vocab-card'),flipped=document.querySelectorAll('.vocab-card.flipped');
+  if(allFlash.length){total+=30;done+=30*(flipped.length/allFlash.length)}
+  const gScore=document.getElementById('grammar-score').textContent;
+  if(gScore){const parts=gScore.split('/').map(s=>parseInt(s.trim()));if(parts.length===2&&parts[1]>0){total+=25;done+=25*(parts[0]/parts[1])}}else{total+=25}
+  total+=35;if(quizData.length)done+=35*(quizCorrect/quizData.length);
+  // Email writing: 10%
+  total+=10;
+  const emailText=document.getElementById('email-textarea');
+  if(emailText&&emailText.value.trim().length>20)done+=10;
+  const pct=total?Math.round(done/total*100):0;
+  document.getElementById('pbar').style.width=pct+'%';document.getElementById('pct').textContent=pct+'%';
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  buildCards(birthdayVocab,'birthday-cards');
+  buildCards(monthVocab,'month-cards');
+  buildCards(actionVocab,'action-cards');
+  buildGrammar();buildQuiz();updateProgress();
+});
+</script>
+</body>
+</html>

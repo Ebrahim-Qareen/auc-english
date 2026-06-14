@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Session 2 — Birthday Parties &amp; Offering Help | AUC A2A</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#fefcf9;--card:#ffffff;--accent:#e67e22;--accent-light:#fef5e7;--green:#27ae60;--green-light:#eafaf1;--red:#e74c3c;--red-light:#fdedec;--blue:#3498db;--blue-light:#ebf5fb;--purple:#9b59b6;--purple-light:#f4ecf7;--orange:#f39c12;--text:#2c3e50;--text-dim:#7f8c8d;--border:#e8e4df;--shadow:0 2px 12px rgba(0,0,0,0.06);--radius:16px;--pink:#e91e63;--pink-light:#fce4ec}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;padding-bottom:60px}
+  .container{max-width:800px;margin:0 auto;padding:0 16px}
+  h2{font-family:'Fredoka',sans-serif;font-size:1.5rem;margin:40px 0 16px;padding-top:20px}
+  h3{font-family:'Fredoka',sans-serif;font-size:1.15rem;margin:20px 0 10px}
+  .hero{background:linear-gradient(135deg,#e67e22 0%,#f39c12 50%,#e74c3c 100%);color:#fff;padding:40px 20px 30px;text-align:center;border-radius:0 0 32px 32px;margin-bottom:24px}
+  .hero h1{font-family:'Fredoka',sans-serif;font-size:2rem;margin-bottom:6px}
+  .hero p{font-size:0.95rem;opacity:0.92}
+  .badge{display:inline-block;background:rgba(255,255,255,0.22);padding:4px 14px;border-radius:20px;font-size:0.78rem;font-weight:600;margin-top:10px}
+
+  /* Session Navigator */
+  .session-nav{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:16px 0}
+  .session-nav a{display:inline-flex;align-items:center;gap:4px;padding:6px 14px;border-radius:10px;font-size:0.8rem;font-weight:600;text-decoration:none;border:2px solid var(--border);color:var(--text-dim);transition:all 0.2s}
+  .session-nav a:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light)}
+  .session-nav a.active{border-color:var(--accent);background:var(--accent);color:#fff}
+  .session-nav a.disabled{opacity:0.4;pointer-events:none}
+
+  /* Method Banner */
+  .method{background:linear-gradient(135deg,var(--blue-light),var(--purple-light));border-radius:var(--radius);padding:18px;margin:20px 0;text-align:center;font-size:0.85rem;font-weight:600;letter-spacing:0.5px}
+  .method span{margin:0 4px}
+
+  /* Progress Bar */
+  .progress-wrap{background:var(--card);border-radius:var(--radius);padding:16px;margin:16px 0;box-shadow:var(--shadow)}
+  .progress-bar{height:10px;background:#eee;border-radius:8px;overflow:hidden}
+  .progress-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--blue));border-radius:8px;transition:width 0.6s;width:0%}
+  .progress-text{font-size:0.78rem;color:var(--text-dim);margin-top:6px;text-align:center}
+
+  /* Nav Bar */
+  .nav{background:var(--card);border-bottom:2px solid var(--border);padding:10px 0;position:sticky;top:0;z-index:100;overflow-x:auto;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
+  .nav .container{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px}
+  .nav a{flex-shrink:0;padding:6px 12px;border-radius:10px;font-size:0.75rem;font-weight:600;text-decoration:none;color:var(--text-dim);border:1.5px solid transparent;transition:all 0.2s}
+  .nav a:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-light)}
+
+  /* Cards */
+  .card{background:var(--card);border-radius:var(--radius);padding:24px;margin:16px 0;box-shadow:var(--shadow);border:1px solid var(--border)}
+  .card-accent{border-left:4px solid var(--accent)}
+  .card-green{border-left:4px solid var(--green)}
+  .card-blue{border-left:4px solid var(--blue)}
+  .card-purple{border-left:4px solid var(--purple)}
+  .card-pink{border-left:4px solid var(--pink)}
+
+  /* Step Labels */
+  .step{display:inline-block;background:var(--accent);color:#fff;padding:3px 12px;border-radius:8px;font-size:0.75rem;font-weight:700;margin-bottom:10px}
+  .step-green{background:var(--green)}
+  .step-blue{background:var(--blue)}
+  .step-purple{background:var(--purple)}
+  .step-pink{background:var(--pink)}
+
+  /* Flashcards */
+  .vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+  .vocab-card{perspective:800px;height:190px;cursor:pointer}
+  .vocab-inner{position:relative;width:100%;height:100%;transition:transform 0.5s;transform-style:preserve-3d}
+  .vocab-card.flipped .vocab-inner{transform:rotateY(180deg)}
+  .vocab-front,.vocab-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:14px;padding:16px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border:1px solid var(--border);box-shadow:var(--shadow)}
+  .vocab-front{background:var(--card)}
+  .vocab-front .word{font-family:'Fredoka',sans-serif;font-size:1.25rem;font-weight:700;color:var(--accent)}
+  .vocab-front .pos{font-size:0.72rem;color:var(--text-dim);margin-top:2px}
+  .vocab-front .hint{font-size:0.7rem;color:var(--pink);margin-top:8px;font-weight:500}
+  .vocab-back{background:linear-gradient(135deg,var(--accent-light),#f3e8ff);transform:rotateY(180deg)}
+  .vocab-back .meaning{font-weight:600;font-size:0.9rem;margin-bottom:4px}
+  .vocab-back .arabic{font-size:0.82rem;color:var(--pink);margin-bottom:4px}
+  .vocab-back .example{font-size:0.8rem;color:var(--text-dim);font-style:italic}
+  .tts-btn{position:absolute;top:8px;right:8px;background:var(--blue-light);border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:0.8rem;display:flex;align-items:center;justify-content:center;transition:background 0.2s}
+  .tts-btn:hover{background:var(--blue);color:#fff}
+
+  /* Grammar */
+  .grammar-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:0.85rem}
+  .grammar-table th{background:var(--accent);color:#fff;padding:10px 12px;text-align:left;font-weight:600}
+  .grammar-table td{padding:10px 12px;border-bottom:1px solid var(--border)}
+  .grammar-table tr:nth-child(even){background:var(--accent-light)}
+  .grammar-box{background:var(--accent-light);border-radius:12px;padding:16px;margin:10px 0;font-size:0.88rem}
+
+  /* Fill-in-the-blank */
+  .fill-row{background:var(--card);border:1.5px solid var(--border);border-radius:12px;padding:14px;margin:8px 0;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .fill-row select{padding:6px 10px;border-radius:8px;border:1.5px solid var(--border);font-size:0.85rem;font-family:inherit}
+  .fill-row .result{font-size:0.85rem;font-weight:600;margin-left:auto}
+
+  /* Transcript */
+  .transcript{background:#faf9f6;border-radius:12px;padding:18px;margin:12px 0;font-size:0.86rem;line-height:2}
+  .subtitle-toggle{margin-top:8px}
+  .subtitle-toggle summary{cursor:pointer;font-size:0.82rem;font-weight:600;color:var(--accent);padding:6px 0;user-select:none}
+  .subtitle-toggle summary:hover{color:var(--green)}
+  .subtitle-text{background:#faf9f6;border-radius:10px;padding:14px 16px;margin-top:6px;font-size:0.82rem;line-height:1.9;color:var(--text);max-height:300px;overflow-y:auto}
+  .transcript .speaker-a{color:var(--accent);font-weight:600}
+  .transcript .speaker-b{color:var(--blue);font-weight:600}
+
+  /* Reading */
+  .reading-box{background:var(--blue-light);border-radius:12px;padding:18px;margin:12px 0;font-size:0.88rem;line-height:1.9}
+
+  /* Speaking */
+  .speak-card{background:linear-gradient(135deg,var(--green-light),var(--blue-light));border-radius:var(--radius);padding:20px;margin:10px 0}
+  .speak-card h4{font-family:'Fredoka',sans-serif;font-size:1rem;margin-bottom:6px}
+
+  /* Roleplay */
+  .role-card{background:var(--card);border:2px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:14px;box-shadow:var(--shadow);cursor:pointer;transition:all 0.3s}
+  .role-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.1)}
+  .role-card h4{font-family:'Fredoka',sans-serif;font-size:1.05rem;margin-bottom:8px}
+  .role-card .role-points{list-style:none;padding:0}
+  .role-card .role-points li{font-size:0.85rem;padding:3px 0;padding-left:18px;position:relative}
+  .role-card .role-points li::before{content:'•';position:absolute;left:4px;color:var(--accent);font-weight:700}
+  .role-convo{display:none;background:#faf9f6;border-radius:12px;padding:16px;margin-top:12px;font-size:0.86rem;line-height:1.9}
+  .role-convo.show{display:block}
+
+  /* Email */
+  .email-box{background:var(--card);border:2px solid var(--border);border-radius:var(--radius);padding:20px;margin:12px 0;font-size:0.88rem}
+  .email-box .label{font-weight:700;color:var(--accent);font-size:0.78rem;text-transform:uppercase;margin-bottom:4px}
+
+  /* Quiz */
+  .quiz-q{background:var(--card);border:2px solid var(--border);border-radius:14px;padding:18px;margin:10px 0}
+  .quiz-q h4{font-family:'Fredoka',sans-serif;font-size:0.95rem;margin-bottom:10px}
+  .quiz-q label{display:block;padding:8px 12px;margin:4px 0;border-radius:10px;cursor:pointer;font-size:0.85rem;border:1.5px solid transparent;transition:all 0.2s}
+  .quiz-q label:hover{background:var(--accent-light);border-color:var(--accent)}
+  .quiz-q label.correct{background:var(--green-light);border-color:var(--green);color:var(--green)}
+  .quiz-q label.wrong{background:var(--red-light);border-color:var(--red);color:var(--red)}
+  .quiz-q .why-btn{background:none;border:none;color:var(--blue);font-size:0.78rem;cursor:pointer;margin-top:6px;text-decoration:underline}
+  .quiz-q .why-box{display:none;background:var(--blue-light);border-radius:10px;padding:12px;margin-top:8px;font-size:0.82rem}
+  .quiz-q .why-box.show{display:block}
+  .quiz-bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:16px 0}
+  .quiz-bar .score{font-family:'Fredoka',sans-serif;font-size:1.1rem;font-weight:700}
+  .btn{padding:8px 18px;border-radius:10px;border:none;font-weight:600;cursor:pointer;font-size:0.85rem;transition:all 0.2s}
+  .btn-accent{background:var(--accent);color:#fff}
+  .btn-accent:hover{background:#d35400}
+  .btn-green{background:var(--green);color:#fff}
+  .btn-green:hover{background:#219a52}
+  .btn-blue{background:var(--blue);color:#fff}
+
+  /* Summary Table */
+  .sum-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:0.83rem}
+  .sum-table th{background:var(--accent);color:#fff;padding:8px 10px;text-align:left}
+  .sum-table td{padding:8px 10px;border-bottom:1px solid var(--border)}
+  .sum-table tr:nth-child(even){background:var(--accent-light)}
+
+  /* Cheat Sheet */
+  .cheat{background:linear-gradient(135deg,#ffeaa7,#fdcb6e);border-radius:var(--radius);padding:20px;margin:16px 0}
+  .cheat h3{color:#2d3436}
+  .cheat ul{list-style:none;padding:0}
+  .cheat li{padding:4px 0;font-size:0.85rem;padding-left:20px;position:relative}
+  .cheat li::before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:700}
+
+  /* Idiom */
+  .idiom-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin:12px 0}
+  .idiom-card{background:var(--purple-light);border-radius:12px;padding:14px;text-align:center}
+  .idiom-card .idiom-phrase{font-family:'Fredoka',sans-serif;font-size:0.95rem;color:var(--purple);font-weight:600}
+  .idiom-card .idiom-mean{font-size:0.8rem;margin-top:4px;color:var(--text)}
+
+  /* Audio */
+  audio{width:100%;margin:8px 0;border-radius:10px}
+
+  /* Checklist */
+  .checklist{list-style:none;padding:0}
+  .checklist li{padding:6px 0;font-size:0.85rem;padding-left:24px;position:relative}
+  .checklist li::before{content:'☐';position:absolute;left:0;font-size:1rem}
+
+  /* Preview */
+  .preview-box{background:linear-gradient(135deg,var(--green-light),var(--blue-light));border-radius:var(--radius);padding:20px;margin:16px 0;text-align:center}
+  .preview-box h3{color:var(--green)}
+
+  @media(max-width:600px){
+    .hero h1{font-size:1.5rem}
+    .vocab-grid{grid-template-columns:1fr}
+    .idiom-grid{grid-template-columns:1fr}
+    .nav .container{gap:4px}
+    .nav a{font-size:0.7rem;padding:5px 8px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<div class="hero">
+  <h1>🎂 Session 2: Birthday Parties</h1>
+  <p>Planning parties, offering help &amp; the -ing form</p>
+  <span class="badge">A2A — AUC English Course</span>
+</div>
+
+<div class="container">
+
+<!-- Session Navigator -->
+<div style="text-align:center">
+  <div class="session-nav" style="margin-top:16px">
+    <a href="session-1.html">🎂 S1</a>
+    <a href="#" class="active">🎉 S2</a>
+    <a href="session-3.html">🍜 S3</a>
+    <a href="../Session 4/Session-4-Friendship-Study.html">🤝 S4</a>
+    <a href="../Session 5/Session-5-Friendship-Stories-Study.html">📱 S5</a>
+    <a href="#" class="disabled">😊 S6</a>
+    <a href="#" class="disabled">😔 S7</a>
+    <a href="#" class="disabled">💰 S8</a>
+    <a href="#" class="disabled">🏝 S9</a>
+    <a href="#" class="disabled">🏝 S10</a>
+    <a href="#" class="disabled">👕 S11</a>
+    <a href="#" class="disabled">👕 S12</a>
+  </div>
+  <p style="font-size:0.72rem;color:var(--text-dim)">Sessions unlock as you send me materials. Navigate between ready sessions!</p>
+</div>
+
+<!-- Method Banner -->
+<div class="method">
+  🎧 Listen → 📖 Read &amp; Learn → 🗣 Speak → ✍️ Write → 📝 Test
+  <br><span style="font-size:0.75rem;font-weight:400">Science-backed sequence for maximum retention</span>
+</div>
+
+<!-- Progress Bar -->
+<div class="progress-wrap">
+  <div style="display:flex;justify-content:space-between;font-size:0.8rem;font-weight:600;margin-bottom:6px">
+    <span>Session Progress</span>
+    <span id="pct">0%</span>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="pbar"></div></div>
+  <p class="progress-text">Complete all sections to reach 100%</p>
+</div>
+
+</div><!-- /container -->
+
+<!-- ===== NAV BAR ===== -->
+<nav class="nav">
+  <div class="container">
+    <a href="#recap">Recap</a>
+    <a href="#listen">1. Listen</a>
+    <a href="#vocab">2. Vocab</a>
+    <a href="#idioms">Idioms</a>
+    <a href="#grammar">3. Grammar</a>
+    <a href="#reading">4. Read</a>
+    <a href="#speaking">5. Speak</a>
+    <a href="#roleplay">6. Roleplay</a>
+    <a href="#email">7. Email</a>
+    <a href="#writing">8. Write</a>
+    <a href="#quiz">9. Quiz</a>
+    <a href="#summary">Summary</a>
+    <a href="#cheat">Cheat Sheet</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- ===== RECAP S1 ===== -->
+<section id="recap">
+<h2>🔄 Recap &amp; Apply — Session 1 Grammar</h2>
+<div class="card card-accent">
+  <p style="font-size:0.88rem"><strong>Session 1: Birthdays</strong> — You learned birthday vocabulary and <strong>"will"</strong> for future plans. Now let's apply "will" to today's party planning topic!</p>
+  <div style="margin-top:10px;font-size:0.82rem;color:var(--text-dim)">
+    <strong>Key Grammar:</strong> will + base verb → "I <em>will invite</em> my friends." / won't + base verb → "He <em>won't come</em>."<br>
+    <strong>Key Vocab:</strong> invitation, guest, host, balloon, decoration, candle, celebrate, organize
+  </div>
+</div>
+
+<div class="card card-green">
+  <h3>🧪 Apply S1 Grammar to Today's Topic</h3>
+  <p style="font-size:0.82rem;color:var(--text-dim);margin-bottom:10px">Use "will" with party planning — choose the correct answer:</p>
+  <div id="recap-exercises"></div>
+  <div style="margin-top:12px;display:flex;gap:10px">
+    <button class="btn btn-green" onclick="checkRecap()">Check</button>
+    <button class="btn btn-blue" onclick="retryRecap()">Retry</button>
+    <span id="recap-score" style="font-family:'Fredoka',sans-serif;font-size:1rem;font-weight:700;margin-left:auto;display:flex;align-items:center"></span>
+  </div>
+</div>
+</section>
+
+<!-- ===== STEP 1: LISTEN ===== -->
+<section id="listen">
+<h2>🎧 Step 1 — Listen First</h2>
+<p style="font-size:0.85rem;color:var(--text-dim);margin-bottom:12px">Listen before you study. Your brain needs the sounds first!</p>
+
+<div class="card card-blue">
+  <span class="step step-blue">Audio 1 — Session Companion</span>
+  <p style="font-size:0.88rem;margin:8px 0">Essential English for Planning Birthday Parties</p>
+  <audio controls preload="none">
+    <source src="https://drive.google.com/uc?export=download&id=18JKCTYcB7iWRZ6-vjQFZBy_AvXWmgUcy" type="audio/mpeg">
+    <source src="https://drive.google.com/uc?export=download&id=18JKCTYcB7iWRZ6-vjQFZBy_AvXWmgUcy" type="audio/mpeg">
+  </audio>
+  <p style="font-size:0.72rem;color:var(--text-dim);margin-top:4px">If audio doesn't play, try a different browser or <a href="https://drive.google.com/uc?export=download&id=18JKCTYcB7iWRZ6-vjQFZBy_AvXWmgUcy" download style="color:var(--blue)">download the file</a>.</p>
+  <details class="subtitle-toggle">
+    <summary>📝 Show Subtitle / Transcript</summary>
+    <div class="subtitle-text">
+      <p>Welcome to Session 2 — Birthday Parties: Planning and Helping.</p>
+      <p>In this session, you will learn vocabulary for party planning: <strong>decoration, balloon, streamer, banner, costume, DJ, karaoke, venue, organize, set up, hang up, blow up</strong>.</p>
+      <p>You will practice the <strong>-ing form</strong> after prepositions: "I'm interested <em>in having</em> a party." "I'm excited <em>about planning</em> the decorations."</p>
+      <p>You will also learn how to <strong>offer help</strong>: "Can I help you with...?" "Would you like me to...?" "Do you want me to...?"</p>
+      <p><strong>Accept help:</strong> "Yes, please!" "That would be great!" "I'd love that!"</p>
+      <p><strong>Refuse politely:</strong> "Thanks, but I can manage." "I think I'm OK, but thanks for offering!"</p>
+      <p>Listen carefully and try to notice how people offer and respond to help.</p>
+    </div>
+  </details>
+</div>
+
+<div class="card card-blue">
+  <span class="step step-blue">Audio 2 — My Birthday Plan (Listening 1)</span>
+  <p style="font-size:0.88rem;margin:8px 0">A conversation about choosing activities for a birthday.</p>
+  <audio controls preload="none">
+    <source src="https://scemoodle.aucegypt.edu/pluginfile.php/3170025/mod_hvp/content/171743/audios/files-6a2008356aaf7.mp3" type="audio/mpeg">
+  </audio>
+  <p style="font-size:0.72rem;color:var(--text-dim);margin-top:4px">If blocked, <a href="https://scemoodle.aucegypt.edu/pluginfile.php/3170025/mod_hvp/content/171743/audios/files-6a2008356aaf7.mp3" target="_blank" style="color:var(--blue)">open on Moodle</a></p>
+  <details class="subtitle-toggle">
+    <summary>📝 Show Subtitle / Transcript</summary>
+    <div class="subtitle-text">
+      <p><strong>A:</strong> You're late!</p>
+      <p><strong>B:</strong> What time is it?</p>
+      <p><strong>A:</strong> Two minutes after six.</p>
+      <p><strong>B:</strong> I'm not late. Two minutes is not late.</p>
+      <p><strong>A:</strong> Yes, it is. It's two minutes late.</p>
+      <p><strong>B:</strong> Oh, look, it's five to six. I'm early!</p>
+      <p><strong>A:</strong> So, for your birthday on Saturday, there's a great French movie at the Avalon.</p>
+      <p><strong>B:</strong> There's a baseball game on Saturday night.</p>
+      <p><strong>A:</strong> Or there's a play at the Art Center at 8 p.m. It's called <em>Life is a Dream</em>.</p>
+      <p><strong>B:</strong> The Tigers are playing the Giants. You know, baseball.</p>
+      <p><strong>A:</strong> Oh, look, there's a Mozart concert on Saturday. Would you like to go?</p>
+      <p><strong>B:</strong> What time?</p>
+      <p><strong>A:</strong> Half past seven.</p>
+      <p><strong>B:</strong> The ball game's at seven.</p>
+      <p><strong>A:</strong> Oh, wow, there's also a talk by the writer Ellen Lee at the University.</p>
+      <p><strong>B:</strong> On Saturday night.</p>
+      <p><strong>A:</strong> Is your birthday on Saturday?</p>
+      <p><strong>B:</strong> No, it's <em>your</em> birthday!</p>
+      <p><strong>A:</strong> Would you like to go to a baseball game for your birthday?</p>
+      <p><strong>B:</strong> A baseball game? That sounds great!</p>
+    </div>
+  </details>
+</div>
+
+<div class="card card-blue">
+  <span class="step step-blue">Audio 3 — Planning a Party (Listening 2)</span>
+  <p style="font-size:0.88rem;margin:8px 0">Tom, Lucy &amp; Sarah plan a party together — offering &amp; accepting help.</p>
+  <audio controls preload="none">
+    <source src="https://scemoodle.aucegypt.edu/pluginfile.php/3170026/mod_hvp/content/171744/audios/files-681cf52494420.mp3" type="audio/mpeg">
+  </audio>
+  <p style="font-size:0.72rem;color:var(--text-dim);margin-top:4px">If blocked, <a href="https://scemoodle.aucegypt.edu/pluginfile.php/3170026/mod_hvp/content/171744/audios/files-681cf52494420.mp3" target="_blank" style="color:var(--blue)">open on Moodle</a></p>
+  <details class="subtitle-toggle">
+    <summary>📝 Show Subtitle / Transcript</summary>
+    <div class="subtitle-text">
+      <p><strong>Tom:</strong> Hey, Lucy! I'm planning a party for Saturday. Can you help me with the decorations?</p>
+      <p><strong>Lucy:</strong> Oh, I'd love to help! What do you need me to do?</p>
+      <p><strong>Tom:</strong> Can you bring some balloons and streamers? I think they'll make the place look great.</p>
+      <p><strong>Lucy:</strong> Sure, I can bring balloons! Do you want me to get some colorful ones?</p>
+      <p><strong>Tom:</strong> Yes, please! And can you help me put them up at 4 p.m. on Saturday?</p>
+      <p><strong>Lucy:</strong> Of course, I'll be there. What about food? Do you need any help with that?</p>
+      <p><strong>Tom:</strong> I think I can handle the food. But thanks for asking!</p>
+      <p><strong>Lucy:</strong> No problem! Let me know if you need anything else.</p>
+      <p><strong>Sarah:</strong> Hi, everyone! I heard you're planning a party. Can I help with anything?</p>
+      <p><strong>Tom:</strong> Hi, Sarah! Well, we need some music. Can you bring a Bluetooth speaker?</p>
+      <p><strong>Sarah:</strong> Sure! I'll bring it. I can also help with setting up the drinks.</p>
+      <p><strong>Tom:</strong> That would be awesome. But I think I already have enough drinks. Thanks for offering!</p>
+      <p><strong>Sarah:</strong> No problem! Let me know if you need anything else. I'm happy to help.</p>
+      <p><strong>Tom:</strong> Thanks, everyone. I'm excited about the party!</p>
+    </div>
+  </details>
+</div>
+</section>
+
+<!-- ===== STEP 2: VOCABULARY ===== -->
+<section id="vocab">
+<h2>📚 Step 2 — Vocabulary Flashcards</h2>
+<p style="font-size:0.85rem;color:var(--text-dim);margin-bottom:6px">Click any card to flip it. Use the 🔊 button to hear pronunciation.</p>
+
+<h3>🎉 Party Vocabulary</h3>
+<div class="vocab-grid" id="party-cards"></div>
+
+<h3>🤝 Offering &amp; Accepting Help</h3>
+<div class="vocab-grid" id="help-cards"></div>
+
+<h3>🎈 Party Actions (-ing)</h3>
+<div class="vocab-grid" id="action-cards"></div>
+</section>
+
+<!-- ===== IDIOMS ===== -->
+<section id="idioms">
+<h2>💎 Party Idioms</h2>
+<div class="idiom-grid" id="idiom-grid"></div>
+</section>
+
+<!-- ===== STEP 3: GRAMMAR ===== -->
+<section id="grammar">
+<h2>📐 Step 3 — Grammar: The -ing Form &amp; Offering Help</h2>
+
+<div class="card card-accent">
+<h3>Rule: The -ing Form After Prepositions</h3>
+<p style="font-size:0.88rem">The <strong>-ing form</strong> of a verb follows certain phrases that include prepositions like <strong>by, at, for, with, of, in</strong>.</p>
+
+<table class="grammar-table">
+<thead><tr><th>Pattern</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td><strong>help by</strong> + -ing</td><td>I can help <strong>by bringing</strong> the drinks.</td></tr>
+<tr><td><strong>good at</strong> + -ing</td><td>She is good <strong>at organizing</strong> the games.</td></tr>
+<tr><td><strong>thank you for</strong> + -ing</td><td>Thank you <strong>for helping</strong> with the decorations.</td></tr>
+<tr><td><strong>help with</strong> + -ing</td><td>Can I help <strong>with decorating</strong> the place?</td></tr>
+<tr><td><strong>take care of</strong> + -ing</td><td>I will take care <strong>of buying</strong> the cake.</td></tr>
+<tr><td><strong>help in</strong> + -ing</td><td>I will help you <strong>in inviting</strong> people.</td></tr>
+<tr><td><strong>how about</strong> + -ing</td><td>How about <strong>taking care</strong> of the food?</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="card card-green">
+<h3>Offering, Accepting &amp; Refusing Help</h3>
+
+<div class="grammar-box" style="border-left:4px solid var(--green)">
+<strong style="color:var(--green)">✅ To Offer Help:</strong><br>
+• Can I help with...? → <em>Can I help with the decorations?</em><br>
+• Would you like me to...? → <em>Would you like me to bring the drinks?</em><br>
+• I'd be happy to... → <em>I'd be happy to arrange the chairs.</em><br>
+• How about I take care of...? → <em>How about I take care of the music?</em>
+</div>
+
+<div class="grammar-box" style="border-left:4px solid var(--blue)">
+<strong style="color:var(--blue)">👍 To Accept Help:</strong><br>
+• Yes, please. Thank you! → <em>Yes, please. That would be great!</em><br>
+• That would be great, thanks! → <em>Thank you, I really appreciate it.</em><br>
+• Sure, I'd love some help with that. → <em>Sure, I'd love some help with the food.</em>
+</div>
+
+<div class="grammar-box" style="border-left:4px solid var(--red)">
+<strong style="color:var(--red)">🚫 To Refuse Help (politely):</strong><br>
+• No, thank you. I've got it covered. → <em>Thanks, but I've got it covered.</em><br>
+• I think I can manage, but thanks anyway. → <em>I can manage, but thanks!</em><br>
+• That's kind of you, but I'm fine. → <em>That's really kind, but I'm fine.</em>
+</div>
+
+<div class="grammar-box" style="border-left:4px solid var(--purple)">
+<strong style="color:var(--purple)">📌 Remember: offer/refuse + to + base verb</strong><br>
+• I <strong>offer to help</strong> you. (NOT: offer helping)<br>
+• He <strong>refuses to come</strong>. (NOT: refuses coming)<br>
+• Would you <strong>like to organize</strong> the party? (NOT: like organizing — in this context)
+</div>
+</div>
+
+<div class="card card-purple">
+<h3>✏️ Grammar Practice — Fill in the Blanks</h3>
+<p style="font-size:0.82rem;color:var(--text-dim);margin-bottom:10px">Choose the correct form for each sentence.</p>
+<div id="grammar-exercises"></div>
+<div style="margin-top:14px;display:flex;gap:10px">
+  <button class="btn btn-accent" onclick="checkGrammar()">Check Answers</button>
+  <button class="btn btn-blue" onclick="retryGrammar()">Retry</button>
+  <span id="grammar-score" style="font-family:'Fredoka',sans-serif;font-size:1rem;font-weight:700;margin-left:auto;display:flex;align-items:center"></span>
+</div>
+</div>
+</section>
+
+<!-- ===== STEP 4: READING ===== -->
+<section id="reading">
+<h2>📖 Step 4 — Reading</h2>
+
+<div class="card card-blue">
+<span class="step step-blue">Transcript 1 — My Birthday Plan</span>
+<div class="transcript">
+<p><span class="speaker-a">A:</span> You're late!</p>
+<p><span class="speaker-b">B:</span> What time is it?</p>
+<p><span class="speaker-a">A:</span> Two minutes after six.</p>
+<p><span class="speaker-b">B:</span> I'm not late. Two minutes is not late.</p>
+<p><span class="speaker-a">A:</span> Yes, it is. It's two minutes late.</p>
+<p><span class="speaker-b">B:</span> Oh, look, it's five to six. I'm early!</p>
+<p><span class="speaker-a">A:</span> So, for your birthday on Saturday, there's a great French movie at the Avalon.</p>
+<p><span class="speaker-b">B:</span> There's a baseball game on Saturday night.</p>
+<p><span class="speaker-a">A:</span> Or there's a play at the Art Center at 8 p.m. It's called <em>Life is a Dream</em>.</p>
+<p><span class="speaker-b">B:</span> The Tigers are playing the Giants. You know, baseball.</p>
+<p><span class="speaker-a">A:</span> Oh, look, there's a Mozart concert on Saturday. Would you like to go?</p>
+<p><span class="speaker-b">B:</span> What time?</p>
+<p><span class="speaker-a">A:</span> Half past seven.</p>
+<p><span class="speaker-b">B:</span> The ball game's at seven.</p>
+<p><span class="speaker-a">A:</span> Oh, wow, there's also a talk by the writer Ellen Lee at the University.</p>
+<p><span class="speaker-b">B:</span> On Saturday night.</p>
+<p><span class="speaker-a">A:</span> Is your birthday on Saturday?</p>
+<p><span class="speaker-b">B:</span> No, it's <em>your</em> birthday!</p>
+<p><span class="speaker-a">A:</span> Would you like to go to a baseball game for your birthday?</p>
+<p><span class="speaker-b">B:</span> A baseball game? That sounds great!</p>
+</div>
+</div>
+
+<div class="card card-green">
+<span class="step step-green">Transcript 2 — Planning a Party</span>
+<div class="transcript">
+<p><span class="speaker-a">Tom:</span> Hey, Lucy! I'm planning a party for Saturday. Can you help me with the decorations?</p>
+<p><span class="speaker-b">Lucy:</span> Oh, I'd love to help! What do you need me to do?</p>
+<p><span class="speaker-a">Tom:</span> Can you bring some balloons and streamers? I think they'll make the place look great.</p>
+<p><span class="speaker-b">Lucy:</span> Sure, I can bring balloons! Do you want me to get some colorful ones?</p>
+<p><span class="speaker-a">Tom:</span> Yes, please! And can you help me put them up at 4 p.m. on Saturday?</p>
+<p><span class="speaker-b">Lucy:</span> Of course, I'll be there. What about food? Do you need any help with that?</p>
+<p><span class="speaker-a">Tom:</span> I think I can handle the food. But thanks for asking!</p>
+<p><span class="speaker-b">Lucy:</span> No problem! Let me know if you need anything else.</p>
+<p><span class="speaker-a">Sarah:</span> Hi, everyone! I heard you're planning a party. Can I help with anything?</p>
+<p><span class="speaker-a">Tom:</span> Hi, Sarah! Well, we need some music. Can you bring a Bluetooth speaker?</p>
+<p><span class="speaker-b">Sarah:</span> Sure! I'll bring it. I can also help with setting up the drinks.</p>
+<p><span class="speaker-a">Tom:</span> That would be awesome. But I think I already have enough drinks. Thanks for offering!</p>
+<p><span class="speaker-b">Sarah:</span> No problem! Let me know if you need anything else. I'm happy to help.</p>
+<p><span class="speaker-a">Tom:</span> Thanks, everyone. I'm excited about the party!</p>
+</div>
+</div>
+
+<div class="card card-purple">
+<span class="step step-purple">Reading — Planning a Party (Emma's Party)</span>
+<div class="reading-box">
+<h4 style="margin-bottom:8px">Emma's Party</h4>
+<p>Emma will have a party at her house next weekend. She will begin by planning the menu and choosing the decorations. She will make a list of everything she will need, like food, drinks, and music.</p>
+<p style="margin-top:8px">Emma will start by preparing sandwiches and pizza for her friends. She will also bake a big chocolate cake. For drinks, she will focus on buying orange juice, soda, and water. She will decorate the living room by hanging balloons and putting up a colorful banner.</p>
+<p style="margin-top:8px">Emma will send invitations to her friends on Friday. She will ask them to come at 6 p.m., and to help by bringing their favorite games to play together. Emma hopes the party will be fun for everyone.</p>
+</div>
+</div>
+</section>
+
+<!-- ===== STEP 5: SPEAKING ===== -->
+<section id="speaking">
+<h2>🗣 Step 5 — Speaking Challenge</h2>
+
+<div class="speak-card">
+  <h4>🎉 Party Planning Conversation</h4>
+  <p style="font-size:0.88rem">In teams of 4, plan a role-play:</p>
+  <ul style="font-size:0.85rem;margin:8px 0 0 18px">
+    <li>One person is the <strong>party planner</strong></li>
+    <li>The others are <strong>friends offering to help</strong></li>
+    <li>Use: <em>Can I help with...? / Would you like me to...? / How about I take care of...?</em></li>
+    <li>Practice <strong>accepting</strong> AND <strong>refusing</strong> help politely</li>
+    <li>After 2 minutes, <strong>switch roles</strong> — new person plans a different party!</li>
+  </ul>
+</div>
+
+<div class="speak-card">
+  <h4>💬 Reflection Questions</h4>
+  <p style="font-size:0.85rem">After your roleplay, discuss:</p>
+  <ul style="font-size:0.85rem;margin:8px 0 0 18px">
+    <li>Share one good example of offering, accepting, or refusing help</li>
+    <li>How did it feel to offer help? To refuse help politely?</li>
+    <li>Which phrases were easiest/hardest to use?</li>
+  </ul>
+</div>
+</section>
+
+<!-- ===== STEP 6: ROLEPLAY ===== -->
+<section id="roleplay">
+<h2>🎭 Step 6 — Roleplay Cards</h2>
+<p style="font-size:0.85rem;color:var(--text-dim);margin-bottom:12px">Click each card to see the example conversation.</p>
+
+<div class="role-card" onclick="toggleRole('planner')">
+  <h4>🎂 The Party Planner</h4>
+  <ul class="role-points">
+    <li>You are planning a big birthday party for Saturday</li>
+    <li>You need help with decorations, food, music, and drinks</li>
+    <li>Accept some offers and politely refuse others</li>
+    <li>Use: "Yes, please! That would be great!" / "Thanks, but I've got it covered."</li>
+  </ul>
+  <div class="role-convo" id="planner-convo">
+    <p><strong>You:</strong> Hey everyone! I'm planning a birthday party for Saturday. There's a lot to do!</p>
+    <p><strong>Friend:</strong> Can I help with the decorations?</p>
+    <p><strong>You:</strong> Yes, please! That would be great. Can you bring some balloons?</p>
+    <p><strong>Friend:</strong> Sure! Would you like me to bring streamers too?</p>
+    <p><strong>You:</strong> That's kind of you, but I've already got streamers. Thanks anyway!</p>
+  </div>
+</div>
+
+<div class="role-card" onclick="toggleRole('helper')">
+  <h4>🙋 The Eager Helper</h4>
+  <ul class="role-points">
+    <li>You want to help your friend with their party</li>
+    <li>Offer to help with at least 3 different things</li>
+    <li>Use -ing form: "I'm good at decorating / I can help by bringing..."</li>
+    <li>Accept polite refusals gracefully</li>
+  </ul>
+  <div class="role-convo" id="helper-convo">
+    <p><strong>You:</strong> I heard you're planning a party! Can I help with anything?</p>
+    <p><strong>Planner:</strong> Well, I need someone to handle the music.</p>
+    <p><strong>You:</strong> I'm good at choosing music! I can help by making a playlist.</p>
+    <p><strong>Planner:</strong> That would be amazing! Can you also bring a speaker?</p>
+    <p><strong>You:</strong> Sure! How about I take care of setting up the sound system too?</p>
+    <p><strong>Planner:</strong> That's really kind, but I think I can manage that myself. Thanks though!</p>
+    <p><strong>You:</strong> No problem! Let me know if you need anything else.</p>
+  </div>
+</div>
+
+<div class="role-card" onclick="toggleRole('chef')">
+  <h4>🍕 The Food Expert</h4>
+  <ul class="role-points">
+    <li>You are great at cooking and baking</li>
+    <li>Offer to help with the food and drinks</li>
+    <li>Use: "I can help by preparing..." / "Thank you for letting me help with..."</li>
+    <li>Ask about what food the planner needs</li>
+  </ul>
+  <div class="role-convo" id="chef-convo">
+    <p><strong>Planner:</strong> I still need to figure out the food for the party.</p>
+    <p><strong>You:</strong> I'd be happy to help with that! I'm good at baking.</p>
+    <p><strong>Planner:</strong> Really? Would you like to make a cake?</p>
+    <p><strong>You:</strong> Sure! I can help by baking a chocolate cake. And how about I bring some snacks too?</p>
+    <p><strong>Planner:</strong> Yes, please! That would be really helpful. Thank you for offering!</p>
+    <p><strong>You:</strong> Thank you for letting me help with the food! It'll be fun.</p>
+  </div>
+</div>
+
+<div class="role-card" onclick="toggleRole('shy')">
+  <h4>😊 The Polite Refuser</h4>
+  <ul class="role-points">
+    <li>You are organized and prefer to do most things yourself</li>
+    <li>Politely refuse some offers while accepting others</li>
+    <li>Use: "That's kind of you, but..." / "I think I can manage, but thanks!"</li>
+    <li>Always be friendly and grateful</li>
+  </ul>
+  <div class="role-convo" id="shy-convo">
+    <p><strong>Friend:</strong> Would you like me to bring the drinks?</p>
+    <p><strong>You:</strong> That's kind of you, but I've already bought everything. Thanks anyway!</p>
+    <p><strong>Friend:</strong> How about I help with setting up the chairs?</p>
+    <p><strong>You:</strong> I think I can manage, but thanks for asking!</p>
+    <p><strong>Friend:</strong> Can I at least help with the music playlist?</p>
+    <p><strong>You:</strong> Actually, yes please! I'm not very good at choosing music. That would be great!</p>
+  </div>
+</div>
+</section>
+
+<!-- ===== STEP 7: EMAIL ===== -->
+<section id="email">
+<h2>✉️ Step 7 — Email Writing Guide</h2>
+<div class="card card-accent" style="background:var(--accent-light);border:2px solid var(--accent)">
+  <p style="font-size:0.82rem;font-weight:600;color:var(--accent)">📌 EMAIL SKILL BUILDING — Your assessment in Session 5 is writing an email! Each session builds your email skills. Today: replying to an offer of help using -ing form.</p>
+</div>
+
+<div class="card card-accent">
+<h3>📧 Task: Reply to a Friend's Offer to Help (50-60 words)</h3>
+
+<div class="email-box" style="margin:14px 0">
+  <div class="label">Friend's Email — Read This First</div>
+  <p style="font-style:italic">Hi! I heard you're planning a birthday party this weekend. That sounds amazing! I'd love to help. Just let me know what you need, and I'll be there. 😊</p>
+</div>
+
+<div class="email-box" style="border-color:var(--green)">
+  <div class="label" style="color:var(--green)">Model Reply</div>
+  <p>Hi [Name]!</p>
+  <p style="margin-top:6px">Thanks for offering to help! I'm so excited about the party. I need help with decorations — can you bring some balloons and streamers? I could also use help with setting up the music. Would you like to make a playlist?</p>
+  <p style="margin-top:6px">Thanks again! I'm really looking forward to it! 😊</p>
+</div>
+
+<h3 style="margin-top:16px">✅ Checklist — Check each item as you write</h3>
+<div id="email-checklist" style="margin:10px 0">
+  <label style="display:block;padding:6px 0;font-size:0.85rem;cursor:pointer"><input type="checkbox" onchange="updateEmailCheck()" style="margin-right:8px"> Thank your friend for offering to help</label>
+  <label style="display:block;padding:6px 0;font-size:0.85rem;cursor:pointer"><input type="checkbox" onchange="updateEmailCheck()" style="margin-right:8px"> Say what kind of help you need (decorations, food, music...)</label>
+  <label style="display:block;padding:6px 0;font-size:0.85rem;cursor:pointer"><input type="checkbox" onchange="updateEmailCheck()" style="margin-right:8px"> Give specific tasks (bring snacks, make a playlist...)</label>
+  <label style="display:block;padding:6px 0;font-size:0.85rem;cursor:pointer"><input type="checkbox" onchange="updateEmailCheck()" style="margin-right:8px"> Use -ing form (help with decorating, thank you for offering...)</label>
+  <label style="display:block;padding:6px 0;font-size:0.85rem;cursor:pointer"><input type="checkbox" onchange="updateEmailCheck()" style="margin-right:8px"> Be polite and friendly</label>
+  <label style="display:block;padding:6px 0;font-size:0.85rem;cursor:pointer"><input type="checkbox" onchange="updateEmailCheck()" style="margin-right:8px"> Has greeting + closing</label>
+  <label style="display:block;padding:6px 0;font-size:0.85rem;cursor:pointer"><input type="checkbox" onchange="updateEmailCheck()" style="margin-right:8px"> Word count: 50-60 words</label>
+</div>
+<div id="email-check-result" style="font-family:'Fredoka',sans-serif;font-size:0.9rem;margin:8px 0"></div>
+
+<h3 style="margin-top:16px">✏️ Write Your Reply Here</h3>
+<textarea id="email-textarea" style="width:100%;min-height:160px;border:2px solid var(--border);border-radius:12px;padding:14px;font-family:inherit;font-size:0.88rem;line-height:1.7;resize:vertical" placeholder="Hi [name]!
+
+Thanks for offering to help! ...
+
+Your friend,
+[your name]" oninput="updateEmailWC()"></textarea>
+<div style="font-size:0.78rem;color:var(--text-dim);margin-top:4px">Words: <span id="email-wc" style="font-weight:700">0</span> / 50-60 target</div>
+</div>
+</section>
+
+<!-- ===== STEP 8: WRITING ===== -->
+<section id="writing">
+<h2>✍️ Step 8 — Writing Practice</h2>
+
+<div class="card card-green">
+<h3>📝 Write About Your Dream Party</h3>
+<p style="font-size:0.88rem;margin:8px 0">Write 50-60 words describing your ideal birthday party. Include:</p>
+<ul style="font-size:0.85rem;margin:8px 0 0 18px">
+  <li><strong>Where</strong> will the party be?</li>
+  <li><strong>What food and drinks</strong> will you serve?</li>
+  <li><strong>What activities</strong> will there be?</li>
+  <li><strong>Who</strong> will you invite?</li>
+  <li><strong>What help</strong> do you need from friends?</li>
+</ul>
+
+<div class="email-box" style="margin-top:14px;border-color:var(--green)">
+  <div class="label" style="color:var(--green)">Model Answer</div>
+  <p>I will have my birthday party at home next Saturday. I will prepare pizza and sandwiches, and my friend will help by baking a chocolate cake. For drinks, I will buy soda and juice. My sister is good at decorating, so she will hang balloons and streamers. We will play music and dance. I will invite my best friends. I'm so excited!</p>
+</div>
+</div>
+</section>
+
+<!-- ===== STEP 9: QUIZ ===== -->
+<section id="quiz">
+<h2>📝 Step 9 — Session Quiz</h2>
+<p style="font-size:0.85rem;color:var(--text-dim);margin-bottom:10px">Test your knowledge! Click an answer — no correct answer shown on wrong, so think carefully.</p>
+
+<div class="quiz-bar">
+  <span class="score" id="quiz-score">0 / 0</span>
+  <button class="btn btn-accent" onclick="retryQuiz()">🔄 Retry Quiz</button>
+</div>
+<div id="quiz-container"></div>
+</section>
+
+<!-- ===== SUMMARY ===== -->
+<section id="summary">
+<h2>📊 Summary Tables</h2>
+
+<div class="card">
+<h3>Vocabulary Summary</h3>
+<table class="sum-table">
+<thead><tr><th>Word</th><th>Meaning</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td>host</td><td>person who organizes a party</td><td>She is the host of the party.</td></tr>
+<tr><td>guest</td><td>person who comes to a party</td><td>We invited 20 guests.</td></tr>
+<tr><td>invitation</td><td>a request to come to an event</td><td>I sent the invitations on Friday.</td></tr>
+<tr><td>decorate</td><td>make something look nice</td><td>We will decorate the room with balloons.</td></tr>
+<tr><td>organize</td><td>plan and arrange something</td><td>She is good at organizing parties.</td></tr>
+<tr><td>streamer</td><td>long strip of colored paper for decoration</td><td>We hung streamers from the ceiling.</td></tr>
+<tr><td>celebrate</td><td>do something special for a happy event</td><td>Let's celebrate your birthday!</td></tr>
+<tr><td>banner</td><td>a large sign with a message</td><td>We put up a "Happy Birthday" banner.</td></tr>
+<tr><td>playlist</td><td>a list of songs to play</td><td>I made a playlist for the party.</td></tr>
+<tr><td>snack</td><td>small food between meals</td><td>We bought chips and snacks.</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="card">
+<h3>Grammar Summary</h3>
+<table class="sum-table">
+<thead><tr><th>Pattern</th><th>Rule</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td>Preposition + -ing</td><td>by/at/for/with/of/in + verb-ing</td><td>I can help by bringing drinks.</td></tr>
+<tr><td>Offer help</td><td>Can I help with...? / Would you like me to...?</td><td>Can I help with the decorations?</td></tr>
+<tr><td>Accept help</td><td>Yes, please! / That would be great!</td><td>Yes, please. That would be great!</td></tr>
+<tr><td>Refuse help</td><td>Thanks, but I've got it covered.</td><td>That's kind, but I'm fine.</td></tr>
+<tr><td>offer + to + base</td><td>offer/refuse + to + infinitive</td><td>I offered to help. / He refuses to come.</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<!-- ===== CHEAT SHEET ===== -->
+<section id="cheat">
+<h2>📋 Quick Cheat Sheet</h2>
+
+<div class="cheat">
+<h3>🎂 Session 2 — Birthday Parties &amp; Helping</h3>
+<ul>
+  <li><strong>-ing after prepositions:</strong> by bringing, at organizing, for helping, with decorating, of buying</li>
+  <li><strong>Offer help:</strong> Can I help with...? / Would you like me to...? / I'd be happy to...</li>
+  <li><strong>Accept:</strong> Yes, please! / That would be great! / Sure, I'd love some help!</li>
+  <li><strong>Refuse politely:</strong> Thanks, but I've got it covered. / I can manage, but thanks!</li>
+  <li><strong>offer/refuse + to + base verb:</strong> I offer to help (NOT offer helping)</li>
+  <li><strong>Key vocab:</strong> host, guest, invitation, decorate, streamer, banner, celebrate, organize</li>
+  <li><strong>Party idioms:</strong> life of the party, let your hair down, wallflower, crash a party</li>
+</ul>
+</div>
+
+<div class="cheat" style="background:linear-gradient(135deg,#dfe6e9,#b2bec3)">
+<h3>📌 Session 1 Review</h3>
+<ul>
+  <li><strong>will + base verb</strong> for future plans: I will invite my friends.</li>
+  <li><strong>Follow-up questions:</strong> What will you bring? Who will you invite?</li>
+  <li><strong>Birthday vocab:</strong> cake, candle, balloon, decoration, gift, celebrate</li>
+</ul>
+</div>
+</section>
+
+<!-- ===== PREVIEW S3 ===== -->
+<div class="preview-box">
+  <h3>🍜 Coming Next: Session 3 — Street Food</h3>
+  <p style="font-size:0.88rem;margin-top:6px">Explore street food vocabulary, countable/uncountable nouns, and food conversations!</p>
+  <a href="session-3.html" style="display:inline-block;margin-top:10px;padding:8px 20px;background:var(--green);color:#fff;border-radius:10px;text-decoration:none;font-weight:600">Go to Session 3 →</a>
+</div>
+
+</div><!-- /container -->
+
+<script>
+// ===== VOCABULARY DATA =====
+const partyVocab=[
+  {w:"host",pos:"noun",m:"the person who organizes a party",ar:"الشخص اللي بينظم الحفلة",ex:"She is the host of the party.",col:"host a party, the host"},
+  {w:"guest",pos:"noun",m:"a person who comes to a party",ar:"ضيف",ex:"We invited 20 guests to the party.",col:"party guest, invite a guest"},
+  {w:"invitation",pos:"noun",m:"a request asking someone to come",ar:"دعوة",ex:"I sent the invitations on Friday.",col:"send an invitation, receive an invitation"},
+  {w:"celebrate",pos:"verb",m:"do something special for a happy event",ar:"يحتفل",ex:"Let's celebrate your birthday!",col:"celebrate a birthday, celebrate together"},
+  {w:"decorate",pos:"verb",m:"make a place look nice with colors/items",ar:"يزيّن",ex:"We will decorate the room with balloons.",col:"decorate the room, decorate for a party"},
+  {w:"decoration",pos:"noun",m:"things used to make a place look nice",ar:"زينة / ديكور",ex:"The party decorations look beautiful!",col:"party decorations, hang decorations"},
+  {w:"balloon",pos:"noun",m:"a colorful air-filled party item",ar:"بالونة",ex:"Can you bring some colorful balloons?",col:"blow up balloons, hang balloons"},
+  {w:"streamer",pos:"noun",m:"long strip of colored paper for decoration",ar:"شريط زينة",ex:"We hung streamers from the ceiling.",col:"colorful streamers, hang streamers"},
+  {w:"banner",pos:"noun",m:"a large sign with a message or picture",ar:"لافتة",ex:"We put up a 'Happy Birthday' banner.",col:"birthday banner, colorful banner"},
+  {w:"snack",pos:"noun",m:"small food eaten between meals",ar:"سناك / وجبة خفيفة",ex:"We bought chips and snacks for the party.",col:"party snacks, bring snacks"},
+  {w:"playlist",pos:"noun",m:"a list of songs to play",ar:"قائمة أغاني",ex:"I made a great playlist for the party.",col:"make a playlist, music playlist"},
+  {w:"party hat",pos:"noun",m:"a fun hat you wear at parties",ar:"طاقية حفلة",ex:"Everyone wore colorful party hats.",col:"wear a party hat"}
+];
+
+const helpVocab=[
+  {w:"offer",pos:"verb",m:"say you are willing to do something",ar:"يعرض المساعدة",ex:"I offered to help with the food.",col:"offer to help, offer help"},
+  {w:"accept",pos:"verb",m:"say yes to an offer or invitation",ar:"يقبل",ex:"She accepted my help happily.",col:"accept help, accept an invitation"},
+  {w:"refuse",pos:"verb",m:"say no politely",ar:"يرفض بأدب",ex:"He refused to let me pay.",col:"refuse politely, refuse help"},
+  {w:"manage",pos:"verb",m:"be able to do something alone",ar:"يقدر يتصرف لوحده",ex:"I can manage, but thanks!",col:"I can manage, manage it myself"},
+  {w:"appreciate",pos:"verb",m:"feel thankful for something",ar:"يقدّر",ex:"I really appreciate your help!",col:"I appreciate it, really appreciate"},
+  {w:"handle",pos:"verb",m:"deal with or take care of",ar:"يتعامل مع / يتولى",ex:"I can handle the food.",col:"handle it, handle the situation"}
+];
+
+const actionVocab=[
+  {w:"arranging",pos:"verb (-ing)",m:"putting things in order",ar:"ترتيب",ex:"Can I help with arranging the chairs?",col:"arranging decorations, arranging flowers"},
+  {w:"preparing",pos:"verb (-ing)",m:"making food or things ready",ar:"تحضير",ex:"She is preparing sandwiches.",col:"preparing food, preparing for a party"},
+  {w:"hanging",pos:"verb (-ing)",m:"putting something on a wall or ceiling",ar:"تعليق",ex:"I'd be happy to help with hanging the balloons.",col:"hanging decorations, hanging streamers"},
+  {w:"blowing up",pos:"phrasal verb (-ing)",m:"filling with air",ar:"نفخ",ex:"She is good at blowing up balloons.",col:"blowing up balloons"},
+  {w:"organizing",pos:"verb (-ing)",m:"planning and arranging",ar:"تنظيم",ex:"I'm good at organizing parties.",col:"organizing a party, organizing games"},
+  {w:"borrowing",pos:"verb (-ing)",m:"taking something to use and return",ar:"استعارة",ex:"I'll help by borrowing chairs from my neighbor.",col:"borrowing chairs, borrowing items"},
+  {w:"setting up",pos:"phrasal verb (-ing)",m:"preparing and arranging things in place",ar:"تجهيز",ex:"Can you help with setting up the drinks?",col:"setting up the room, setting up music"}
+];
+
+// ===== IDIOMS =====
+const idioms=[
+  {p:"Life of the party",m:"A very fun, social person everyone enjoys being around"},
+  {p:"Social butterfly",m:"A person who loves talking to everyone at social events"},
+  {p:"Let your hair down",m:"Relax and enjoy yourself at a party or event"},
+  {p:"Wallflower",m:"A shy person who sits alone and doesn't talk to people"},
+  {p:"Party pooper",m:"Someone who ruins the fun at a party"},
+  {p:"Crash a party",m:"Come to a party without being invited"},
+  {p:"A whale of a time",m:"Have a really great, enjoyable time at an event"},
+  {p:"Large it up",m:"Enjoy a party by dancing and having a lot of fun"}
+];
+
+// ===== GRAMMAR EXERCISES =====
+const grammarEx=[
+  {q:'A: Can I help with ______ the decorations? B: Yes, that would be great!',opts:['arrange','arranging','arranged'],ans:1},
+  {q:'A: I\'m good at ______ the playlist for the party. B: Great!',opts:['creating','create','created'],ans:0},
+  {q:'A: Can you help with the party decorations? B: Sure! I\'m good at ______ balloons.',opts:['organizing','blowing up','to blow up'],ans:1},
+  {q:'A: I can ______ by making the invitations. B: That\'s very kind!',opts:['help','helping','helped'],ans:0},
+  {q:'A: We need someone to handle snacks. Can you do it? B: I can help by ______ chips and drinks.',opts:['bring','to bring','bringing'],ans:2},
+  {q:'A: Can I help with ______ the drinks? B: Yes, please!',opts:['bringing','bring','brought'],ans:0},
+  {q:'A: I\'d be happy to help with ______ the decorations. B: Thank you!',opts:['hanging','hang','hung'],ans:0},
+  {q:'A: Would you like me to ______ the party favors? B: No, I\'ve got it. Thanks!',opts:['organize','organizing','organized'],ans:0},
+  {q:'A: Do you think you could plan some games? B: Sure! I\'m great at ______ fun activities.',opts:['plan','planning','planned'],ans:1},
+  {q:'A: Who\'s responsible for sending invitations? B: I offered to help with ______ them yesterday.',opts:['sending','send','to send'],ans:0},
+  {q:'A: I\'m setting up decorations. Need help? B: ______! Could you hang the balloons?',opts:['Yes, please','No, I can manage','Sorry, I\'m busy'],ans:0},
+  {q:'A: Can I help with organizing the chairs? B: ______. I\'ve already finished that.',opts:['Yes, please','Sure, go ahead','No, thanks'],ans:2}
+];
+
+// ===== QUIZ =====
+const quizData=[
+  {q:"What do you usually do at a party?",o:["Go to sleep","Talk to friends","Do some work"],a:1,w:"Parties are social — we talk to friends, dance, and enjoy!"},
+  {q:"What is a 'guest'?",o:["Someone who organizes a party","Someone who comes to a party","Someone who cleans the party room"],a:1,w:"A guest is someone who is invited and attends a party. The organizer is the 'host'."},
+  {q:"What is a 'balloon'?",o:["A party game","A type of food","A party decoration"],a:2,w:"Balloons are colorful air-filled decorations used at parties."},
+  {q:"Which pattern is correct: 'I can help ______ bringing the food'?",o:["by","at","for"],a:0,w:"'Help by + -ing' describes HOW you help: I can help BY bringing the food."},
+  {q:"Complete: 'She is good ______ organizing parties.'",o:["by","at","for"],a:1,w:"'Good at + -ing' describes a skill: She is good AT organizing."},
+  {q:"Complete: 'Thank you ______ helping me!'",o:["by","at","for"],a:2,w:"'Thank you for + -ing' expresses gratitude: Thank you FOR helping."},
+  {q:"How do you politely offer help?",o:["Can I help with the decorations?","I will do the decorations.","You should do the decorations."],a:0,w:"'Can I help with...?' is a polite way to offer help."},
+  {q:"How do you politely refuse help?",o:["No! Go away!","Thanks, but I've got it covered.","I don't want your help."],a:1,w:"Polite refusal includes thanking the person: 'Thanks, but I've got it covered.'"},
+  {q:"Which is correct: 'I offered to ______ you'?",o:["helping","help","helped"],a:1,w:"'offer + to + base verb': I offered TO HELP (not offered helping)."},
+  {q:"Which is correct: 'He refuses to ______ to the party'?",o:["coming","come","came"],a:1,w:"'refuse + to + base verb': He refuses TO COME (not refuses coming)."},
+  {q:"In the listening, what time does the woman say it is?",o:["Two minutes after six","Five to six","Half past six"],a:0,w:"She says 'Two minutes after six' — the man disagrees and says he's not late."},
+  {q:"What movie was suggested for the birthday?",o:["A comedy show","A musical at the art center","A French movie at the Avalon"],a:2,w:"Speaker A suggests 'a great French movie at the Avalon'."},
+  {q:"What does the man choose for his birthday?",o:["The Mozart concert","The baseball game","The French movie"],a:1,w:"The man keeps mentioning baseball throughout, and they agree to go to the game."},
+  {q:"In Emma's party, what dessert is she preparing?",o:["A chocolate cake","A vanilla cake","A big chocolate"],a:0,w:"Emma will 'bake a big chocolate cake' for her friends."},
+  {q:"What time does Emma's party start?",o:["5 p.m.","6 p.m.","7 p.m."],a:1,w:"Emma asks friends to come at 6 p.m."},
+  {q:"How will Emma decorate the living room?",o:["By putting flowers on the table","By painting the walls","By hanging balloons and streamers"],a:2,w:"Emma will decorate by 'hanging balloons and putting up a colorful banner'."},
+  {q:"What does 'wallflower' mean?",o:["A party decoration","A shy person who sits alone at parties","A type of flower arrangement"],a:1,w:"A wallflower is a shy person who doesn't participate in the party."},
+  {q:"What does 'crash a party' mean?",o:["Break things at a party","Come uninvited to a party","Leave a party early"],a:1,w:"To 'crash a party' means to come without being invited."}
+];
+
+// ===== BUILD FUNCTIONS =====
+function buildCards(data,containerId){
+  const c=document.getElementById(containerId);if(!c)return;
+  data.forEach(v=>{
+    const d=document.createElement('div');d.className='vocab-card';
+    d.onclick=(e)=>{if(e.target.classList.contains('tts-btn'))return;d.classList.toggle('flipped');updateProgress()};
+    d.innerHTML=`<div class="vocab-inner"><div class="vocab-front"><div class="word">${v.w} <button class="tts-btn" onclick="event.stopPropagation();speak('${v.w.replace(/'/g,"\\'")}',this)" title="Listen">🔊</button></div><div class="pos">${v.pos}</div><div class="hint">Tap to flip • 🔊 to hear</div></div><div class="vocab-back"><div class="meaning">${v.m}</div><div class="arabic">${v.ar}</div><div class="example">"${v.ex}"</div><button class="tts-btn" onclick="event.stopPropagation();speak('${v.w.replace(/'/g,"\\'")}',this)" title="Listen again" style="margin-top:6px;font-size:1.3rem">🔊</button></div></div>`;
+    c.appendChild(d);
+  });
+}
+
+function buildIdioms(){
+  const g=document.getElementById('idiom-grid');
+  idioms.forEach(id=>{
+    const d=document.createElement('div');
+    d.className='idiom-card';
+    d.innerHTML=`<div class="idiom-phrase">${id.p}</div><div class="idiom-mean">${id.m}</div>`;
+    g.appendChild(d);
+  });
+}
+
+function buildGrammar(){
+  const c=document.getElementById('grammar-exercises');
+  grammarEx.forEach((ex,i)=>{
+    const row=document.createElement('div');
+    row.className='fill-row';
+    row.id='gex-'+i;
+    let opts=ex.opts.map(o=>`<option value="${o}">${o}</option>`).join('');
+    row.innerHTML=`<span style="font-size:0.85rem;flex:1">${i+1}. ${ex.q.replace('______','<select id="gsel-'+i+'"><option value="">—</option>'+opts+'</select>')}</span><span class="result" id="gres-${i}"></span>`;
+    c.appendChild(row);
+  });
+}
+
+function checkGrammar(){
+  let correct=0;
+  grammarEx.forEach((ex,i)=>{
+    const sel=document.getElementById('gsel-'+i);
+    const res=document.getElementById('gres-'+i);
+    const row=document.getElementById('gex-'+i);
+    if(sel.value===ex.opts[ex.ans]){
+      correct++;res.textContent='✅';res.style.color='var(--green)';
+      row.style.borderColor='var(--green)';row.style.background='var(--green-light)';
+    } else {
+      res.textContent='❌';res.style.color='var(--red)';
+      row.style.borderColor='var(--red)';row.style.background='var(--red-light)';
+    }
+  });
+  document.getElementById('grammar-score').textContent=correct+' / '+grammarEx.length;
+  updateProgress();
+}
+
+function retryGrammar(){
+  grammarEx.forEach((ex,i)=>{
+    document.getElementById('gsel-'+i).value='';
+    document.getElementById('gres-'+i).textContent='';
+    const row=document.getElementById('gex-'+i);
+    row.style.borderColor='var(--border)';row.style.background='';
+  });
+  document.getElementById('grammar-score').textContent='';
+  updateProgress();
+}
+
+// ===== QUIZ =====
+let quizOrder=[];
+let quizAnswered=0,quizCorrect=0;
+
+function shuffleArray(arr){for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]]}return arr}
+
+function buildQuiz(){
+  const c=document.getElementById('quiz-container');
+  c.innerHTML='';
+  quizOrder=shuffleArray([...Array(quizData.length).keys()]);
+  quizAnswered=0;quizCorrect=0;
+  document.getElementById('quiz-score').textContent='0 / '+quizData.length;
+  quizOrder.forEach((qi,idx)=>{
+    const q=quizData[qi];
+    const div=document.createElement('div');
+    div.className='quiz-q';div.id='qq-'+idx;
+    let opts=q.o.map((o,oi)=>`<label id="ql-${idx}-${oi}" onclick="ansQ(${idx},${oi})"><input type="radio" name="q${idx}" style="margin-right:8px">${o}</label>`).join('');
+    div.innerHTML=`<h4>${idx+1}. ${q.q}</h4>${opts}<button class="why-btn" id="qw-btn-${idx}" style="display:none" onclick="toggleWhy(${idx})">💡 Why is this correct?</button><div class="why-box" id="qw-${idx}">${q.w}</div>`;
+    c.appendChild(div);
+  });
+}
+
+function ansQ(idx,chosen){
+  const qi=quizOrder[idx];
+  const q=quizData[qi];
+  const qq=document.getElementById('qq-'+idx);
+  if(qq.dataset.done)return;
+  if(chosen===q.a){
+    document.getElementById('ql-'+idx+'-'+chosen).classList.add('correct');
+    qq.dataset.done='1';quizAnswered++;quizCorrect++;
+    document.getElementById('qw-btn-'+idx).style.display='inline';
+  } else {
+    document.getElementById('ql-'+idx+'-'+chosen).classList.add('wrong');
+  }
+  document.getElementById('quiz-score').textContent=quizCorrect+' / '+quizData.length;
+  updateProgress();
+}
+
+function toggleWhy(idx){
+  document.getElementById('qw-'+idx).classList.toggle('show');
+}
+
+function retryQuiz(){buildQuiz();updateProgress();}
+
+// ===== ROLEPLAY =====
+function toggleRole(role){
+  const el=document.getElementById(role+'-convo');
+  el.classList.toggle('show');
+}
+
+// ===== TTS =====
+// ===== EMAIL FUNCTIONS =====
+function updateEmailWC(){
+  const t=document.getElementById('email-textarea').value.trim();
+  const c=t?t.split(/\s+/).length:0;
+  document.getElementById('email-wc').textContent=c;
+  updateProgress();
+}
+function updateEmailCheck(){
+  const ch=[...document.querySelectorAll('#email-checklist input')];
+  const n=ch.filter(c=>c.checked).length;
+  const res=document.getElementById('email-check-result');
+  if(n===ch.length)res.innerHTML='<span style="color:var(--green)">🎉 All checked! Great email!</span>';
+  else res.innerHTML='<span style="color:var(--text-dim)">'+n+'/'+ch.length+' items checked</span>';
+}
+
+function speak(word,btn){
+  if(!('speechSynthesis' in window))return;
+  window.speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(word);
+  u.lang='en-US';u.rate=0.85;
+  btn.textContent='🔈';
+  u.onend=()=>{btn.textContent='🔊'};
+  window.speechSynthesis.speak(u);
+}
+
+// ===== PROGRESS =====
+function updateProgress(){
+  let total=0,done=0;
+  // Vocab: 30%
+  const allFlash=document.querySelectorAll('.vocab-card');
+  const flipped=document.querySelectorAll('.vocab-card.flipped');
+  if(allFlash.length){total+=30;done+=30*(flipped.length/allFlash.length)}
+  // Grammar: 25%
+  const gScore=document.getElementById('grammar-score').textContent;
+  if(gScore){
+    const parts=gScore.split('/').map(s=>parseInt(s.trim()));
+    if(parts.length===2&&parts[1]>0){total+=25;done+=25*(parts[0]/parts[1])}
+  } else {total+=25}
+  // Quiz: 35%
+  total+=35;
+  if(quizData.length)done+=35*(quizCorrect/quizData.length);
+  // Reading (transcript sections exist): 10%
+  // Email writing: 10%
+  total+=10;
+  const emailText=document.getElementById('email-textarea');
+  if(emailText&&emailText.value.trim().length>20)done+=10;
+  const pct=total?Math.round(done/total*100):0;
+  document.getElementById('pbar').style.width=pct+'%';
+  document.getElementById('pct').textContent=pct+'%';
+}
+
+// ===== RECAP EXERCISES (S1 grammar applied to S2 topic) =====
+const recapEx=[
+  {q:'I ______ help you with the party decorations.',opts:['will','am','do'],ans:0},
+  {q:'______ you bring snacks to the party?',opts:['Do','Will','Are'],ans:1},
+  {q:'She ______ not come to the party. She is busy.',opts:['will','does','is'],ans:0},
+  {q:'What time ______ the birthday party start?',opts:['does','will','is'],ans:1},
+  {q:'We ______ celebrate with cake and music!',opts:['will','are','do'],ans:0}
+];
+
+function buildRecap(){
+  const c=document.getElementById('recap-exercises');if(!c)return;
+  recapEx.forEach((ex,i)=>{
+    const row=document.createElement('div');row.className='fill-row';row.id='rex-'+i;
+    let opts=ex.opts.map(o=>`<option value="${o}">${o}</option>`).join('');
+    row.innerHTML=`<span style="font-size:0.85rem;flex:1">${i+1}. ${ex.q.replace('______','<select id="rsel-'+i+'"><option value="">—</option>'+opts+'</select>')}</span><span class="result" id="rres-${i}"></span>`;
+    c.appendChild(row);
+  });
+}
+function checkRecap(){
+  let correct=0;
+  recapEx.forEach((ex,i)=>{
+    const sel=document.getElementById('rsel-'+i),res=document.getElementById('rres-'+i),row=document.getElementById('rex-'+i);
+    if(sel.value===ex.opts[ex.ans]){correct++;res.textContent='✅';row.style.borderColor='var(--green)';row.style.background='var(--green-light)'}
+    else{res.textContent='❌';row.style.borderColor='var(--red)';row.style.background='var(--red-light)'}
+  });
+  document.getElementById('recap-score').textContent=correct+' / '+recapEx.length;
+}
+function retryRecap(){
+  recapEx.forEach((ex,i)=>{document.getElementById('rsel-'+i).value='';document.getElementById('rres-'+i).textContent='';const row=document.getElementById('rex-'+i);row.style.borderColor='var(--border)';row.style.background=''});
+  document.getElementById('recap-score').textContent='';
+}
+
+// ===== INIT =====
+document.addEventListener('DOMContentLoaded',()=>{
+  buildRecap();
+  buildCards(partyVocab,'party-cards');
+  buildCards(helpVocab,'help-cards');
+  buildCards(actionVocab,'action-cards');
+  buildIdioms();
+  buildGrammar();
+  buildQuiz();
+  updateProgress();
+});
+</script>
+</body>
+</html>

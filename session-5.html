@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session 5 - Friendship Stories | AUC English A2A</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap');
+  :root{--bg:#f8f6f1;--card:#fff;--card-alt:#fefcf7;--accent:#5b6abf;--accent-light:#e8eaff;--green:#2d9d78;--green-light:#e6f7f1;--orange:#e8862a;--orange-light:#fff3e6;--red:#d94f4f;--red-light:#ffeaea;--pink:#c45ba1;--pink-light:#fce8f4;--yellow:#f0c929;--yellow-light:#fef9e7;--text:#2d3142;--text-dim:#6b7280;--border:#e5e2db;--shadow:0 2px 12px rgba(0,0,0,0.06);--radius:16px}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+  h1,h2,h3{font-family:'Fredoka',sans-serif}
+  .hero{background:linear-gradient(135deg,#7b68ee 0%,#5b6abf 40%,#2d9d78 100%);padding:50px 24px 40px;text-align:center;color:#fff;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,0.08)}
+  .hero-emoji{font-size:3rem;margin-bottom:8px}
+  .hero h1{font-size:2.2rem;font-weight:700;margin-bottom:4px}
+  .hero .sub{opacity:0.9;font-size:1rem}
+  .badge-row{display:flex;gap:8px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+  .badge{background:rgba(255,255,255,0.18);padding:4px 14px;border-radius:20px;font-size:0.78rem;font-weight:600}
+  .method-banner{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 24px;margin:20px auto 0;max-width:860px;box-shadow:var(--shadow)}
+  .method-steps{display:flex;justify-content:center;align-items:center;gap:4px;flex-wrap:wrap;margin-top:10px}
+  .method-step{display:flex;align-items:center;gap:6px;padding:6px 14px;border-radius:10px;font-size:0.82rem;font-weight:600;white-space:nowrap}
+  .method-arrow{color:var(--text-dim);font-size:1rem}
+  .nav{position:sticky;top:0;z-index:100;background:rgba(248,246,241,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+  .nav-inner{max-width:900px;margin:0 auto;display:flex;overflow-x:auto;gap:2px;padding:8px 16px}
+  .nav-inner::-webkit-scrollbar{height:0}
+  .nav a{color:var(--text-dim);text-decoration:none;font-size:0.8rem;font-weight:500;white-space:nowrap;padding:6px 12px;border-radius:8px;transition:all 0.2s}
+  .nav a:hover{color:var(--accent);background:var(--accent-light)}
+  .container{max-width:860px;margin:0 auto;padding:0 16px}
+  .section{margin-top:40px;scroll-margin-top:60px}
+  .section-label{display:inline-flex;align-items:center;gap:8px;font-family:'Fredoka',sans-serif;font-size:0.78rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;padding:4px 14px;border-radius:20px;margin-bottom:10px}
+  .section h2{font-size:1.5rem;font-weight:700;margin-bottom:16px}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:16px;box-shadow:var(--shadow)}
+  .card h3{font-size:1.1rem;margin-bottom:10px}
+  .progress-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 24px;margin-top:16px;box-shadow:var(--shadow)}
+  .progress-label{font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.95rem;margin-bottom:8px;display:flex;justify-content:space-between}
+  .progress-bar{height:12px;background:#e8e6e0;border-radius:6px;overflow:hidden}
+  .progress-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--green),#2dd4a8);transition:width 0.6s ease;width:0%}
+  .recap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:20px}
+  .recap-chip{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center;box-shadow:var(--shadow);transition:transform 0.2s}
+  .recap-chip:hover{transform:translateY(-2px)}
+  .recap-chip .num{font-family:'Fredoka',sans-serif;font-size:0.72rem;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:1px}
+  .recap-chip .topic{font-weight:700;font-size:0.95rem;margin:4px 0 2px}
+  .recap-chip .detail{font-size:0.78rem;color:var(--text-dim)}
+  .fill-row{background:var(--card);border:1.5px solid var(--border);border-radius:12px;padding:14px;margin:8px 0;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .fill-row select{padding:6px 10px;border-radius:8px;border:1.5px solid var(--border);font-size:0.85rem;font-family:inherit}
+  .fill-row .result{font-size:0.85rem;font-weight:600;margin-left:auto}
+  .recap-current{border-color:var(--green);background:var(--green-light)}
+  .vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+  .vocab-card{perspective:800px;height:190px;cursor:pointer}
+  .vocab-inner{position:relative;width:100%;height:100%;transition:transform 0.5s;transform-style:preserve-3d}
+  .vocab-card.flipped .vocab-inner{transform:rotateY(180deg)}
+  .vocab-front,.vocab-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:14px;padding:16px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border:1px solid var(--border);box-shadow:var(--shadow)}
+  .vocab-front{background:var(--card)}
+  .vocab-front .word{font-family:'Fredoka',sans-serif;font-size:1.25rem;font-weight:700;color:var(--accent)}
+  .vocab-front .pos{font-size:0.72rem;color:var(--text-dim);margin-top:2px}
+  .vocab-front .hint{font-size:0.7rem;color:var(--pink);margin-top:8px;font-weight:500}
+  .vocab-back{background:linear-gradient(135deg,var(--accent-light),#f3e8ff);transform:rotateY(180deg)}
+  .vocab-back .meaning{font-weight:600;font-size:0.9rem;margin-bottom:4px}
+  .vocab-back .arabic{font-size:0.82rem;color:var(--pink);margin-bottom:4px}
+  .vocab-back .example{font-size:0.8rem;color:var(--text-dim);font-style:italic}
+  .grammar-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:12px;overflow:hidden;margin:12px 0;border:1px solid var(--border)}
+  .grammar-table th{background:var(--accent);color:#fff;padding:10px 14px;font-weight:600;font-size:0.85rem;text-align:center}
+  .grammar-table td{padding:10px 14px;text-align:center;font-size:0.88rem;border-bottom:1px solid var(--border)}
+  .grammar-table tr:last-child td{border-bottom:0}
+  .grammar-table tr:nth-child(even) td{background:#faf9f6}
+  .demo-word{display:inline-block;background:var(--accent-light);color:var(--accent);font-weight:700;padding:2px 10px;border-radius:6px;font-size:0.85rem}
+  .audio-card{background:linear-gradient(135deg,#f0f0ff,#fce8f4);border:1px solid #e0ddf5;border-radius:var(--radius);padding:18px;margin-bottom:14px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .audio-icon{font-size:2rem}
+  .audio-info h4{font-family:'Fredoka',sans-serif;font-size:0.95rem}
+  .audio-info p{font-size:0.8rem;color:var(--text-dim)}
+  .audio-link{display:inline-block;padding:7px 16px;background:var(--accent);color:#fff;border-radius:10px;text-decoration:none;font-weight:600;font-size:0.82rem;transition:background 0.2s}
+  .subtitle-toggle{margin-top:8px;width:100%}
+  .subtitle-toggle summary{cursor:pointer;font-size:0.82rem;font-weight:600;color:var(--accent);padding:6px 0;user-select:none}
+  .subtitle-toggle summary:hover{color:var(--green)}
+  .subtitle-text{background:#faf9f6;border-radius:10px;padding:14px 16px;margin-top:6px;font-size:0.82rem;line-height:1.9;color:var(--text);max-height:300px;overflow-y:auto}
+  .audio-link:hover{background:#4a59ae}
+  .quiz-q{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:14px;box-shadow:var(--shadow)}
+  .quiz-q .q-num{font-family:'Fredoka',sans-serif;font-size:0.72rem;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+  .quiz-q .q-text{font-weight:600;font-size:0.93rem;margin-bottom:12px}
+  .quiz-option{display:block;width:100%;text-align:left;padding:10px 14px;margin-bottom:6px;background:#faf9f6;border:2px solid var(--border);border-radius:10px;cursor:pointer;font-size:0.86rem;transition:all 0.2s;font-family:'Inter',sans-serif}
+  .quiz-option:hover:not(:disabled){border-color:var(--accent);background:var(--accent-light)}
+  .quiz-option.correct{border-color:var(--green);background:var(--green-light);color:var(--green);font-weight:600}
+  .quiz-option.wrong{border-color:var(--red);background:var(--red-light);color:var(--red)}
+  .quiz-option:disabled{cursor:default}
+  .fill-input{display:inline-block;width:120px;padding:4px 8px;border:2px solid var(--border);border-radius:8px;font-size:0.88rem;font-family:'Inter',sans-serif;text-align:center;background:#faf9f6;transition:border-color 0.2s}
+  .fill-input:focus{outline:none;border-color:var(--accent)}
+  .fill-input.correct{border-color:var(--green);background:var(--green-light)}
+  .fill-input.wrong{border-color:var(--red);background:var(--red-light)}
+  .btn{display:inline-block;padding:8px 20px;border:none;border-radius:10px;font-weight:600;font-size:0.88rem;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.2s}
+  .btn-accent{background:var(--accent);color:#fff}.btn-accent:hover{background:#4a59ae}
+  .btn-green{background:var(--green);color:#fff}.btn-green:hover{background:#248a68}
+  .btn-orange{background:var(--orange);color:#fff}.btn-orange:hover{background:#cf7524}
+  .btn-outline{background:transparent;border:2px solid var(--accent);color:var(--accent)}.btn-outline:hover{background:var(--accent-light)}
+  .writing-area{width:100%;min-height:140px;padding:14px;border:2px solid var(--border);border-radius:12px;font-family:'Inter',sans-serif;font-size:0.88rem;line-height:1.7;resize:vertical;background:#fefefe;transition:border-color 0.2s}
+  .writing-area:focus{outline:none;border-color:var(--accent)}
+  .word-count{font-size:0.78rem;color:var(--text-dim);margin-top:6px;text-align:right}
+  .idiom-card{background:var(--card);border-left:4px solid var(--orange);border-radius:0 12px 12px 0;padding:14px 16px;margin-bottom:10px;box-shadow:var(--shadow)}
+  .idiom-card .idiom{font-family:'Fredoka',sans-serif;font-size:1rem;color:var(--orange);font-weight:600}
+  .idiom-card .idiom-meaning{font-size:0.85rem;color:var(--text-dim);margin-top:3px}
+  .idiom-card .idiom-example{font-size:0.82rem;font-style:italic;margin-top:3px}
+  .challenge-box{background:linear-gradient(135deg,#fff3e6,#ffeaea);border:2px dashed var(--orange);border-radius:var(--radius);padding:22px;text-align:center;margin:14px 0}
+  .challenge-box h3{font-family:'Fredoka',sans-serif;color:var(--orange)}
+  .preview-box{background:linear-gradient(135deg,#e8eaff,#f3e8ff);border:1px solid #d0d3f0;border-radius:var(--radius);padding:20px;margin:14px 0}
+  .preview-box h4{font-family:'Fredoka',sans-serif;color:var(--accent);margin-bottom:6px}
+  .tip-box{background:var(--green-light);border-left:4px solid var(--green);border-radius:0 12px 12px 0;padding:12px 16px;margin:10px 0;font-size:0.85rem}
+  .tip-box strong{color:var(--green)}
+  .cheat-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:600px){.cheat-grid{grid-template-columns:1fr}.vocab-grid{grid-template-columns:1fr}.recap-grid{grid-template-columns:1fr 1fr}}
+  .cheat-cell{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;box-shadow:var(--shadow)}
+  .cheat-cell h4{font-family:'Fredoka',sans-serif;font-size:0.9rem;margin-bottom:6px}
+  .score-banner{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--border);padding:8px 16px;display:flex;justify-content:center;align-items:center;gap:18px;box-shadow:0 -2px 10px rgba(0,0,0,0.06);z-index:99;font-family:'Fredoka',sans-serif}
+  .score-item{text-align:center}
+  .score-item .label{font-size:0.65rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px}
+  .score-item .val{font-size:1.1rem;font-weight:700}
+  .pb-80{padding-bottom:80px}
+  .mt-8{margin-top:8px}.mt-12{margin-top:12px}.mt-16{margin-top:16px}.mt-20{margin-top:20px}
+  .text-center{text-align:center}
+  .hidden{display:none}
+  .email-frame{background:#fff;border:1px solid #d0d0d0;border-radius:10px;overflow:hidden;margin:12px 0}
+  .email-header{background:#f0f0f0;padding:10px 16px;border-bottom:1px solid #d0d0d0;font-size:0.82rem}
+  .email-body{padding:16px;font-size:0.88rem;line-height:1.8}
+  .checklist label{display:flex;align-items:flex-start;gap:8px;padding:6px 0;cursor:pointer;font-size:0.88rem}
+  .checklist input[type=checkbox]{margin-top:4px;accent-color:var(--green);width:16px;height:16px}
+  .tts-btn{background:none;border:none;cursor:pointer;font-size:1.1rem;padding:2px 4px;border-radius:6px;transition:all 0.2s;vertical-align:middle}
+  .tts-btn:hover{background:var(--accent-light);transform:scale(1.15)}
+  .tts-btn.playing{animation:pulse 0.8s infinite}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+  .summary-table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;font-size:0.84rem}
+  .summary-table th{background:var(--accent);color:#fff;padding:10px 12px;font-weight:600;text-align:left;font-size:0.8rem}
+  .summary-table td{padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+  .summary-table tr:last-child td{border-bottom:0}
+  .summary-table tr:nth-child(even) td{background:#faf9f6}
+  .summary-table .cat-tag{display:inline-block;padding:1px 8px;border-radius:10px;font-size:0.7rem;font-weight:600}
+  .why-btn{display:none;margin-top:8px;padding:5px 14px;background:var(--accent-light);border:1px solid var(--accent);color:var(--accent);border-radius:8px;cursor:pointer;font-size:0.78rem;font-weight:600;font-family:'Inter',sans-serif;transition:all 0.2s}
+  .why-btn:hover{background:var(--accent);color:#fff}
+  .why-btn.show{display:inline-block}
+  .why-text{display:none;margin-top:6px;padding:10px 14px;background:var(--accent-light);border-radius:10px;font-size:0.82rem;color:var(--accent);font-weight:500}
+  .why-text.show{display:block}
+  .session-nav{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:16px 0}
+  .session-nav a{display:inline-flex;align-items:center;gap:4px;padding:6px 14px;border-radius:10px;font-size:0.8rem;font-weight:600;text-decoration:none;border:2px solid var(--border);color:var(--text-dim);transition:all 0.2s}
+  .session-nav a:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light)}
+  .session-nav a.active{border-color:var(--green);background:var(--green);color:#fff}
+  .session-nav a.disabled{opacity:0.4;pointer-events:none}
+  .role-card{background:var(--card);border:2px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:14px;box-shadow:var(--shadow);cursor:pointer;transition:all 0.3s}
+  .role-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.1)}
+  .role-card h4{font-family:'Fredoka',sans-serif;font-size:1.05rem;margin-bottom:8px}
+  .role-card .role-points{list-style:none;padding:0}
+  .role-card .role-points li{font-size:0.85rem;padding:3px 0;padding-left:18px;position:relative}
+  .role-card .role-points li::before{content:'•';position:absolute;left:4px;color:var(--green);font-weight:700}
+  .role-convo{display:none;background:#faf9f6;border-radius:12px;padding:16px;margin-top:12px;font-size:0.86rem;line-height:1.9}
+  .role-convo.show{display:block}
+</style>
+</head>
+<body class="pb-80">
+
+<div class="hero">
+  <div class="hero-emoji">&#x1F4F1;</div>
+  <h1>Session 5: Friendship Stories</h1>
+  <p class="sub">Old friends, new connections &amp; stories from the past</p>
+  <div class="badge-row">
+    <span class="badge">&#x1F4DA; A2 Level</span>
+    <span class="badge">&#x1F3AF; Past Continuous + Past Simple</span>
+    <span class="badge">&#x1F4F1; Social Media &amp; Friends</span>
+  </div>
+</div>
+
+<div class="container">
+  <div class="session-nav" style="margin-top:16px">
+    <a href="session-1.html">&#x1F382; S1</a>
+    <a href="session-2.html">&#x1F389; S2</a>
+    <a href="session-3.html">&#x1F35C; S3</a>
+    <a href="session-4.html">&#x1F91D; S4</a>
+    <a href="#" class="active">&#x1F4F1; S5</a>
+    <a href="#" class="disabled">&#x1F60A; S6</a>
+    <a href="#" class="disabled">&#x1F614; S7</a>
+    <a href="#" class="disabled">&#x1F4B0; S8</a>
+    <a href="#" class="disabled">&#x1F3DD; S9</a>
+    <a href="#" class="disabled">&#x1F3DD; S10</a>
+    <a href="#" class="disabled">&#x1F455; S11</a>
+    <a href="#" class="disabled">&#x1F455; S12</a>
+  </div>
+</div>
+
+<div class="container">
+  <div class="method-banner">
+    <div style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.9rem;text-align:center;">&#x1F9EA; Scientifically proven learning sequence</div>
+    <div class="method-steps">
+      <span class="method-step" style="background:var(--pink-light);color:var(--pink);">&#x1F3A7; Listen</span><span class="method-arrow">&rarr;</span>
+      <span class="method-step" style="background:var(--accent-light);color:var(--accent);">&#x1F4D6; Read &amp; Learn</span><span class="method-arrow">&rarr;</span>
+      <span class="method-step" style="background:var(--orange-light);color:var(--orange);">&#x1F5E3; Speak</span><span class="method-arrow">&rarr;</span>
+      <span class="method-step" style="background:var(--green-light);color:var(--green);">&#x270F; Write</span><span class="method-arrow">&rarr;</span>
+      <span class="method-step" style="background:var(--red-light);color:var(--red);">&#x1F3AF; Test</span>
+    </div>
+  </div>
+</div>
+
+<nav class="nav"><div class="nav-inner">
+  <a href="#recap">Recap</a><a href="#listen">1. Listen</a><a href="#vocab">2. Vocabulary</a><a href="#grammar">3. Grammar</a><a href="#reading">4. Read</a><a href="#speaking">5. Speak</a><a href="#roleplay">6. Roleplay</a><a href="#email">7. Email</a><a href="#writing">8. Write</a><a href="#quiz">9. Quiz</a><a href="#summary">Summary</a><a href="#cheat">Cheat Sheet</a>
+</div></nav>
+
+<div class="container">
+
+  <div class="progress-wrap">
+    <div class="progress-label"><span>Your Session Progress</span><span id="progress-pct">0%</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+  </div>
+
+  <!-- RECAP -->
+  <div class="section" id="recap">
+    <span class="section-label" style="background:var(--accent-light);color:var(--accent);">&#x1F519; Quick Recap</span>
+    <h2>&#x1F504; Recap &amp; Apply — Sessions 1-4 Grammar</h2>
+    <div class="recap-grid">
+      <div class="recap-chip"><div class="num">Session 1</div><div class="topic">&#x1F382; Birthdays</div><div class="detail">'will' for plans</div></div>
+      <div class="recap-chip"><div class="num">Session 2</div><div class="topic">&#x1F389; Parties</div><div class="detail">offer/accept/refuse</div></div>
+      <div class="recap-chip"><div class="num">Session 3</div><div class="topic">&#x1F35C; Street Food</div><div class="detail">some/any, articles</div></div>
+      <div class="recap-chip"><div class="num">Session 4</div><div class="topic">&#x1F91D; Friendship</div><div class="detail">this/that/these/those</div></div>
+      <div class="recap-chip recap-current"><div class="num">Now!</div><div class="topic">&#x1F4F1; Stories</div><div class="detail">past continuous</div></div>
+    </div>
+
+    <div class="card" style="border-left:4px solid var(--accent)">
+      <p style="font-size:0.88rem">You've learned 4 grammar topics so far. Apply them ALL to today's friendship stories!</p>
+      <div style="margin-top:10px;font-size:0.82rem;color:var(--text-dim)">
+        <strong>S1:</strong> "I <em>will</em> stay in touch." / "She <em>won't</em> forget me."<br>
+        <strong>S2:</strong> "Can I help you?" / "Would you like me to call her?"<br>
+        <strong>S3:</strong> "I have <em>some</em> old photos." / "There aren't <em>any</em> messages."<br>
+        <strong>S4:</strong> "<em>This</em> friend is kind." / "<em>Those</em> memories are special."
+      </div>
+    </div>
+
+    <div class="card" style="border-left:4px solid var(--green)">
+      <h3>&#x1F9EA; Apply S1-S4 Grammar to Friendship Stories</h3>
+      <p style="font-size:0.82rem;color:var(--text-dim);margin-bottom:10px">Choose the correct answer — all previous grammar applied to social media and stories:</p>
+      <div id="recap-exercises"></div>
+      <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn" style="background:var(--green);color:#fff;border:none;padding:8px 20px;border-radius:10px;font-weight:600;cursor:pointer" onclick="checkRecap()">Check</button>
+        <button class="btn" style="background:var(--accent);color:#fff;border:none;padding:8px 20px;border-radius:10px;font-weight:600;cursor:pointer" onclick="retryRecap()">Retry</button>
+        <span id="recap-score" style="font-family:'Fredoka',sans-serif;font-size:1rem;font-weight:700;margin-left:auto;display:flex;align-items:center"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- LISTEN -->
+  <div class="section" id="listen">
+    <span class="section-label" style="background:var(--pink-light);color:var(--pink);">Phase 1 &mdash; Input</span>
+    <h2>&#x1F3A7; Step 1: Listen First</h2>
+    <p style="color:var(--text-dim);margin-bottom:12px;font-size:0.88rem;">Listen to the pronunciation and rhythm first. Don't read yet.</p>
+    <div class="audio-card">
+      <div class="audio-icon">&#x1F4E2;</div>
+      <div class="audio-info" style="flex:1"><h4>Vocabulary &amp; Phrases Audio</h4><p>Social media and friendship words</p></div>
+      <audio controls preload="none" style="width:100%;max-width:280px;margin-top:4px"><source src="https://scemoodle.aucegypt.edu/pluginfile.php/3170042/mod_hvp/content/171760/audios/files-682165a9b84ae.mp3" type="audio/mpeg"></audio>
+      <details class="subtitle-toggle">
+        <summary>📝 Show Subtitle / Transcript</summary>
+        <div class="subtitle-text">
+          <p>Social media and friendship vocabulary:</p>
+          <p><strong>Social media:</strong> account, platform, profile, post, scroll, browse, feed, notification, chat, message</p>
+          <p><strong>Friendship phrases:</strong> stay in touch, catch up, reconnect, meet face-to-face, share memories, lose contact, find old friends</p>
+          <p><strong>Safety words:</strong> be careful, personal information, trust, safe, privacy, stranger</p>
+          <p>Listen and repeat each word. Pay attention to stress: <em>re-con-NECT</em>, <em>no-ti-fi-CA-tion</em>, <em>plat-FORM</em>.</p>
+        </div>
+      </details>
+    </div>
+    <div class="audio-card">
+      <div class="audio-icon">&#x1F4DE;</div>
+      <div class="audio-info" style="flex:1"><h4>Listening 1: Old &amp; New Friends Online</h4><p>Speaker talks about reconnecting on social media</p></div>
+      <audio controls preload="none" style="width:100%;max-width:280px;margin-top:4px"><source src="https://scemoodle.aucegypt.edu/pluginfile.php/3170043/mod_hvp/content/171761/audios/files-68216641a753f.mp3" type="audio/mpeg"></audio>
+      <details class="subtitle-toggle">
+        <summary>📝 Show Subtitle / Transcript</summary>
+        <div class="subtitle-text">
+          <p>Last month, I created an account on a social media platform. I wanted to see what my old friends were doing and maybe make some new friends too.</p>
+          <p>One day, while I was browsing my feed, I saw a picture of my best friend from primary school. Her name is Emily. We hadn't talked for years, so I sent her a message. She replied quickly and said she was so happy to hear from me. We were chatting online for hours, sharing memories and catching up on our lives.</p>
+          <p>At the same time, I joined a group for people who love books. I started talking to a girl named Mia, who loves the same books as I do. Now, we talk almost every day and share book recommendations.</p>
+          <p>Reconnecting with Emily and meeting Mia made me realize how social media can bring people together.</p>
+          <p>Social media can help you find old friends and make new ones, but it's important to use it positively!</p>
+        </div>
+      </details>
+    </div>
+    <div class="audio-card">
+      <div class="audio-icon">&#x1F4DE;</div>
+      <div class="audio-info" style="flex:1"><h4>Listening 2: A Friend in Need (Wendy &amp; Anna)</h4><p>Wendy tells a story about helping her friend Anna</p></div>
+      <audio controls preload="none" style="width:100%;max-width:280px;margin-top:4px"><source src="https://scemoodle.aucegypt.edu/pluginfile.php/3170045/mod_hvp/content/171763/audios/files-6822b188dc7f7.mp3" type="audio/mpeg"></audio>
+      <details class="subtitle-toggle">
+        <summary>📝 Show Subtitle / Transcript</summary>
+        <div class="subtitle-text">
+          <p>Last Saturday, I was walking home from the market when I saw my friend Anna sitting on a bench. She was crying quietly, so I stopped to ask what had happened. Anna said she had lost her wallet, and she didn't have any money to take a bus home.</p>
+          <p>While we were talking, I was thinking about how I could help her. Then, I remembered that I had some extra money in my bag. I offered to pay for her bus ride, and she smiled for the first time that day.</p>
+          <p>We were waiting at the bus stop when she suddenly saw someone holding her wallet! The man was walking toward us, looking confused. He said he had found the wallet on the street and was trying to return it. Anna thanked him, and we both felt happy.</p>
+          <p>In the end, Anna got her wallet back, and she said she was grateful that I had stayed with her during that difficult moment.</p>
+          <p>Sometimes, just being there for a friend can make all the difference.</p>
+        </div>
+      </details>
+    </div>
+    <div class="audio-card" style="background:linear-gradient(135deg,#e8eaff,#f0f0ff);border-color:#d0d3f0">
+      <div class="audio-icon">&#x1F3A7;</div>
+      <div class="audio-info" style="flex:1"><h4>English for Social Media &amp; Friends</h4><p>Combined vocabulary and grammar audio lesson</p></div>
+      <audio controls style="width:100%;max-width:280px;margin-top:2px"><source src="https://drive.google.com/uc?export=download&id=1WR2rkWsFRMKpeQKymDlPOLZkfEM_dY5b" type="audio/mpeg"></audio>
+      <details class="subtitle-toggle">
+        <summary>📝 Show Subtitle / Transcript</summary>
+        <div class="subtitle-text">
+          <p>Welcome to Session 5 — English for Social Media and Friends.</p>
+          <p>In this lesson, you'll learn how to talk about social media and tell stories about friends.</p>
+          <p>Key vocabulary: <strong>reconnect, browse, scroll, chat, share, platform, account, profile, post, notification, memory</strong>.</p>
+          <p>Important phrases: <strong>stay in touch, catch up, meet face-to-face, lose contact, find old friends, spend time together</strong>.</p>
+          <p>For grammar, we study <strong>past continuous</strong> and <strong>past simple</strong> together:</p>
+          <p><strong>Past continuous</strong> = was/were + verb-ing — for background actions: "I was walking home."</p>
+          <p><strong>Past simple</strong> = verb-ed — for sudden events: "I saw my friend."</p>
+          <p>Together: "I <strong>was walking</strong> home <strong>when</strong> I <strong>saw</strong> my friend." The past continuous sets the scene, the past simple interrupts it.</p>
+          <p>More examples: "She <strong>was studying</strong> when her phone <strong>rang</strong>." "We <strong>were chatting</strong> when the bus <strong>arrived</strong>."</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- VOCABULARY -->
+  <div class="section" id="vocab">
+    <span class="section-label" style="background:var(--green-light);color:var(--green);">Phase 2 &mdash; Learn</span>
+    <h2>&#x1F4D6; Step 2: Vocabulary</h2>
+    <p style="color:var(--text-dim);margin-bottom:4px;font-size:0.88rem;">Click to flip. Try to guess before flipping!</p>
+    <h3 style="margin:16px 0 10px">&#x1F4F1; Social Media</h3>
+    <div class="vocab-grid" id="vg-social"></div>
+    <h3 style="margin:16px 0 10px">&#x1F91D; Friendship Phrases</h3>
+    <div class="vocab-grid" id="vg-friend"></div>
+    <h3 style="margin:16px 0 10px">&#x1F4AC; Actions &amp; Verbs</h3>
+    <div class="vocab-grid" id="vg-actions"></div>
+
+    <h3 style="margin:16px 0 10px">&#x1F517; Key Collocations</h3>
+    <div class="card" style="background:var(--card-alt)">
+      <p style="font-size:0.88rem;line-height:2"><strong>spend time</strong> with &bull; <strong>take time</strong> away from &bull; <strong>stay in touch</strong> with &bull; <strong>meet face-to-face</strong> &bull; <strong>make friends</strong> online &bull; <strong>find old friends</strong> &bull; <strong>share memories</strong> &bull; <strong>create an account</strong> &bull; <strong>join a group</strong> &bull; <strong>send a message</strong> &bull; <strong>share personal information</strong></p>
+    </div>
+
+    <h3 style="margin:16px 0 10px">&#x1F525; Idioms</h3>
+    <div id="idioms-box"></div>
+  </div>
+
+  <!-- GRAMMAR -->
+  <div class="section" id="grammar">
+    <h2>&#x1F4DD; Step 3: Grammar &mdash; Past Continuous + Past Simple</h2>
+
+    <div class="card">
+      <h3>What is the Past Continuous?</h3>
+      <p style="font-size:0.88rem">It describes a <strong>longer action happening in the background</strong> when a <strong>shorter action interrupted</strong> it.</p>
+      <p style="font-size:0.88rem;margin-top:6px"><strong>Form:</strong> was/were + verb(-ing)</p>
+      <table class="grammar-table">
+        <tr><th></th><th>&#x2705; Positive</th><th>&#x274C; Negative</th></tr>
+        <tr><td style="font-weight:700">I / He / She / It</td><td><span class="demo-word">was</span> + verb-ing</td><td><span class="demo-word">was not (wasn't)</span> + verb-ing</td></tr>
+        <tr><td style="font-weight:700">We / You / They</td><td><span class="demo-word">were</span> + verb-ing</td><td><span class="demo-word">were not (weren't)</span> + verb-ing</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>Past Continuous + Past Simple Together</h3>
+      <p style="font-size:0.88rem;margin-bottom:8px">Use <strong>when</strong> to connect two actions: the <strong>longer</strong> one (past continuous) and the <strong>shorter</strong> one (past simple).</p>
+      <div style="background:var(--accent-light);padding:14px;border-radius:10px;margin:8px 0">
+        <p style="font-size:0.9rem"><span class="demo-word">I was talking</span> to my friend <strong>when</strong> the phone <span class="demo-word">rang</span>.</p>
+        <p style="font-size:0.78rem;color:var(--text-dim);margin-top:4px">&#x2B05; longer action (background) &nbsp;&nbsp;&nbsp; &#x27A1; shorter action (interrupted)</p>
+        <p style="font-size:0.78rem;color:var(--text-dim)">Past Continuous &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Past Simple</p>
+      </div>
+      <div class="tip-box mt-8"><strong>Think of it like a movie:</strong> The past continuous is the background scene (camera showing what was happening). The past simple is the sudden event (the action!).</div>
+    </div>
+
+    <div class="card">
+      <h3>Examples with Friends</h3>
+      <p style="font-size:0.88rem;margin-bottom:4px"><span class="demo-word">I was reading</span> a book my friend gave me <strong>when</strong> the doorbell <span class="demo-word">rang</span>.</p>
+      <p style="font-size:0.88rem;margin-bottom:4px">My best friend <span class="demo-word">was showing</span> me her outfit <strong>when</strong> her dog <span class="demo-word">ran</span> into the room.</p>
+      <p style="font-size:0.88rem;margin-bottom:4px"><span class="demo-word">I was writing</span> a thank-you note <strong>when</strong> my pen <span class="demo-word">ran out</span> of ink.</p>
+      <p style="font-size:0.88rem;margin-bottom:4px">We <span class="demo-word">were taking</span> a selfie together <strong>when</strong> someone <span class="demo-word">bumped</span> into us.</p>
+      <p style="font-size:0.88rem">We <span class="demo-word">were talking</span> about old times <strong>when</strong> we <span class="demo-word">found</span> an old photo album.</p>
+    </div>
+
+    <div class="card">
+      <h3>&#x270F;&#xFE0F; Practice (10 questions)</h3>
+      <div id="grammar-exercises"></div>
+      <div class="text-center mt-12">
+        <button class="btn btn-accent" onclick="checkGrammar()">Check Answers &#x2714;</button>
+        <button class="btn btn-outline" onclick="retryGrammar()" style="margin-left:8px">Retry &#x1F504;</button>
+      </div>
+      <div id="grammar-result" class="hidden mt-12 text-center" style="font-family:'Fredoka',sans-serif;font-size:1rem"></div>
+    </div>
+  </div>
+
+  <!-- READING -->
+  <div class="section" id="reading">
+    <h2>&#x1F4D6; Step 4: Read &amp; Understand</h2>
+
+    <div class="card">
+      <h3>&#x1F4F1; Old and New Friends Online</h3>
+      <div style="background:#faf9f6;padding:14px;border-radius:10px;font-size:0.86rem;line-height:2">
+        Last month, I <span class="demo-word">created</span> an account on a social media platform. I wanted to see what my old friends <span class="demo-word">were</span> doing and maybe make some new friends too.<br><br>
+        One day, while I <span class="demo-word">was browsing</span> my feed, I saw a picture of my best friend from primary school. Her name is Emily. We <span class="demo-word">hadn't talked</span> for years, so I sent her a message. She replied quickly and said she was so happy to hear from me. We <span class="demo-word">were chatting</span> online for hours, sharing memories and catching up on our lives.<br><br>
+        At the same time, I <span class="demo-word">joined</span> a group for people who love books. I started talking to a girl named Mia, who loves the same books as I do. Now, we talk almost every day and share book recommendations.<br><br>
+        Reconnecting with Emily and meeting Mia made me realize how social media can bring people together.<br><br>
+        Social media can help you find old friends and make new ones, but it's important to use it positively!
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>&#x1F4DE; A Friend in Need (Wendy &amp; Anna)</h3>
+      <div style="background:#faf9f6;padding:14px;border-radius:10px;font-size:0.86rem;line-height:2">
+        Last Saturday, I <span class="demo-word">was walking</span> home from the market <strong>when</strong> I saw my friend Anna sitting on a bench. She <span class="demo-word">was crying</span> quietly, so I stopped to ask what had happened. Anna said she had lost her wallet, and she didn't have any money to take a bus home.<br><br>
+        While we <span class="demo-word">were talking</span>, I <span class="demo-word">was thinking</span> about how I could help her. Then, I remembered that I had some extra money in my bag. I offered to pay for her bus ride, and she smiled for the first time that day.<br><br>
+        We <span class="demo-word">were waiting</span> at the bus stop <strong>when</strong> she suddenly saw someone holding her wallet! The man <span class="demo-word">was walking</span> toward us, looking confused. He said he had found the wallet on the street and <span class="demo-word">was trying</span> to return it. Anna thanked him, and we both felt happy.<br><br>
+        In the end, Anna got her wallet back, and she said she was grateful that I had stayed with her during that difficult moment.<br><br>
+        Sometimes, just being there for a friend can make all the difference.
+      </div>
+      <div class="tip-box mt-8"><strong>Did you notice?</strong> The story uses past continuous for the background (was walking, was crying) and past simple for the sudden events (saw, stopped, said). That's how you tell a story!</div>
+    </div>
+  </div>
+
+  <!-- SPEAKING -->
+  <div class="section" id="speaking">
+    <span class="section-label" style="background:var(--orange-light);color:var(--orange);">Phase 3 &mdash; Output</span>
+    <h2>&#x1F5E3; Step 5: Speaking Practice</h2>
+    <div class="card">
+      <h3>&#x1F3A4; 1-Minute Challenge</h3>
+      <p style="font-size:0.88rem;margin-bottom:8px">Set a timer. Speak for 60 seconds without stopping:</p>
+      <div class="challenge-box"><h3>"Tell a story about a time you helped a friend or a friend helped you. What were you doing when it happened?"</h3><p style="font-size:0.82rem;color:var(--text-dim);margin-top:6px">Use: past continuous + past simple + 2 vocabulary phrases</p></div>
+    </div>
+    <div class="card">
+      <h3>&#x1F6E1; Rescue Phrases</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">
+        <span style="background:var(--accent-light);padding:5px 12px;border-radius:20px;font-size:0.82rem;font-weight:500">"I was... when..."</span>
+        <span style="background:var(--green-light);padding:5px 12px;border-radius:20px;font-size:0.82rem;font-weight:500">"While I was..."</span>
+        <span style="background:var(--orange-light);padding:5px 12px;border-radius:20px;font-size:0.82rem;font-weight:500">"Suddenly..."</span>
+        <span style="background:var(--pink-light);padding:5px 12px;border-radius:20px;font-size:0.82rem;font-weight:500">"At that moment..."</span>
+        <span style="background:var(--yellow-light);padding:5px 12px;border-radius:20px;font-size:0.82rem;font-weight:500">"That's when..."</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROLEPLAY -->
+  <div class="section" id="roleplay">
+    <h2>&#x1F3AD; Step 6: Roleplay &mdash; Reconnecting Online</h2>
+    <p style="color:var(--text-dim);margin-bottom:14px;font-size:0.88rem;">Click each role to see guiding points and an example conversation. Practice with a partner!</p>
+
+    <div class="role-card" style="border-color:var(--accent)" onclick="toggleRole('finder')">
+      <h4 style="color:var(--accent)">&#x1F50D; Role 1: The Friend Finder</h4>
+      <p style="font-size:0.85rem;color:var(--text-dim);margin-bottom:6px">You found an old friend on social media and want to reconnect.</p>
+      <ul class="role-points">
+        <li>Explain how you found your old friend online</li>
+        <li>Describe what you were doing when you saw their profile</li>
+        <li>Talk about a shared memory from the past</li>
+        <li>Use past continuous to describe the background</li>
+        <li>Suggest meeting face-to-face</li>
+      </ul>
+      <div class="role-convo" id="finder-convo">
+        <strong>You:</strong> Hey! You won't believe this. I <span class="demo-word">was scrolling</span> through social media last night <strong>when</strong> I <span class="demo-word">found</span> your profile!<br>
+        <strong>Friend:</strong> No way! It's been so long! What <span class="demo-word">were</span> you doing on that platform?<br>
+        <strong>You:</strong> I <span class="demo-word">was looking</span> for old school friends. Do you remember when we <span class="demo-word">were playing</span> football and the ball <span class="demo-word">broke</span> the window?<br>
+        <strong>Friend:</strong> Haha! Of course! The teacher was so angry. That's such a good memory.<br>
+        <strong>You:</strong> We should <span class="demo-word">meet face-to-face</span> sometime. I really want to <span class="demo-word">catch up</span> properly!<br>
+        <strong>Friend:</strong> Definitely! Let's <span class="demo-word">stay in touch</span> and plan something.
+      </div>
+    </div>
+
+    <div class="role-card" style="border-color:var(--pink)" onclick="toggleRole('curious')">
+      <h4 style="color:var(--pink)">&#x1F914; Role 2: The Curious Friend</h4>
+      <p style="font-size:0.85rem;color:var(--text-dim);margin-bottom:6px">Your friend found someone online. Ask questions about what happened.</p>
+      <ul class="role-points">
+        <li>Ask what your friend was doing when they found the person</li>
+        <li>Ask about the old friend (who, where, when)</li>
+        <li>Ask what they were talking about</li>
+        <li>Ask if they plan to meet face-to-face</li>
+        <li>Use question forms with past continuous</li>
+      </ul>
+      <div class="role-convo" id="curious-convo">
+        <strong>You:</strong> So tell me! What <span class="demo-word">were</span> you doing when you found her?<br>
+        <strong>Friend:</strong> I <span class="demo-word">was browsing</span> a group for book lovers when I <span class="demo-word">saw</span> her comment.<br>
+        <strong>You:</strong> That's amazing! What <span class="demo-word">were</span> you talking about?<br>
+        <strong>Friend:</strong> We <span class="demo-word">were sharing</span> memories from primary school. She <span class="demo-word">sent</span> me old photos!<br>
+        <strong>You:</strong> Are you going to <span class="demo-word">meet face-to-face</span>?<br>
+        <strong>Friend:</strong> Yes! We're planning to meet next weekend. I'm so excited to <span class="demo-word">catch up</span> with her!
+      </div>
+    </div>
+
+    <div class="role-card" style="border-color:var(--orange)" onclick="toggleRole('helper')">
+      <h4 style="color:var(--orange)">&#x1F91D; Role 3: The Helpful Friend</h4>
+      <p style="font-size:0.85rem;color:var(--text-dim);margin-bottom:6px">Tell a story about a time you helped a friend in trouble.</p>
+      <ul class="role-points">
+        <li>Describe what you were doing when you saw your friend needed help</li>
+        <li>Explain the problem your friend had</li>
+        <li>Describe what happened while you were helping</li>
+        <li>Tell how the story ended</li>
+        <li>Use past continuous for the background, past simple for events</li>
+      </ul>
+      <div class="role-convo" id="helper-convo">
+        <strong>You:</strong> Last week, I <span class="demo-word">was walking</span> to class <strong>when</strong> I <span class="demo-word">saw</span> my friend Ahmed sitting alone. He looked upset.<br>
+        <strong>Friend:</strong> What happened?<br>
+        <strong>You:</strong> He <span class="demo-word">was studying</span> for an exam but he <span class="demo-word">didn't understand</span> the grammar. While I <span class="demo-word">was explaining</span> the lesson, he <span class="demo-word">started</span> to smile.<br>
+        <strong>Friend:</strong> That's nice! Did he pass?<br>
+        <strong>You:</strong> Yes! He <span class="demo-word">got</span> 85%. He <span class="demo-word">was so happy</span> he bought me lunch. A friend in need is a friend indeed!
+      </div>
+    </div>
+
+    <div class="role-card" style="border-color:var(--green)" onclick="toggleRole('storyteller')">
+      <h4 style="color:var(--green)">&#x1F4D6; Role 4: The Storyteller</h4>
+      <p style="font-size:0.85rem;color:var(--text-dim);margin-bottom:6px">Narrate a friendship story using a picture (real or imagined).</p>
+      <ul class="role-points">
+        <li>Set the scene: where and when was it happening?</li>
+        <li>Describe what people were doing in the background</li>
+        <li>Tell what suddenly happened (the main event)</li>
+        <li>Explain the lesson or feeling from the story</li>
+        <li>Use at least 3 past continuous + 3 past simple verbs</li>
+      </ul>
+      <div class="role-convo" id="storyteller-convo">
+        <strong>Narrator:</strong> It was a sunny afternoon. Some friends <span class="demo-word">were sitting</span> in the park. One of them <span class="demo-word">was playing</span> guitar while the others <span class="demo-word">were laughing</span> and telling stories.<br>
+        <strong>Narrator:</strong> Suddenly, it <span class="demo-word">started</span> to rain. Everyone <span class="demo-word">ran</span> to find shelter. But one friend <span class="demo-word">stayed</span> behind because she <span class="demo-word">was trying</span> to protect the guitar from the rain.<br>
+        <strong>Narrator:</strong> Her friends <span class="demo-word">came back</span> with an umbrella. They all <span class="demo-word">laughed</span> together under the rain.<br>
+        <strong>Narrator:</strong> That's what real friends do &mdash; they come back for you, even in the rain.
+      </div>
+    </div>
+  </div>
+
+  <!-- EMAIL -->
+  <div class="section" id="email">
+    <h2>&#x1F4E7; Step 7: Email Writing — ASSESSMENT SESSION</h2>
+
+    <div class="card" style="background:linear-gradient(135deg,#ffeaea,#fce8f4);border:3px solid var(--red)">
+      <h3 style="color:var(--red);font-size:1.2rem">&#x1F3AF; This Is Your Email Writing Assessment!</h3>
+      <p style="font-size:0.9rem;margin-top:6px">This session's email counts as your graded assessment. Use everything you've practiced in Sessions 1–4:</p>
+      <ul style="font-size:0.86rem;margin:8px 0 0 18px;line-height:2">
+        <li><strong>S1 Grammar:</strong> will (I will catch up with you)</li>
+        <li><strong>S2 Grammar:</strong> -ing form + offers (I'm thinking of visiting)</li>
+        <li><strong>S3 Grammar:</strong> some/any + adjectives (some amazing memories)</li>
+        <li><strong>S4 Grammar:</strong> this/that/these/those (those days were great)</li>
+        <li><strong>S5 Grammar:</strong> past continuous + past simple (I was browsing when I found you)</li>
+      </ul>
+      <p style="font-size:0.86rem;margin-top:8px;font-weight:600">Write carefully, check every item on the checklist, and aim for 60-80 words.</p>
+    </div>
+
+    <div class="card">
+      <h3>Email Structure</h3>
+      <table class="grammar-table">
+        <tr><th>Part</th><th>What to Write</th><th>Example</th></tr>
+        <tr><td style="font-weight:700">Subject</td><td>Short &amp; clear</td><td>Long time no see!</td></tr>
+        <tr><td style="font-weight:700">Greeting</td><td>Hi/Dear + name</td><td>Hi Emily,</td></tr>
+        <tr><td style="font-weight:700">Opening</td><td>How you found them</td><td>I was browsing social media when I found your profile!</td></tr>
+        <tr><td style="font-weight:700">Body</td><td>Shared memory + what you're doing now</td><td>Do you remember when we were playing in the park?</td></tr>
+        <tr><td style="font-weight:700">Closing</td><td>Suggest meeting</td><td>I'd love to catch up. Let's meet face-to-face!</td></tr>
+        <tr><td style="font-weight:700">Sign-off</td><td>Your name</td><td>Your old friend, Ebrahim</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>&#x1F4A1; Model Email</h3>
+      <div class="email-frame">
+        <div class="email-header"><strong>Subject:</strong> Long time no see!</div>
+        <div class="email-body">
+          <p>Hi Emily,</p>
+          <p style="margin-top:8px">I <strong>was browsing</strong> social media last week <strong>when</strong> I <strong>found</strong> your profile! I couldn't believe it. We <strong>haven't talked</strong> since primary school.</p>
+          <p style="margin-top:8px">Do you remember when we <strong>were playing</strong> football and the ball <strong>broke</strong> the classroom window? The teacher <strong>was not</strong> happy! That's such a funny <strong>memory</strong>.</p>
+          <p style="margin-top:8px">I'd love to <strong>catch up</strong> and <strong>meet face-to-face</strong>. Let's <strong>stay in touch</strong>!</p>
+          <p style="margin-top:8px">Your old friend,<br>Ebrahim</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>&#x2705; Email Checklist</h3>
+      <div class="checklist" id="email-checklist">
+        <label><input type="checkbox" onchange="updateEmailCheck()"> Has greeting (Hi/Dear + name)</label>
+        <label><input type="checkbox" onchange="updateEmailCheck()"> Explains how you found them (past continuous)</label>
+        <label><input type="checkbox" onchange="updateEmailCheck()"> Includes a shared memory</label>
+        <label><input type="checkbox" onchange="updateEmailCheck()"> Uses past continuous + past simple correctly</label>
+        <label><input type="checkbox" onchange="updateEmailCheck()"> Uses at least 2 vocabulary phrases (stay in touch, catch up, etc.)</label>
+        <label><input type="checkbox" onchange="updateEmailCheck()"> Has closing + sign-off</label>
+        <label><input type="checkbox" onchange="updateEmailCheck()"> 60-80 words</label>
+      </div>
+      <div id="email-check-result" class="mt-8" style="font-family:'Fredoka',sans-serif;font-size:0.9rem"></div>
+    </div>
+
+    <div class="card">
+      <h3>&#x270F;&#xFE0F; Practice: Write Your Email</h3>
+      <textarea class="writing-area" id="email-area" placeholder="Subject: Long time no see!
+
+Hi [name],
+
+I was... when I found your profile!
+
+Do you remember when we were...?
+
+Your old friend,
+[your name]" oninput="updateEmailWC()"></textarea>
+      <div class="word-count">Words: <span id="email-wc">0</span> / 60-80 target</div>
+    </div>
+  </div>
+
+  <!-- WRITING -->
+  <div class="section" id="writing">
+    <h2>&#x270F;&#xFE0F; Step 8: Writing &mdash; Short Friendship Story</h2>
+    <div class="card">
+      <h3>&#x1F4A1; Write a Short Story (80-100 words)</h3>
+      <p style="font-size:0.88rem;margin-bottom:8px">Write a story about a time you helped a friend or a friend helped you. Use past continuous for the background and past simple for the main events.</p>
+      <div style="background:linear-gradient(135deg,#fff9f0,#fff3e6);padding:18px;border-radius:12px;border:2px solid #f0dcc0;font-size:0.9rem;line-height:1.9">
+        <p><em>Model:</em></p>
+        <p>Last Friday, I <strong>was studying</strong> in the library <strong>when</strong> my phone <strong>rang</strong>. It was my friend Sara. She <strong>was crying</strong> because she <strong>had lost</strong> her keys. While I <strong>was walking</strong> to her house, I <strong>found</strong> the keys near the bus stop! Sara <strong>was so happy</strong> when I <strong>gave</strong> them back. We <strong>were laughing</strong> about it for hours. Sometimes, small moments <strong>make</strong> the biggest difference in a friendship.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>&#x270F;&#xFE0F; Write Your Story</h3>
+      <textarea class="writing-area" id="story-area" placeholder="Last week, I was... when...
+
+While I was...
+
+In the end..." oninput="updateStoryWC()"></textarea>
+      <div class="word-count">Words: <span id="story-wc">0</span> / 80-100 target</div>
+    </div>
+
+    <div class="card">
+      <h3>&#x2705; Writing Checklist</h3>
+      <div class="checklist" id="story-checklist">
+        <label><input type="checkbox" onchange="updateStoryCheck()"> Used past continuous for background actions</label>
+        <label><input type="checkbox" onchange="updateStoryCheck()"> Used past simple for main events</label>
+        <label><input type="checkbox" onchange="updateStoryCheck()"> Used "when" or "while" to connect tenses</label>
+        <label><input type="checkbox" onchange="updateStoryCheck()"> Included a clear beginning, middle, and end</label>
+        <label><input type="checkbox" onchange="updateStoryCheck()"> Used at least 2 new vocabulary words</label>
+        <label><input type="checkbox" onchange="updateStoryCheck()"> 80-100 words</label>
+      </div>
+      <div id="story-check-result" class="mt-8" style="font-family:'Fredoka',sans-serif;font-size:0.9rem"></div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="section" id="quiz">
+    <span class="section-label" style="background:var(--red-light);color:var(--red);">Phase 4 &mdash; Test</span>
+    <h2>&#x1F3AF; Step 9: Final Quiz</h2>
+    <p style="color:var(--text-dim);margin-bottom:14px;font-size:0.88rem;">18 questions. Green = correct, red = wrong. No answers shown &mdash; retry to improve!</p>
+    <div id="quiz-container"></div>
+    <div class="text-center mt-20">
+      <button class="btn btn-green" onclick="showQuizScore()" style="padding:10px 28px;font-size:0.95rem">Show My Score &#x1F3C6;</button>
+      <button class="btn btn-outline" onclick="retryQuiz()" style="margin-left:10px;padding:10px 28px;font-size:0.95rem">Retry Quiz &#x1F504;</button>
+    </div>
+    <div id="quiz-final" class="hidden mt-16 text-center card" style="border-width:2px"></div>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="section" id="summary">
+    <span class="section-label" style="background:var(--yellow-light);color:var(--orange);">&#x1F4CA; Summary</span>
+    <h2>Everything You Learned Today</h2>
+    <div class="card"><h3>&#x1F4D6; New Vocabulary</h3><div id="summary-vocab-table"></div></div>
+    <div class="card"><h3>&#x1F525; Idioms</h3><table class="summary-table" id="summary-idioms-table"><tr><th>Idiom</th><th>Meaning</th><th>Example</th></tr></table></div>
+    <div class="card">
+      <h3>&#x1F4DD; Grammar Rules</h3>
+      <table class="summary-table">
+        <tr><th>Structure</th><th>Use</th><th>Example</th></tr>
+        <tr><td>was/were + verb-ing</td><td>Background action (longer)</td><td>I <strong>was walking</strong> home.</td></tr>
+        <tr><td>Past simple</td><td>Sudden event (shorter)</td><td>The phone <strong>rang</strong>.</td></tr>
+        <tr><td>PC + when + PS</td><td>Two actions together</td><td>I <strong>was reading</strong> when she <strong>called</strong>.</td></tr>
+        <tr><td>While + PC, PS</td><td>Same as above, different order</td><td><strong>While</strong> I <strong>was studying</strong>, the light <strong>went</strong> off.</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- CHEAT SHEET -->
+  <div class="section" id="cheat">
+    <span class="section-label" style="background:var(--yellow-light);color:var(--orange);">&#x1F4CB; Reference</span>
+    <h2>Cheat Sheet</h2>
+    <h3 style="margin-bottom:10px">Session 5: Friendship Stories</h3>
+    <div class="cheat-grid">
+      <div class="cheat-cell"><h4 style="color:var(--accent)">Grammar: Past Continuous</h4><p style="font-size:0.82rem">I/he/she/it <strong>was</strong> + verb-ing<br>we/you/they <strong>were</strong> + verb-ing<br>Use for background actions<br>"when" connects to past simple</p></div>
+      <div class="cheat-cell"><h4 style="color:var(--green)">Social Media Phrases</h4><p style="font-size:0.82rem">create an account, stay in touch, meet face-to-face, spend time, share memories, find old friends, join a group, be careful</p></div>
+      <div class="cheat-cell"><h4 style="color:var(--orange)">Story Connectors</h4><p style="font-size:0.82rem">"I was... when..." &bull; "While I was..." &bull; "Suddenly..." &bull; "At that moment..." &bull; "That's when..."</p></div>
+      <div class="cheat-cell"><h4 style="color:var(--pink)">Key Safety Words</h4><p style="font-size:0.82rem">be careful, personal information, trust, safe, face-to-face vs online, not always safe</p></div>
+    </div>
+    <h3 style="margin:20px 0 10px">Sessions 1-4: Words You Should Still Remember</h3>
+    <div class="cheat-grid">
+      <div class="cheat-cell"><h4 style="color:var(--accent)">&#x1F382; S1-2: Parties</h4><p style="font-size:0.82rem">invite, celebrate, decoration, guest, organize, surprise, costume &bull; Can I help...? Would you like me to...? &bull; 'will' for plans &bull; verb+ing after prepositions</p></div>
+      <div class="cheat-cell"><h4 style="color:var(--orange)">&#x1F35C; S3: Street Food</h4><p style="font-size:0.82rem">delicious, crispy, spicy, bland, tender &bull; some/any &bull; a/an/the &bull; how much/many &bull; countable vs uncountable</p></div>
+      <div class="cheat-cell"><h4 style="color:var(--green)">&#x1F91D; S4: Friendship</h4><p style="font-size:0.82rem">kind, honest, loyal, supportive, encouraging, empathetic &bull; this/that/these/those &bull; make friends, hang out, catch up</p></div>
+      <div class="cheat-cell"><h4 style="color:var(--pink)">&#x1F4F1; S5: Stories</h4><p style="font-size:0.82rem">reconnect, browse, scroll, chat, share, platform, account, memory &bull; stay in touch, meet face-to-face &bull; past continuous + past simple</p></div>
+    </div>
+  </div>
+
+  <!-- ASSESSMENT REMINDER -->
+  <div class="section">
+    <div class="card" style="background:linear-gradient(135deg,#e6f7f1,#e8eaff);border:3px solid var(--green)">
+      <h3 style="color:var(--green);font-size:1.1rem">&#x2705; Assessment Checklist — Before You Submit</h3>
+      <p style="font-size:0.86rem;margin-top:6px">Make sure you've done all of these before submitting your email:</p>
+      <ul style="font-size:0.84rem;margin:8px 0 0 18px;line-height:2">
+        <li>All checklist items checked in the Email section above</li>
+        <li>Used grammar from at least 3 sessions (will, -ing, some/any, this/that, past continuous)</li>
+        <li>Word count between 60-80 words</li>
+        <li>Proofread for spelling and punctuation</li>
+        <li>Email makes sense as a real message to a friend</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PREVIEW -->
+  <div class="section" id="preview">
+    <span class="section-label" style="background:var(--accent-light);color:var(--accent);">&#x1F52E; Coming Next</span>
+    <h2>Session 6: Feelings (Positive &amp; Negative)</h2>
+    <div class="preview-box">
+      <h4>What's Coming</h4>
+      <p style="font-size:0.88rem">You'll learn to describe emotions and talk about how situations make you feel:</p>
+      <p style="font-size:0.88rem;margin-top:4px"><strong>Vocabulary:</strong> sad, bored, nervous, angry, stressed, anxious, disappointed</p>
+      <p style="font-size:0.88rem"><strong>Grammar:</strong> Adjective &harr; Noun forms (sad &rarr; sadness, angry &rarr; anger)</p>
+      <p style="font-size:0.88rem;margin-top:6px;color:var(--text-dim)">Start thinking: <em>"What makes you feel happy, stressed, or nervous?"</em></p>
+    </div>
+    <div class="tip-box"><strong>Connection:</strong> The personality traits from S4 (kind, honest) and stories from S5 connect directly to understanding how actions affect <em>feelings</em> in S6-7.</div>
+  </div>
+
+</div>
+
+<div class="score-banner">
+  <div class="score-item"><div class="label">Cards</div><div class="val" id="sb-cards" style="color:var(--accent)">0</div></div>
+  <div class="score-item"><div class="label">Grammar</div><div class="val" id="sb-grammar" style="color:var(--green)">0/10</div></div>
+  <div class="score-item"><div class="label">Quiz</div><div class="val" id="sb-quiz" style="color:var(--red)">0/18</div></div>
+  <div class="score-item"><div class="label">Written</div><div class="val" id="sb-words" style="color:var(--orange)">0</div></div>
+</div>
+
+<script>
+const VS=[
+  {w:"Social media",p:"noun",m:"Websites/apps to connect with people (Facebook, Instagram)",ar:"وسائل التواصل الاجتماعي",ex:"I use social media to stay in touch with friends."},
+  {w:"Platform",p:"noun",m:"A website or app (like Facebook or Instagram)",ar:"منصة",ex:"Which social media platform do you use the most?"},
+  {w:"Account",p:"noun",m:"Your personal page on a website/app",ar:"حساب",ex:"I created a new account on Instagram."},
+  {w:"Profile",p:"noun",m:"Your personal information page on social media",ar:"ملف شخصي / بروفايل",ex:"I saw your profile picture. It looks great!"},
+  {w:"Memory",p:"noun",m:"Something you remember from the past",ar:"ذكرى",ex:"That photo brings back good memories."},
+  {w:"Personal information",p:"noun",m:"Private details about you (name, address, phone)",ar:"معلومات شخصية",ex:"Don't share personal information with strangers online."},
+];
+const VF=[
+  {w:"Stay in touch",p:"phrase",m:"To keep communicating with someone",ar:"تفضل على تواصل",ex:"Let's stay in touch after the course ends!"},
+  {w:"Meet face-to-face",p:"phrase",m:"To see someone in real life (not online)",ar:"تقابل وجها لوجه",ex:"We talk online, but I want to meet face-to-face."},
+  {w:"Spend time",p:"phrase",m:"To use time doing something with someone",ar:"يقضي وقت",ex:"I love spending time with my family."},
+  {w:"Take time (away from)",p:"phrase",m:"To use time that should be for something else",ar:"ياخد وقت من (حاجة تانية)",ex:"Social media can take time away from homework."},
+  {w:"Make friends",p:"phrase",m:"To form new friendships",ar:"يكوّن صداقات",ex:"It's easy to make friends in a new class."},
+  {w:"Catch up",p:"phrase",m:"To talk and learn about what happened recently",ar:"تلحّق الأخبار / تتكلم بعد غياب",ex:"We haven't talked in years. Let's catch up!"},
+];
+const VA=[
+  {w:"Reconnect",p:"verb",m:"To connect again with someone after a long time",ar:"يتواصل تاني / يرجع العلاقة",ex:"I reconnected with my primary school friend online."},
+  {w:"Browse",p:"verb",m:"To look through content casually on the internet",ar:"يتصفح",ex:"I was browsing my feed when I saw her photo."},
+  {w:"Scroll",p:"verb",m:"To move up/down on a phone or computer screen",ar:"يعمل سكرول / يمرر",ex:"I was scrolling through Instagram for an hour."},
+  {w:"Chat",p:"verb",m:"To talk informally, especially online",ar:"يتشات / يتكلم",ex:"We were chatting online for hours."},
+  {w:"Share",p:"verb",m:"To post or give something to others",ar:"يشارك",ex:"She shared some old photos with me."},
+  {w:"Be careful",p:"adj",m:"To be cautious and think before acting",ar:"خلي بالك / كن حذر",ex:"Be careful about what you share online."},
+  {w:"Carefully",p:"adv",m:"In a careful way, with attention",ar:"بحرص / بعناية",ex:"Read the rules carefully before joining."},
+];
+
+function speak(word,btn){
+  if(!('speechSynthesis' in window))return;
+  window.speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(word);u.lang='en-US';u.rate=0.85;u.pitch=1;
+  const voices=window.speechSynthesis.getVoices();
+  const ev=voices.find(v=>v.lang.startsWith('en')&&v.name.includes('Female'))||voices.find(v=>v.lang.startsWith('en'));
+  if(ev)u.voice=ev;
+  if(btn){btn.classList.add('playing');u.onend=()=>btn.classList.remove('playing')}
+  window.speechSynthesis.speak(u);
+}
+if('speechSynthesis' in window){speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices()}
+
+// ===== RECAP EXERCISES (S1+S2+S3+S4 grammar applied to S5 topic) =====
+const recapEx=[
+  {q:'I ______ reconnect with my old school friend online.',opts:['will','am','do'],ans:0},
+  {q:'______ you like me to send her a message?',opts:['Will','Would','Do'],ans:1},
+  {q:'I found ______ old photos on her profile.',opts:['some','any','a'],ans:0},
+  {q:'There aren\'t ______ new messages from her yet.',opts:['any','some','the'],ans:0},
+  {q:'______ memories from school are really special to me.',opts:['Those','That','A'],ans:0},
+  {q:'______ is my best friend from primary school.',opts:['This','These','A'],ans:0},
+  {q:'She ______ not forget our friendship — we were so close.',opts:['will','does','is'],ans:0},
+  {q:'Can I help you ______ finding your old classmates online?',opts:['with','to','for'],ans:0},
+  {q:'I don\'t have ______ contact with my childhood friends anymore.',opts:['any','some','the'],ans:0},
+  {q:'______ friend always shares her memories with me online.',opts:['That','Those','Any'],ans:0}
+];
+function buildRecap(){
+  const c=document.getElementById('recap-exercises');if(!c)return;
+  recapEx.forEach((ex,i)=>{
+    const row=document.createElement('div');row.className='fill-row';row.id='rex-'+i;
+    let opts=ex.opts.map(o=>`<option value="${o}">${o}</option>`).join('');
+    row.innerHTML=`<span style="font-size:0.85rem;flex:1">${i+1}. ${ex.q.replace('______','<select id="rsel-'+i+'"><option value="">—</option>'+opts+'</select>')}</span><span class="result" id="rres-${i}"></span>`;
+    c.appendChild(row);
+  });
+}
+function checkRecap(){
+  let correct=0;
+  recapEx.forEach((ex,i)=>{
+    const sel=document.getElementById('rsel-'+i),res=document.getElementById('rres-'+i),row=document.getElementById('rex-'+i);
+    if(sel.value===ex.opts[ex.ans]){correct++;res.textContent='✅';row.style.borderColor='var(--green)';row.style.background='var(--green-light)'}
+    else{res.textContent='❌';row.style.borderColor='var(--red)';row.style.background='var(--red-light)'}
+  });
+  document.getElementById('recap-score').textContent=correct+' / '+recapEx.length;
+}
+function retryRecap(){
+  recapEx.forEach((ex,i)=>{document.getElementById('rsel-'+i).value='';document.getElementById('rres-'+i).textContent='';const row=document.getElementById('rex-'+i);row.style.borderColor='var(--border)';row.style.background=''});
+  document.getElementById('recap-score').textContent='';
+}
+buildRecap();
+
+function buildCards(id,data){
+  const c=document.getElementById(id);
+  data.forEach(v=>{
+    const d=document.createElement('div');d.className='vocab-card';
+    d.onclick=(e)=>{if(e.target.classList.contains('tts-btn'))return;d.classList.toggle('flipped');updateSB()};
+    d.innerHTML=`<div class="vocab-inner"><div class="vocab-front"><div class="word">${v.w} <button class="tts-btn" onclick="event.stopPropagation();speak('${v.w.replace(/'/g,"\\'")}',this)">&#x1F50A;</button></div><div class="pos">${v.p}</div><div class="hint">Tap to flip &bull; &#x1F50A; to hear</div></div><div class="vocab-back"><div class="meaning">${v.m}</div><div class="arabic">${v.ar}</div><div class="example">"${v.ex}"</div><button class="tts-btn" onclick="event.stopPropagation();speak('${v.w.replace(/'/g,"\\'")}',this)" style="margin-top:6px;font-size:1.3rem">&#x1F50A;</button></div></div>`;
+    c.appendChild(d);
+  });
+}
+buildCards('vg-social',VS);buildCards('vg-friend',VF);buildCards('vg-actions',VA);
+
+const idioms=[
+  {i:"A friend in need is a friend indeed",m:"A real friend helps you when you have problems.",ex:"Wendy helped Anna when she lost her wallet. A friend in need is a friend indeed."},
+  {i:"Long time no see",m:"Said when you meet someone after a long time.",ex:"Emily! Long time no see! How have you been?"},
+  {i:"To go way back",m:"To have known someone for a very long time.",ex:"We go way back — we've been friends since primary school."},
+  {i:"Keep in touch",m:"To continue communicating with someone.",ex:"I hope we can keep in touch after class ends."},
+  {i:"Out of the blue",m:"Something unexpected, a surprise.",ex:"She messaged me out of the blue after 5 years!"},
+  {i:"Ring a bell",m:"To sound familiar, to slightly remember something.",ex:"Her name rings a bell. Did we go to the same school?"},
+  {i:"Hit it off",m:"To become friends quickly with someone new.",ex:"We met online and hit it off immediately."},
+  {i:"Small world",m:"Said when you find an unexpected connection.",ex:"You know Sara too? Small world!"},
+];
+const ib=document.getElementById('idioms-box');
+idioms.forEach(x=>{const d=document.createElement('div');d.className='idiom-card';d.innerHTML=`<div class="idiom">"${x.i}"</div><div class="idiom-meaning">${x.m}</div><div class="idiom-example">${x.ex}</div>`;ib.appendChild(d)});
+
+function toggleRole(r){document.getElementById(r+'-convo').classList.toggle('show')}
+
+const GTOTAL=10;
+const gExercises=[
+  {text:"I ___ (read) a book when the doorbell rang.",ans:"was reading"},
+  {text:"My friend ___ (show) me her outfit when the dog ran in.",ans:"was showing"},
+  {text:"I ___ (write) a note when my pen ran out.",ans:"was writing"},
+  {text:"We ___ (take) a selfie when someone bumped into us.",ans:"were taking"},
+  {text:"They ___ (talk) about old times when they found a photo.",ans:"were talking"},
+  {text:"My friend ___ (tell) a story when I started to laugh.",ans:"was telling"},
+  {text:"I ___ (make) a bracelet when the thread broke.",ans:"was making"},
+  {text:"I ___ (wait) for my friend when she showed up with ice cream.",ans:"was waiting"},
+  {text:"They ___ (practice) for the play when the teacher called them.",ans:"were practicing"},
+  {text:"We ___ (plan) a surprise when she entered the room.",ans:"were planning"},
+];
+const ge=document.getElementById('grammar-exercises');
+gExercises.forEach((g,i)=>{
+  const d=document.createElement('div');d.style.cssText='margin-bottom:10px;font-size:0.88rem;';
+  const parts=g.text.split('___');
+  d.innerHTML=`<span>${i+1}. ${parts[0]}</span><input type="text" class="fill-input gi" data-ans="${g.ans}" placeholder="?"><span>${parts[1]}</span>`;
+  ge.appendChild(d);
+});
+
+function checkGrammar(){
+  let c=0;
+  document.querySelectorAll('.gi').forEach(inp=>{
+    const ok=inp.value.trim().toLowerCase()===inp.dataset.ans;
+    inp.classList.remove('correct','wrong');inp.classList.add(ok?'correct':'wrong');if(ok)c++;
+  });
+  const r=document.getElementById('grammar-result');r.classList.remove('hidden');
+  r.style.color=c===GTOTAL?'var(--green)':'var(--orange)';
+  r.textContent=c===GTOTAL?`${c}/${GTOTAL} Perfect! 🎉`:`${c}/${GTOTAL} — Try the red ones again!`;
+  document.getElementById('sb-grammar').textContent=`${c}/${GTOTAL}`;updateProgress();
+}
+function retryGrammar(){
+  document.querySelectorAll('.gi').forEach(inp=>{inp.value='';inp.classList.remove('correct','wrong')});
+  document.getElementById('grammar-result').classList.add('hidden');
+  document.getElementById('sb-grammar').textContent=`0/${GTOTAL}`;updateProgress();
+}
+
+const QTOTAL=18;
+const QQ=[
+  {q:"'Stay in touch' means:",o:["Keep communicating with someone","Touch someone's hand","Stay at home"],a:0,cat:"Vocabulary",why:"'Stay in touch' = continue communicating/talking even when you're not together physically."},
+  {q:"'Meet face-to-face' means:",o:["See someone in real life","Send a video message","Look at photos online"],a:0,cat:"Vocabulary",why:"Face-to-face = in person, physically present, not through a screen or phone."},
+  {q:"What does 'reconnect' mean?",o:["Connect again after a long time","Disconnect from wifi","Make a new friend"],a:0,cat:"Vocabulary",why:"Re- means 'again'. Reconnect = connect again with someone you lost contact with."},
+  {q:"'Be careful' with online information means:",o:["Think before sharing private details","Share everything with everyone","Delete your account"],a:0,cat:"Vocabulary",why:"Being careful online = thinking before sharing personal info. Not everyone online can be trusted."},
+  {q:"What does 'browse' mean?",o:["Look through content casually online","Buy something online","Delete a photo"],a:0,cat:"Vocabulary",why:"Browse = look through websites/apps casually, without a specific goal. Like browsing in a shop."},
+  {q:"'I ___ to my friend when the phone rang.' Which form?",o:["was talking","talked","am talking"],a:0,cat:"Grammar",why:"The phone rang (past simple = short action). Talking was the background = past continuous: was talking."},
+  {q:"'She ___ her homework when the lights went off.'",o:["was doing","did","does"],a:0,cat:"Grammar",why:"Lights going off = sudden event (past simple). Homework = background action = past continuous: was doing."},
+  {q:"'While we ___ in the park, it started to rain.'",o:["were sitting","sat","are sitting"],a:0,cat:"Grammar",why:"'While' + past continuous (background). Started = past simple (event). We (plural) = were sitting."},
+  {q:"'I ___ a book when my friend called me.'",o:["was reading","read","am reading"],a:0,cat:"Grammar",why:"Called = sudden past event. Reading = background activity. I = was reading (past continuous)."},
+  {q:"Which sentence is correct?",o:["He was playing video games when I asked for help.","He was play video games when I asked for help.","He playing video games when I asked for help."],a:0,cat:"Grammar",why:"Past continuous needs was/were + verb-ING. 'Was playing' is the correct form for he/she/it."},
+  {q:"Which sentence uses past continuous correctly?",o:["They were cooking dinner when the guests arrived.","They cooking dinner when the guests arrived.","They were cook dinner when the guests arrived."],a:0,cat:"Grammar",why:"Were + verb-ING = correct past continuous. 'Were cooking' (not 'were cook' or just 'cooking')."},
+  {q:"Sarah uses too much flour. The recipe needs 2 cups but she used 3. That's:",o:["too much","not enough","enough"],a:0,cat:"S3 Review",why:"3 cups when only 2 needed = excessive = too much. Flour is uncountable, so 'too much' (not 'too many')."},
+  {q:"'___ is my best friend.' (next to you, one person)",o:["This","That","Those"],a:0,cat:"S4 Review",why:"Near + singular = this. The person is next to you (near) and it's one person (singular)."},
+  {q:"In the story, why was Anna crying on the bench?",o:["She lost her wallet","She was hungry","She missed the bus"],a:0,cat:"Comprehension",why:"The text says: 'Anna said she had lost her wallet, and she didn't have any money to take a bus home.'"},
+  {q:"How did Wendy help Anna?",o:["Offered to pay for her bus ride","Called the police","Gave her food"],a:0,cat:"Comprehension",why:"'I offered to pay for her bus ride, and she smiled for the first time that day.'"},
+  {q:"How did Anna get her wallet back?",o:["A man found it on the street and returned it","She found it in her bag","Wendy found it"],a:0,cat:"Comprehension",why:"'He said he had found the wallet on the street and was trying to return it.'"},
+  {q:"How did the speaker find Emily?",o:["Saw her picture while browsing social media","Met her at a party","She called him on the phone"],a:0,cat:"Comprehension",why:"'While I was browsing my feed, I saw a picture of my best friend from primary school.'"},
+  {q:"What group did the speaker join?",o:["A group for people who love books","A cooking group","A sports group"],a:0,cat:"Comprehension",why:"'I joined a group for people who love books. I started talking to a girl named Mia.'"},
+];
+
+let quizState={answered:0,correct:0};
+function buildQuiz(){
+  const c=document.getElementById('quiz-container');c.innerHTML='';quizState={answered:0,correct:0};
+  QQ.forEach((qq,i)=>{
+    const idx=[0,1,2];for(let j=2;j>0;j--){const k=Math.floor(Math.random()*(j+1));[idx[j],idx[k]]=[idx[k],idx[j]]}
+    const ci=idx.indexOf(qq.a);
+    const cc=qq.cat==='Vocabulary'?'var(--green)':qq.cat==='Grammar'?'var(--accent)':qq.cat.includes('Review')?'var(--orange)':'var(--pink)';
+    const d=document.createElement('div');d.className='quiz-q';d.id=`qq${i}`;
+    d.innerHTML=`<div class="q-num" style="color:${cc}">Q${i+1} — ${qq.cat}</div><div class="q-text">${qq.q}</div>${idx.map((oi,bi)=>`<button class="quiz-option" data-q="${i}" data-c="${bi===ci?1:0}" onclick="ansQ(this,${i})">${qq.o[oi]}</button>`).join('')}<button class="why-btn" id="wb${i}" onclick="toggleWhy(${i})">&#x1F4A1; Why is this correct?</button><div class="why-text" id="wt${i}">${qq.why}</div>`;
+    c.appendChild(d);
+  });
+  document.getElementById('sb-quiz').textContent=`0/${QTOTAL}`;
+  document.getElementById('quiz-final').classList.add('hidden');
+}
+buildQuiz();
+
+function ansQ(btn,qi){
+  const p=document.getElementById(`qq${qi}`);if(p.dataset.done)return;p.dataset.done='1';
+  if(btn.dataset.c==='1'){btn.classList.add('correct');quizState.correct++}else{btn.classList.add('wrong')}
+  p.querySelectorAll('.quiz-option').forEach(b=>b.disabled=true);
+  quizState.answered++;document.getElementById(`wb${qi}`).classList.add('show');
+  document.getElementById('sb-quiz').textContent=`${quizState.correct}/${QTOTAL}`;updateProgress();
+}
+function toggleWhy(qi){const t=document.getElementById(`wt${qi}`);t.classList.toggle('show');document.getElementById(`wb${qi}`).textContent=t.classList.contains('show')?'Hide explanation':'💡 Why is this correct?'}
+function showQuizScore(){
+  const d=document.getElementById('quiz-final');d.classList.remove('hidden');
+  const pct=Math.round((quizState.correct/QTOTAL)*100);
+  const emoji=pct>=80?'&#x1F389;':pct>=60?'&#x1F44D;':'&#x1F4AA;';
+  const msg=pct>=80?"Amazing! Ready for Session 6!":pct>=60?'Good! Retry to improve.':'Keep practicing!';
+  const col=pct>=80?'var(--green)':pct>=60?'var(--orange)':'var(--red)';
+  d.style.borderColor=col;d.innerHTML=`<div style="font-size:2rem">${emoji}</div><h3 style="color:${col}">${quizState.correct}/${QTOTAL} (${pct}%)</h3><p style="color:var(--text-dim);margin-top:6px">${msg}</p>`;
+}
+function retryQuiz(){buildQuiz()}
+
+function wc(id){const t=document.getElementById(id).value.trim();return t?t.split(/\s+/).length:0}
+function updateEmailWC(){document.getElementById('email-wc').textContent=wc('email-area');updateSB()}
+function updateStoryWC(){document.getElementById('story-wc').textContent=wc('story-area');updateSB()}
+function updateEmailCheck(){
+  const ch=[...document.querySelectorAll('#email-checklist input')];const n=ch.filter(c=>c.checked).length;
+  document.getElementById('email-check-result').textContent=n===ch.length?'✓ Great email!':n+'/'+ch.length;
+  document.getElementById('email-check-result').style.color=n===ch.length?'var(--green)':'var(--orange)';
+}
+function updateStoryCheck(){
+  const ch=[...document.querySelectorAll('#story-checklist input')];const n=ch.filter(c=>c.checked).length;
+  document.getElementById('story-check-result').textContent=n===ch.length?'✓ Great story!':n+'/'+ch.length;
+  document.getElementById('story-check-result').style.color=n===ch.length?'var(--green)':'var(--orange)';
+}
+function updateSB(){
+  document.getElementById('sb-cards').textContent=document.querySelectorAll('.vocab-card.flipped').length;
+  document.getElementById('sb-words').textContent=wc('email-area')+wc('story-area');updateProgress();
+}
+function updateProgress(){
+  const cards=document.querySelectorAll('.vocab-card.flipped').length;
+  const tc=document.querySelectorAll('.vocab-card').length;
+  const gd=document.querySelectorAll('.gi.correct').length;
+  const p=Math.round((cards/tc)*20+(gd/GTOTAL)*20+(quizState.answered/QTOTAL)*30+Math.min((wc('email-area')+wc('story-area'))/120,1)*30);
+  document.getElementById('progress-pct').textContent=p+'%';
+  document.getElementById('progress-fill').style.width=p+'%';
+}
+
+(function(){
+  const allVocab=[...VS,...VF,...VA];
+  const catMap={};VS.forEach(v=>catMap[v.w]='Social');VF.forEach(v=>catMap[v.w]='Phrase');VA.forEach(v=>catMap[v.w]='Action');
+  const catColors={Social:'var(--accent)',Phrase:'var(--green)',Action:'var(--orange)'};
+  const container=document.getElementById('summary-vocab-table');
+  const tbl=document.createElement('table');tbl.className='summary-table';
+  const hdr=document.createElement('tr');hdr.innerHTML='<th>Word</th><th>Type</th><th>Meaning</th><th>&#x1F50A;</th>';tbl.appendChild(hdr);
+  allVocab.forEach(v=>{
+    const cat=catMap[v.w];const tr=document.createElement('tr');
+    tr.innerHTML=`<td><strong>${v.w}</strong></td><td><span class="cat-tag" style="background:${catColors[cat]}20;color:${catColors[cat]}">${cat}</span></td><td>${v.m}<br><span style="color:var(--pink);font-size:0.78rem">${v.ar}</span></td><td><button class="tts-btn" onclick="speak('${v.w.replace(/'/g,"\\'")}',this)">&#x1F50A;</button></td>`;
+    tbl.appendChild(tr);
+  });container.appendChild(tbl);
+  const itbl=document.getElementById('summary-idioms-table');
+  idioms.forEach(x=>{const tr=document.createElement('tr');tr.innerHTML=`<td><strong style="color:var(--orange)">${x.i}</strong></td><td>${x.m}</td><td style="font-style:italic;font-size:0.8rem">${x.ex}</td>`;itbl.appendChild(tr)});
+})();
+</script>
+</body>
+</html>

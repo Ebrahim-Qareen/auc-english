@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session 4 - Friendship | AUC English A2A</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap');
+  :root {
+    --bg: #f8f6f1; --card: #ffffff; --card-alt: #fefcf7;
+    --accent: #5b6abf; --accent-light: #e8eaff;
+    --green: #2d9d78; --green-light: #e6f7f1;
+    --orange: #e8862a; --orange-light: #fff3e6;
+    --red: #d94f4f; --red-light: #ffeaea;
+    --pink: #c45ba1; --pink-light: #fce8f4;
+    --yellow: #f0c929; --yellow-light: #fef9e7;
+    --text: #2d3142; --text-dim: #6b7280;
+    --border: #e5e2db; --shadow: 0 2px 12px rgba(0,0,0,0.06); --radius: 16px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+  h1,h2,h3,.fun-title{font-family:'Fredoka',sans-serif}
+
+  /* HERO */
+  .hero{background:linear-gradient(135deg,#5b6abf 0%,#7b68ee 40%,#c45ba1 100%);padding:50px 24px 40px;text-align:center;color:#fff;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,0.08)}
+  .hero-emoji{font-size:3rem;margin-bottom:8px}
+  .hero h1{font-size:2.2rem;font-weight:700;margin-bottom:4px}
+  .hero .sub{opacity:0.9;font-size:1rem}
+  .badge-row{display:flex;gap:8px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+  .badge{background:rgba(255,255,255,0.18);padding:4px 14px;border-radius:20px;font-size:0.78rem;font-weight:600}
+  .alert-banner{background:linear-gradient(90deg,#e8862a,#d94f4f);color:#fff;text-align:center;padding:10px 20px;font-size:0.88rem;font-weight:600}
+
+  /* METHOD BANNER */
+  .method-banner{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 24px;margin:20px auto 0;max-width:860px;box-shadow:var(--shadow)}
+  .method-steps{display:flex;justify-content:center;align-items:center;gap:4px;flex-wrap:wrap;margin-top:10px}
+  .method-step{display:flex;align-items:center;gap:6px;padding:6px 14px;border-radius:10px;font-size:0.82rem;font-weight:600;white-space:nowrap}
+  .method-arrow{color:var(--text-dim);font-size:1rem}
+
+  /* NAV */
+  .nav{position:sticky;top:0;z-index:100;background:rgba(248,246,241,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+  .nav-inner{max-width:900px;margin:0 auto;display:flex;overflow-x:auto;gap:2px;padding:8px 16px}
+  .nav-inner::-webkit-scrollbar{height:0}
+  .nav a{color:var(--text-dim);text-decoration:none;font-size:0.8rem;font-weight:500;white-space:nowrap;padding:6px 12px;border-radius:8px;transition:all 0.2s}
+  .nav a:hover{color:var(--accent);background:var(--accent-light)}
+
+  /* LAYOUT */
+  .container{max-width:860px;margin:0 auto;padding:0 16px}
+  .section{margin-top:40px;scroll-margin-top:60px}
+  .section-label{display:inline-flex;align-items:center;gap:8px;font-family:'Fredoka',sans-serif;font-size:0.78rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;padding:4px 14px;border-radius:20px;margin-bottom:10px}
+  .section h2{font-size:1.5rem;font-weight:700;margin-bottom:16px}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:16px;box-shadow:var(--shadow)}
+  .card h3{font-size:1.1rem;margin-bottom:10px}
+
+  /* PROGRESS */
+  .progress-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 24px;margin-top:16px;box-shadow:var(--shadow)}
+  .progress-label{font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.95rem;margin-bottom:8px;display:flex;justify-content:space-between}
+  .progress-bar{height:12px;background:#e8e6e0;border-radius:6px;overflow:hidden}
+  .progress-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--green),#2dd4a8);transition:width 0.6s ease;width:0%}
+
+  /* RECAP */
+  .recap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-bottom:20px}
+  .recap-chip{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center;box-shadow:var(--shadow);transition:transform 0.2s}
+  .recap-chip:hover{transform:translateY(-2px)}
+  .recap-chip .num{font-family:'Fredoka',sans-serif;font-size:0.72rem;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:1px}
+  .recap-chip .topic{font-weight:700;font-size:0.95rem;margin:4px 0 2px}
+  .recap-chip .detail{font-size:0.78rem;color:var(--text-dim)}
+  .fill-row{background:var(--card);border:1.5px solid var(--border);border-radius:12px;padding:14px;margin:8px 0;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .fill-row select{padding:6px 10px;border-radius:8px;border:1.5px solid var(--border);font-size:0.85rem;font-family:inherit}
+  .fill-row .result{font-size:0.85rem;font-weight:600;margin-left:auto}
+  .recap-current{border-color:var(--accent);background:var(--accent-light)}
+
+  /* VOCAB FLASHCARDS */
+  .vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+  .vocab-card{perspective:800px;height:190px;cursor:pointer}
+  .vocab-inner{position:relative;width:100%;height:100%;transition:transform 0.5s;transform-style:preserve-3d}
+  .vocab-card.flipped .vocab-inner{transform:rotateY(180deg)}
+  .vocab-front,.vocab-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:14px;padding:16px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border:1px solid var(--border);box-shadow:var(--shadow)}
+  .vocab-front{background:var(--card)}
+  .vocab-front .word{font-family:'Fredoka',sans-serif;font-size:1.25rem;font-weight:700;color:var(--accent)}
+  .vocab-front .pos{font-size:0.72rem;color:var(--text-dim);margin-top:2px}
+  .vocab-front .hint{font-size:0.7rem;color:var(--pink);margin-top:8px;font-weight:500}
+  .vocab-back{background:linear-gradient(135deg,var(--accent-light),#f3e8ff);transform:rotateY(180deg)}
+  .vocab-back .meaning{font-weight:600;font-size:0.9rem;margin-bottom:4px}
+  .vocab-back .arabic{font-size:0.82rem;color:var(--pink);margin-bottom:4px}
+  .vocab-back .example{font-size:0.8rem;color:var(--text-dim);font-style:italic}
+
+  /* GRAMMAR TABLE */
+  .grammar-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:12px;overflow:hidden;margin:12px 0;border:1px solid var(--border)}
+  .grammar-table th{background:var(--accent);color:#fff;padding:10px 14px;font-weight:600;font-size:0.85rem;text-align:center}
+  .grammar-table td{padding:10px 14px;text-align:center;font-size:0.88rem;border-bottom:1px solid var(--border)}
+  .grammar-table tr:last-child td{border-bottom:0}
+  .grammar-table tr:nth-child(even) td{background:#faf9f6}
+  .demo-word{display:inline-block;background:var(--accent-light);color:var(--accent);font-weight:700;padding:2px 10px;border-radius:6px;font-size:0.85rem}
+
+  /* AUDIO */
+  .audio-card{background:linear-gradient(135deg,#f0f0ff,#fce8f4);border:1px solid #e0ddf5;border-radius:var(--radius);padding:18px;margin-bottom:14px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .audio-icon{font-size:2rem}
+  .audio-info h4{font-family:'Fredoka',sans-serif;font-size:0.95rem}
+  .audio-info p{font-size:0.8rem;color:var(--text-dim)}
+  .audio-link{display:inline-block;padding:7px 16px;background:var(--accent);color:#fff;border-radius:10px;text-decoration:none;font-weight:600;font-size:0.82rem;transition:background 0.2s}
+  .subtitle-toggle{margin-top:8px;width:100%}
+  .subtitle-toggle summary{cursor:pointer;font-size:0.82rem;font-weight:600;color:var(--accent);padding:6px 0;user-select:none}
+  .subtitle-toggle summary:hover{color:var(--green)}
+  .subtitle-text{background:#faf9f6;border-radius:10px;padding:14px 16px;margin-top:6px;font-size:0.82rem;line-height:1.9;color:var(--text);max-height:300px;overflow-y:auto}
+  .audio-link:hover{background:#4a59ae}
+
+  /* QUIZ */
+  .quiz-q{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:14px;box-shadow:var(--shadow)}
+  .quiz-q .q-num{font-family:'Fredoka',sans-serif;font-size:0.72rem;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+  .quiz-q .q-text{font-weight:600;font-size:0.93rem;margin-bottom:12px}
+  .quiz-option{display:block;width:100%;text-align:left;padding:10px 14px;margin-bottom:6px;background:#faf9f6;border:2px solid var(--border);border-radius:10px;cursor:pointer;font-size:0.86rem;transition:all 0.2s;font-family:'Inter',sans-serif}
+  .quiz-option:hover:not(:disabled){border-color:var(--accent);background:var(--accent-light)}
+  .quiz-option.correct{border-color:var(--green);background:var(--green-light);color:var(--green);font-weight:600}
+  .quiz-option.wrong{border-color:var(--red);background:var(--red-light);color:var(--red)}
+  .quiz-option:disabled{cursor:default}
+
+  /* FILL INPUT */
+  .fill-input{display:inline-block;width:90px;padding:4px 8px;border:2px solid var(--border);border-radius:8px;font-size:0.88rem;font-family:'Inter',sans-serif;text-align:center;background:#faf9f6;transition:border-color 0.2s}
+  .fill-input:focus{outline:none;border-color:var(--accent)}
+  .fill-input.correct{border-color:var(--green);background:var(--green-light)}
+  .fill-input.wrong{border-color:var(--red);background:var(--red-light)}
+
+  /* BUTTONS */
+  .btn{display:inline-block;padding:8px 20px;border:none;border-radius:10px;font-weight:600;font-size:0.88rem;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.2s}
+  .btn-accent{background:var(--accent);color:#fff}.btn-accent:hover{background:#4a59ae}
+  .btn-green{background:var(--green);color:#fff}.btn-green:hover{background:#248a68}
+  .btn-orange{background:var(--orange);color:#fff}.btn-orange:hover{background:#cf7524}
+  .btn-outline{background:transparent;border:2px solid var(--accent);color:var(--accent)}.btn-outline:hover{background:var(--accent-light)}
+
+  /* WRITING */
+  .writing-area{width:100%;min-height:140px;padding:14px;border:2px solid var(--border);border-radius:12px;font-family:'Inter',sans-serif;font-size:0.88rem;line-height:1.7;resize:vertical;background:#fefefe;transition:border-color 0.2s}
+  .writing-area:focus{outline:none;border-color:var(--accent)}
+  .word-count{font-size:0.78rem;color:var(--text-dim);margin-top:6px;text-align:right}
+
+  /* IDIOMS */
+  .idiom-card{background:var(--card);border-left:4px solid var(--orange);border-radius:0 12px 12px 0;padding:14px 16px;margin-bottom:10px;box-shadow:var(--shadow)}
+  .idiom-card .idiom{font-family:'Fredoka',sans-serif;font-size:1rem;color:var(--orange);font-weight:600}
+  .idiom-card .idiom-meaning{font-size:0.85rem;color:var(--text-dim);margin-top:3px}
+  .idiom-card .idiom-example{font-size:0.82rem;font-style:italic;margin-top:3px}
+
+  /* CHALLENGE */
+  .challenge-box{background:linear-gradient(135deg,#fff3e6,#ffeaea);border:2px dashed var(--orange);border-radius:var(--radius);padding:22px;text-align:center;margin:14px 0}
+  .challenge-box h3{font-family:'Fredoka',sans-serif;color:var(--orange)}
+
+  /* PREVIEW */
+  .preview-box{background:linear-gradient(135deg,#e8eaff,#f3e8ff);border:1px solid #d0d3f0;border-radius:var(--radius);padding:20px;margin:14px 0}
+  .preview-box h4{font-family:'Fredoka',sans-serif;color:var(--accent);margin-bottom:6px}
+
+  /* TIPS */
+  .tip-box{background:var(--green-light);border-left:4px solid var(--green);border-radius:0 12px 12px 0;padding:12px 16px;margin:10px 0;font-size:0.85rem}
+  .tip-box strong{color:var(--green)}
+
+  /* CHEAT SHEET */
+  .cheat-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:600px){.cheat-grid{grid-template-columns:1fr}.vocab-grid{grid-template-columns:1fr}.recap-grid{grid-template-columns:1fr 1fr}}
+  .cheat-cell{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;box-shadow:var(--shadow)}
+  .cheat-cell h4{font-family:'Fredoka',sans-serif;font-size:0.9rem;margin-bottom:6px}
+
+  /* SCORE BANNER */
+  .score-banner{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--border);padding:8px 16px;display:flex;justify-content:center;align-items:center;gap:18px;box-shadow:0 -2px 10px rgba(0,0,0,0.06);z-index:99;font-family:'Fredoka',sans-serif}
+  .score-item{text-align:center}
+  .score-item .label{font-size:0.65rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px}
+  .score-item .val{font-size:1.1rem;font-weight:700}
+
+  .pb-80{padding-bottom:80px}
+  .mt-8{margin-top:8px}.mt-12{margin-top:12px}.mt-16{margin-top:16px}.mt-20{margin-top:20px}
+  .text-center{text-align:center}
+  .hidden{display:none}
+
+  /* EMAIL TEMPLATE */
+  .email-frame{background:#fff;border:1px solid #d0d0d0;border-radius:10px;overflow:hidden;margin:12px 0}
+  .email-header{background:#f0f0f0;padding:10px 16px;border-bottom:1px solid #d0d0d0;font-size:0.82rem}
+  .email-header span{color:var(--text-dim)}
+  .email-body{padding:16px;font-size:0.88rem;line-height:1.8}
+
+  /* CHECKLIST */
+  .checklist label{display:flex;align-items:flex-start;gap:8px;padding:6px 0;cursor:pointer;font-size:0.88rem}
+  .checklist input[type=checkbox]{margin-top:4px;accent-color:var(--green);width:16px;height:16px}
+
+  /* TTS BUTTON */
+  .tts-btn{background:none;border:none;cursor:pointer;font-size:1.1rem;padding:2px 4px;border-radius:6px;transition:all 0.2s;vertical-align:middle}
+  .tts-btn:hover{background:var(--accent-light);transform:scale(1.15)}
+  .tts-btn.playing{animation:pulse 0.8s infinite}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+
+  /* SUMMARY TABLE */
+  .summary-table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;font-size:0.84rem}
+  .summary-table th{background:var(--accent);color:#fff;padding:10px 12px;font-weight:600;text-align:left;font-size:0.8rem}
+  .summary-table td{padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+  .summary-table tr:last-child td{border-bottom:0}
+  .summary-table tr:nth-child(even) td{background:#faf9f6}
+  .summary-table .cat-tag{display:inline-block;padding:1px 8px;border-radius:10px;font-size:0.7rem;font-weight:600}
+
+  /* WHY BUTTON */
+  .why-btn{display:none;margin-top:8px;padding:5px 14px;background:var(--accent-light);border:1px solid var(--accent);color:var(--accent);border-radius:8px;cursor:pointer;font-size:0.78rem;font-weight:600;font-family:'Inter',sans-serif;transition:all 0.2s}
+  .why-btn:hover{background:var(--accent);color:#fff}
+  .why-btn.show{display:inline-block}
+  .why-text{display:none;margin-top:6px;padding:10px 14px;background:var(--accent-light);border-radius:10px;font-size:0.82rem;color:var(--accent);font-weight:500}
+  .why-text.show{display:block}
+
+  /* SESSION NAV */
+  .session-nav{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:16px 0}
+  .session-nav a{display:inline-flex;align-items:center;gap:4px;padding:6px 14px;border-radius:10px;font-size:0.8rem;font-weight:600;text-decoration:none;border:2px solid var(--border);color:var(--text-dim);transition:all 0.2s}
+  .session-nav a:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light)}
+  .session-nav a.active{border-color:var(--accent);background:var(--accent);color:#fff}
+  .session-nav a.disabled{opacity:0.4;pointer-events:none}
+
+  .role-card{background:var(--card);border:2px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:14px;box-shadow:var(--shadow);cursor:pointer;transition:all 0.3s}
+  .role-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.1)}
+  .role-card h4{font-family:'Fredoka',sans-serif;font-size:1.05rem;margin-bottom:8px}
+  .role-card .role-points{list-style:none;padding:0}
+  .role-card .role-points li{font-size:0.85rem;padding:3px 0;padding-left:18px;position:relative}
+  .role-card .role-points li::before{content:'•';position:absolute;left:4px;color:var(--accent);font-weight:700}
+  .role-convo{display:none;background:#faf9f6;border-radius:12px;padding:16px;margin-top:12px;font-size:0.86rem;line-height:1.9}
+  .role-convo.show{display:block}
+</style>
+</head>
+<body class="pb-80">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-emoji">&#x1F91D;</div>
+  <h1>Session 4: Friendship</h1>
+  <p class="sub">What makes a good friend? Let's find out!</p>
+  <div class="badge-row">
+    <span class="badge">&#x1F4DA; A2 Level</span>
+    <span class="badge">&#x1F3AF; this/that/these/those</span>
+    <span class="badge">&#x270F;&#xFE0F; Writing Assessment 20pts</span>
+  </div>
+</div>
+<div class="alert-banner">&#x1F6A8; Assessment Alert: Graded writing task THIS session &mdash; 20 points!</div>
+
+<!-- SESSION NAVIGATOR -->
+<div class="container">
+  <div class="session-nav" style="margin-top:16px">
+    <a href="session-1.html">&#x1F382; S1</a>
+    <a href="session-2.html">&#x1F389; S2</a>
+    <a href="session-3.html">&#x1F35C; S3</a>
+    <a href="#" class="active">&#x1F91D; S4</a>
+    <a href="session-5.html">&#x1F4F1; S5</a>
+    <a href="#" class="disabled">&#x1F60A; S6</a>
+    <a href="#" class="disabled">&#x1F614; S7</a>
+    <a href="#" class="disabled">&#x1F4B0; S8</a>
+    <a href="#" class="disabled">&#x1F3DD; S9</a>
+    <a href="#" class="disabled">&#x1F3DD; S10</a>
+    <a href="#" class="disabled">&#x1F455; S11</a>
+    <a href="#" class="disabled">&#x1F455; S12</a>
+  </div>
+  <p style="text-align:center;font-size:0.72rem;color:var(--text-dim)">Sessions unlock as you send me materials. All sessions will be on one page!</p>
+</div>
+
+<!-- SCIENTIFIC METHOD BANNER -->
+<div class="container">
+  <div class="method-banner">
+    <div style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.9rem;text-align:center;">&#x1F9EA; This page follows the scientifically proven learning sequence</div>
+    <div class="method-steps">
+      <span class="method-step" style="background:var(--pink-light);color:var(--pink);">&#x1F3A7; Listen</span>
+      <span class="method-arrow">&rarr;</span>
+      <span class="method-step" style="background:var(--accent-light);color:var(--accent);">&#x1F4D6; Read & Learn</span>
+      <span class="method-arrow">&rarr;</span>
+      <span class="method-step" style="background:var(--orange-light);color:var(--orange);">&#x1F5E3; Speak</span>
+      <span class="method-arrow">&rarr;</span>
+      <span class="method-step" style="background:var(--green-light);color:var(--green);">&#x270F; Write</span>
+      <span class="method-arrow">&rarr;</span>
+      <span class="method-step" style="background:var(--red-light);color:var(--red);">&#x1F3AF; Test</span>
+    </div>
+    <p style="font-size:0.75rem;color:var(--text-dim);text-align:center;margin-top:8px;">Based on Krashen's Input Hypothesis + Swain's Output Hypothesis + Spaced Repetition research. Input first (listen &rarr; read), then output (speak &rarr; write), then test for retention.</p>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#recap">Recap</a>
+    <a href="#listen">1. Listen</a>
+    <a href="#vocab">2. Vocabulary</a>
+    <a href="#grammar">3. Grammar</a>
+    <a href="#reading">4. Read</a>
+    <a href="#speaking">5. Speak</a>
+    <a href="#roleplay">6. Roleplay</a>
+    <a href="#email">7. Email</a>
+    <a href="#writing">8. Write</a>
+    <a href="#quiz">9. Quiz</a>
+    <a href="#summary">Summary</a>
+    <a href="#cheat">Cheat Sheet</a>
+    <a href="#preview">Next</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- PROGRESS -->
+  <div class="progress-wrap">
+    <div class="progress-label"><span>Your Session Progress</span><span id="progress-pct">0%</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+  </div>
+
+  <!-- ====== RECAP ====== -->
+  <div class="section" id="recap">
+    <span class="section-label" style="background:var(--accent-light);color:var(--accent);">&#x1F519; Quick Recap</span>
+    <h2>&#x1F504; Recap &amp; Apply — Sessions 1-3 Grammar</h2>
+    <div class="recap-grid">
+      <div class="recap-chip"><div class="num">Session 1</div><div class="topic">&#x1F382; Birthdays</div><div class="detail">'will' for plans</div></div>
+      <div class="recap-chip"><div class="num">Session 2</div><div class="topic">&#x1F389; Parties</div><div class="detail">offer/accept/refuse help</div></div>
+      <div class="recap-chip"><div class="num">Session 3</div><div class="topic">&#x1F35C; Street Food</div><div class="detail">some/any, food adjectives</div></div>
+      <div class="recap-chip recap-current"><div class="num">Now!</div><div class="topic">&#x1F91D; Friendship</div><div class="detail">this/that/these/those</div></div>
+    </div>
+
+    <div class="card" style="border-left:4px solid var(--accent)">
+      <p style="font-size:0.88rem"><strong>S1:</strong> "will" for plans. <strong>S2:</strong> offer/accept/refuse help. <strong>S3:</strong> some/any + adjectives. Now apply all of them to friendship!</p>
+      <div style="margin-top:10px;font-size:0.82rem;color:var(--text-dim)">
+        <strong>S1:</strong> "I <em>will</em> help my friend." / "She <em>won't</em> forget."<br>
+        <strong>S2:</strong> "Can I help you with...?" / "Would you like me to...?"<br>
+        <strong>S3:</strong> "Do you have <em>any</em> good friends?" / "I have <em>some</em> kind friends."
+      </div>
+    </div>
+
+    <div class="card" style="border-left:4px solid var(--green)">
+      <h3>&#x1F9EA; Apply S1-S3 Grammar to Friendship</h3>
+      <p style="font-size:0.82rem;color:var(--text-dim);margin-bottom:10px">Choose the correct answer — use previous grammar with today's friendship topic:</p>
+      <div id="recap-exercises"></div>
+      <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn" style="background:var(--green);color:#fff;border:none;padding:8px 20px;border-radius:10px;font-weight:600;cursor:pointer" onclick="checkRecap()">Check</button>
+        <button class="btn" style="background:var(--accent);color:#fff;border:none;padding:8px 20px;border-radius:10px;font-weight:600;cursor:pointer" onclick="retryRecap()">Retry</button>
+        <span id="recap-score" style="font-family:'Fredoka',sans-serif;font-size:1rem;font-weight:700;margin-left:auto;display:flex;align-items:center"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== PHASE 1: LISTEN ====== -->
+  <div class="section" id="listen">
+    <span class="section-label" style="background:var(--pink-light);color:var(--pink);">Phase 1 &mdash; Input</span>
+    <h2>&#x1F3A7; Step 1: Listen First</h2>
+    <p style="color:var(--text-dim);margin-bottom:12px;font-size:0.88rem;">Your brain picks up pronunciation and rhythm before you study words. Just listen &mdash; don't read yet.</p>
+
+    <div class="audio-card">
+      <div class="audio-icon">&#x1F4E2;</div>
+      <div class="audio-info" style="flex:1"><h4>Vocabulary Audio</h4><p>Friendship words with pronunciation</p></div>
+      <audio controls preload="none" style="width:100%;max-width:280px;margin-top:4px"><source src="https://scemoodle.aucegypt.edu/pluginfile.php/3170036/mod_hvp/content/171754/audios/files-681aca833202c.mp3" type="audio/mpeg"></audio>
+      <details class="subtitle-toggle">
+        <summary>📝 Show Subtitle / Transcript</summary>
+        <div class="subtitle-text">
+          <p>Friendship vocabulary with pronunciation:</p>
+          <p><strong>People:</strong> best friend, classmate, neighbor, teammate, colleague, acquaintance</p>
+          <p><strong>Traits:</strong> kind, honest, loyal, supportive, encouraging, empathetic, reliable, trustworthy, caring, generous</p>
+          <p><strong>Actions:</strong> help, share, listen, trust, care, support, encourage, hang out, catch up, make friends</p>
+          <p>Listen and repeat each word. Pay attention to the stress: <em>sup-POR-tive</em>, <em>en-COU-ra-ging</em>, <em>em-pa-THE-tic</em>.</p>
+        </div>
+      </details>
+    </div>
+    <div class="audio-card">
+      <div class="audio-icon">&#x1F4DE;</div>
+      <div class="audio-info" style="flex:1"><h4>Listening 1: Sarah & Patricia</h4><p>Two friends talking about their friendship</p></div>
+      <audio controls preload="none" style="width:100%;max-width:280px;margin-top:4px"><source src="https://scemoodle.aucegypt.edu/pluginfile.php/3170038/mod_hvp/content/171756/audios/files-681acaef8bfd3.mp3" type="audio/mpeg"></audio>
+      <details class="subtitle-toggle">
+        <summary>📝 Show Subtitle / Transcript</summary>
+        <div class="subtitle-text">
+          <p><strong>Patricia:</strong> Hi, Sarah! It's Patricia.</p>
+          <p><strong>Sarah:</strong> Oh, hi, Patricia! How are you?</p>
+          <p><strong>Patricia:</strong> I'm good, thanks. I just wanted to say thank you for helping me with my homework yesterday. You are such a good friend!</p>
+          <p><strong>Sarah:</strong> You're welcome, Patricia! That's what friends do. We help each other.</p>
+          <p><strong>Patricia:</strong> I was so confused, but you explained it well. I finished my work quickly after you explained it.</p>
+          <p><strong>Sarah:</strong> I'm happy I could help. You always help me too! Like last week, when I forgot my lunch, you shared yours with me.</p>
+          <p><strong>Patricia:</strong> Friends should always share, help, and be kind to each other.</p>
+          <p><strong>Sarah:</strong> Yes! And good friends listen too. When I was sad last month, you listened to me and made me laugh!</p>
+          <p><strong>Patricia:</strong> That's what friends are for. I think you're the best friend ever!</p>
+          <p><strong>Sarah:</strong> Thanks, Patricia! You're my best friend too.</p>
+          <p><strong>Patricia:</strong> Let's always be good friends.</p>
+          <p><strong>Sarah:</strong> Yes, always! Bye, Patricia!</p>
+          <p><strong>Patricia:</strong> Bye, Sarah!</p>
+        </div>
+      </details>
+    </div>
+    <div class="audio-card">
+      <div class="audio-icon">&#x1F399;&#xFE0F;</div>
+      <div class="audio-info" style="flex:1"><h4>Listening 2: Wendy on Good Friends</h4><p>Wendy talks about her best friend Anna</p></div>
+      <audio controls preload="none" style="width:100%;max-width:280px;margin-top:4px"><source src="https://scemoodle.aucegypt.edu/pluginfile.php/3170040/mod_hvp/content/171758/audios/files-681c223932b6f.mp3" type="audio/mpeg"></audio>
+      <details class="subtitle-toggle">
+        <summary>📝 Show Subtitle / Transcript</summary>
+        <div class="subtitle-text">
+          <p>Hi, my name is Wendy. This is my best friend, Anna. She is kind, honest, and always helps me. A good friend is someone who cares about you and makes you happy. These traits — kindness, honesty, and support — are what make a great friend.</p>
+          <p>Last week, I was sad because I didn't do well on a test. Anna said, "Don't worry. You can do it next time!" That kind of support is what good friends do.</p>
+          <p>Anna always shares her things with me. Those moments when she helps me are what make our friendship special.</p>
+          <p>To have a good friend, you need to be a good friend. This means being kind, helpful, and honest.</p>
+        </div>
+      </details>
+    </div>
+    <div class="audio-card" style="background:linear-gradient(135deg,#e8eaff,#f0f0ff);border-color:#d0d3f0">
+      <div class="audio-icon">&#x1F3A7;</div>
+      <div class="audio-info" style="flex:1"><h4>Describing Friends with This & That</h4><p>Grammar + vocabulary combined naturally</p></div>
+      <audio controls style="width:100%;max-width:280px;margin-top:2px"><source src="https://drive.google.com/uc?export=download&id=1qAxZ7xMwK_S6PXEIShCBsi0yUSjaKUa0" type="audio/mpeg"></audio>
+      <details class="subtitle-toggle">
+        <summary>📝 Show Subtitle / Transcript</summary>
+        <div class="subtitle-text">
+          <p>Welcome to Session 4 — Describing Friends with This, That, These, and Those.</p>
+          <p>We use <strong>this</strong> and <strong>these</strong> for things close to us:</p>
+          <p>"<strong>This</strong> is my best friend." (one person, close)</p>
+          <p>"<strong>These</strong> are my classmates." (many people, close)</p>
+          <p>We use <strong>that</strong> and <strong>those</strong> for things far from us:</p>
+          <p>"<strong>That</strong> is my neighbor." (one person, far)</p>
+          <p>"<strong>Those</strong> are the new students." (many people, far)</p>
+          <p>Now let's combine with friendship vocabulary:</p>
+          <p>"<strong>This</strong> friend is very <strong>kind</strong>."</p>
+          <p>"<strong>That</strong> moment was <strong>special</strong>."</p>
+          <p>"<strong>These</strong> traits make a <strong>good friend</strong>."</p>
+          <p>"<strong>Those</strong> friends are very <strong>loyal</strong>."</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- ====== PHASE 2: VOCABULARY ====== -->
+  <div class="section" id="vocab">
+    <span class="section-label" style="background:var(--green-light);color:var(--green);">Phase 2 &mdash; Learn</span>
+    <h2>&#x1F4D6; Step 2: Vocabulary</h2>
+    <p style="color:var(--text-dim);margin-bottom:4px;font-size:0.88rem;">Click to flip. Try to guess before flipping!</p>
+
+    <h3 style="margin:16px 0 10px">&#x1F465; People</h3>
+    <div class="vocab-grid" id="vg-people"></div>
+    <h3 style="margin:16px 0 10px">&#x2728; Personality Traits</h3>
+    <div class="vocab-grid" id="vg-traits"></div>
+    <h3 style="margin:16px 0 10px">&#x1F4AA; Actions</h3>
+    <div class="vocab-grid" id="vg-actions"></div>
+
+    <h3 style="margin:16px 0 10px">&#x1F517; Collocations</h3>
+    <div class="card" style="background:var(--card-alt)">
+      <p style="font-size:0.88rem;line-height:2"><strong>make</strong> friends &bull; <strong>become</strong> friends &bull; <strong>be</strong> friends with &bull; <strong>hang out</strong> with &bull; <strong>catch up</strong> with &bull; <strong>close</strong> friend &bull; <strong>childhood</strong> friend &bull; <strong>get to know</strong> someone &bull; <strong>have</strong> something in common &bull; <strong>tell the truth</strong> in a kind way &bull; <strong>care</strong> about someone &bull; <strong>lift</strong> someone's spirit</p>
+    </div>
+
+    <h3 style="margin:16px 0 10px">&#x1F525; Idioms</h3>
+    <div id="idioms-box"></div>
+  </div>
+
+  <!-- ====== PHASE 3: GRAMMAR ====== -->
+  <div class="section" id="grammar">
+    <h2>&#x1F4DD; Step 3: Grammar &mdash; This, That, These, Those</h2>
+
+    <div class="card">
+      <h3>The Rule (Simple!)</h3>
+      <p style="font-size:0.9rem">We use these words to <strong>point at</strong> people or things. Two questions decide which word:</p>
+      <p style="font-size:0.9rem;margin:6px 0"><strong>1.</strong> Is it near you or far? &nbsp;&nbsp;<strong>2.</strong> Is it one or many?</p>
+      <table class="grammar-table">
+        <tr><th></th><th>&#x1F448; Near</th><th>&#x1F449; Far</th></tr>
+        <tr><td style="font-weight:700">One (singular)</td><td><span class="demo-word">this</span></td><td><span class="demo-word">that</span></td></tr>
+        <tr><td style="font-weight:700">Many (plural)</td><td><span class="demo-word">these</span></td><td><span class="demo-word">those</span></td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>Examples with Friends</h3>
+      <p style="font-size:0.88rem;margin-bottom:4px"><span class="demo-word">This</span> is my best friend. <em>(one person, next to me)</em></p>
+      <p style="font-size:0.88rem;margin-bottom:4px"><span class="demo-word">That</span> is her classmate over there. <em>(one person, far away)</em></p>
+      <p style="font-size:0.88rem;margin-bottom:4px"><span class="demo-word">These</span> are my close friends. <em>(group, near me)</em></p>
+      <p style="font-size:0.88rem;margin-bottom:4px"><span class="demo-word">Those</span> are their teammates. <em>(group, far away)</em></p>
+      <div class="tip-box mt-8"><strong>Also before nouns:</strong> "I enjoy spending time with <strong>this</strong> friend." / "<strong>Those</strong> people are very kind."</div>
+    </div>
+
+    <div class="card">
+      <h3>&#x270F;&#xFE0F; Practice (8 questions)</h3>
+      <div id="grammar-exercises"></div>
+      <div class="text-center mt-12">
+        <button class="btn btn-accent" onclick="checkGrammar()">Check Answers &#x2714;</button>
+        <button class="btn btn-outline" onclick="retryGrammar()" style="margin-left:8px">Retry &#x1F504;</button>
+      </div>
+      <div id="grammar-result" class="hidden mt-12 text-center" style="font-family:'Fredoka',sans-serif;font-size:1rem"></div>
+    </div>
+  </div>
+
+  <!-- ====== PHASE 4: READING ====== -->
+  <div class="section" id="reading">
+    <h2>&#x1F4D6; Step 4: Read & Understand</h2>
+    <p style="color:var(--text-dim);margin-bottom:12px;font-size:0.88rem;">Now read while you listen again. Notice the highlighted words.</p>
+
+    <div class="card">
+      <h3>&#x1F4DE; Sarah & Patricia's Phone Call</h3>
+      <div style="background:#faf9f6;padding:14px;border-radius:10px;font-size:0.86rem;line-height:2">
+        <strong>Patricia:</strong> Hi, Sarah! It's Patricia.<br>
+        <strong>Sarah:</strong> Oh, hi, Patricia! How are you?<br>
+        <strong>Patricia:</strong> I'm good, thanks. I just wanted to say thank you for <span class="demo-word">helping</span> me with my homework yesterday. You are such a <span class="demo-word">good friend</span>!<br>
+        <strong>Sarah:</strong> You're welcome, Patricia! That's what friends do. We <span class="demo-word">help</span> each other.<br>
+        <strong>Patricia:</strong> I was so confused, but you explained it well. I finished my work quickly after you explained it.<br>
+        <strong>Sarah:</strong> I'm happy I could help. You always help me too! Like last week, when I forgot my lunch, you <span class="demo-word">shared</span> yours with me.<br>
+        <strong>Patricia:</strong> Friends should always share, help, and be <span class="demo-word">kind</span> to each other.<br>
+        <strong>Sarah:</strong> Yes! And good friends <span class="demo-word">listen</span> too. When I was sad last month, you listened to me and made me laugh!<br>
+        <strong>Patricia:</strong> That's what friends are for. I think you're the best friend ever!<br>
+        <strong>Sarah:</strong> Thanks, Patricia! You're my best friend too.<br>
+        <strong>Patricia:</strong> Let's always be good friends.<br>
+        <strong>Sarah:</strong> Yes, always! Bye, Patricia!<br>
+        <strong>Patricia:</strong> Bye, Sarah!
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>&#x1F399;&#xFE0F; Wendy: How to Be a Good Friend</h3>
+      <div style="background:#faf9f6;padding:14px;border-radius:10px;font-size:0.86rem;line-height:2">
+        Hi, my name is Wendy. <span class="demo-word">This</span> is my best friend, Anna. She is <span class="demo-word">kind</span>, <span class="demo-word">honest</span>, and always helps me. A good friend is someone who <span class="demo-word">cares</span> about you and makes you happy. <span class="demo-word">These</span> traits &mdash; kindness, honesty, and support &mdash; are what make a great friend.<br><br>
+        Last week, I was sad because I didn't do well on a test. Anna said, "Don't worry. You can do it next time!" <span class="demo-word">That</span> kind of support is what good friends do.<br><br>
+        Anna always <span class="demo-word">shares</span> her things with me. <span class="demo-word">Those</span> moments when she helps me are what make our friendship special.<br><br>
+        To have a good friend, you need to <em>be</em> a good friend. <span class="demo-word">This</span> means being kind, helpful, and honest.
+      </div>
+      <div class="tip-box mt-8"><strong>Did you notice?</strong> Wendy used this, that, these, those naturally. This is how they work in real conversation!</div>
+    </div>
+  </div>
+
+  <!-- ====== PHASE 5: SPEAKING ====== -->
+  <div class="section" id="speaking">
+    <span class="section-label" style="background:var(--orange-light);color:var(--orange);">Phase 3 &mdash; Output</span>
+    <h2>&#x1F5E3; Step 5: Speaking Practice</h2>
+
+    <div class="card">
+      <h3>&#x1F3A4; 1-Minute Challenge</h3>
+      <p style="font-size:0.88rem;margin-bottom:8px">Set a timer. Speak for 60 seconds without stopping:</p>
+      <div class="challenge-box"><h3>"Describe your best friend. What qualities do they have? Give one example."</h3><p style="font-size:0.82rem;color:var(--text-dim);margin-top:6px">Use: 3 traits + 1 demonstrative + 1 idiom</p></div>
+    </div>
+
+    <div class="card">
+      <h3>&#x1F6E1; Rescue Phrases (when you get stuck)</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">
+        <span style="background:var(--accent-light);padding:5px 12px;border-radius:20px;font-size:0.82rem;font-weight:500">"Let me think..."</span>
+        <span style="background:var(--green-light);padding:5px 12px;border-radius:20px;font-size:0.82rem;font-weight:500">"What I mean is..."</span>
+        <span style="background:var(--orange-light);padding:5px 12px;border-radius:20px;font-size:0.82rem;font-weight:500">"For example..."</span>
+        <span style="background:var(--pink-light);padding:5px 12px;border-radius:20px;font-size:0.82rem;font-weight:500">"In my opinion..."</span>
+        <span style="background:var(--yellow-light);padding:5px 12px;border-radius:20px;font-size:0.82rem;font-weight:500">"I believe that..."</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== ROLEPLAY ====== -->
+  <div class="section" id="roleplay">
+    <h2>&#x1F3AD; Step 6: Roleplay &mdash; Talking About Friends</h2>
+    <p style="color:var(--text-dim);margin-bottom:14px;font-size:0.88rem;">Click each role card to see the guiding points and example conversation. Practice with a partner!</p>
+
+    <div class="role-card" style="border-color:var(--accent)" onclick="toggleRole('intro')">
+      <h4 style="color:var(--accent)">&#x1F64B; Role 1: The Introducer</h4>
+      <p style="font-size:0.85rem;color:var(--text-dim);margin-bottom:6px">Introduce your best friend to someone new. Describe their qualities.</p>
+      <ul class="role-points">
+        <li>Introduce your friend by name using "this" or "that"</li>
+        <li>Describe at least 3 personality traits</li>
+        <li>Give a specific example of when they showed each trait</li>
+        <li>Explain why this person is your best friend</li>
+      </ul>
+      <div class="role-convo" id="intro-convo">
+        <strong>You:</strong> Hey! <span class="demo-word">This</span> is my best friend, Nour. She's really <span class="demo-word">kind</span> and <span class="demo-word">supportive</span>.<br>
+        <strong>New person:</strong> Nice to meet you! What makes her so special?<br>
+        <strong>You:</strong> Well, she's very <span class="demo-word">honest</span>. She always tells me the truth in a kind way. Last week, I was stressed about an exam, and she said "You can do it!" <span class="demo-word">That</span> really helped me.<br>
+        <strong>New person:</strong> She sounds amazing!<br>
+        <strong>You:</strong> She is! <span class="demo-word">These</span> are the qualities that make her my best friend. I'm really <span class="demo-word">grateful</span> for her.
+      </div>
+    </div>
+
+    <div class="role-card" style="border-color:var(--green)" onclick="toggleRole('grateful')">
+      <h4 style="color:var(--green)">&#x1F49A; Role 2: The Grateful Friend</h4>
+      <p style="font-size:0.85rem;color:var(--text-dim);margin-bottom:6px">Thank a friend for something they did for you.</p>
+      <ul class="role-points">
+        <li>Tell your friend what they did that helped you</li>
+        <li>Use "this/that/these/those" to refer to moments</li>
+        <li>Describe how their help made you feel</li>
+        <li>Use at least 2 personality traits</li>
+      </ul>
+      <div class="role-convo" id="grateful-convo">
+        <strong>You:</strong> I want to say thank you for helping me with my project last week.<br>
+        <strong>Friend:</strong> Of course! What are friends for?<br>
+        <strong>You:</strong> You're so <span class="demo-word">helpful</span> and <span class="demo-word">encouraging</span>. <span class="demo-word">That</span> moment when you stayed late to help me really meant a lot.<br>
+        <strong>Friend:</strong> I'm glad I could help!<br>
+        <strong>You:</strong> <span class="demo-word">Those</span> words you said — "You can do it!" — really lifted my spirit. You're the most <span class="demo-word">loyal</span> friend I have.
+      </div>
+    </div>
+
+    <div class="role-card" style="border-color:var(--pink)" onclick="toggleRole('compare')">
+      <h4 style="color:var(--pink)">&#x1F46F; Role 3: The Comparer</h4>
+      <p style="font-size:0.85rem;color:var(--text-dim);margin-bottom:6px">Describe two friends and compare their qualities.</p>
+      <ul class="role-points">
+        <li>Introduce two friends using "this" and "that"</li>
+        <li>Describe different traits of each friend</li>
+        <li>Give examples of how they show those traits</li>
+        <li>Say what you appreciate about both</li>
+      </ul>
+      <div class="role-convo" id="compare-convo">
+        <strong>You:</strong> <span class="demo-word">This</span> is my friend Sara, and <span class="demo-word">that</span> is my friend Mona over there.<br>
+        <strong>Listener:</strong> How are they different?<br>
+        <strong>You:</strong> Sara is very <span class="demo-word">funny</span>. She always makes me laugh. Mona is more <span class="demo-word">empathetic</span> — she understands my feelings and gives me advice.<br>
+        <strong>Listener:</strong> They sound like great friends!<br>
+        <strong>You:</strong> <span class="demo-word">These</span> two are very different, but I love them both. <span class="demo-word">Those</span> are the kind of friends everyone needs!
+      </div>
+    </div>
+
+    <div class="role-card" style="border-color:var(--orange)" onclick="toggleRole('advisor')">
+      <h4 style="color:var(--orange)">&#x1F4AD; Role 4: The Friendship Advisor</h4>
+      <p style="font-size:0.85rem;color:var(--text-dim);margin-bottom:6px">Give advice to someone about being a good friend.</p>
+      <ul class="role-points">
+        <li>Explain what qualities a good friend should have</li>
+        <li>Use "these" to list important traits</li>
+        <li>Give real examples of good and bad friend behavior</li>
+        <li>Use at least 4 vocabulary words from the session</li>
+      </ul>
+      <div class="role-convo" id="advisor-convo">
+        <strong>Person:</strong> I want to be a better friend. What should I do?<br>
+        <strong>You:</strong> <span class="demo-word">These</span> are the most important things: be <span class="demo-word">honest</span>, be <span class="demo-word">supportive</span>, and always <span class="demo-word">listen</span>.<br>
+        <strong>Person:</strong> Can you give me an example?<br>
+        <strong>You:</strong> Sure! If your friend is sad, don't say "<span class="demo-word">that</span> doesn't matter." Instead, say "I understand. How can I help?" <span class="demo-word">This</span> kind of support makes a big difference.<br>
+        <strong>Person:</strong> That makes sense. Anything else?<br>
+        <strong>You:</strong> Yes — <span class="demo-word">trust</span> your friend with your secrets, and be <span class="demo-word">loyal</span>. A good friend is a friend through thick and thin!
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== PHASE 7: EMAIL ====== -->
+  <div class="section" id="email">
+    <h2>&#x1F4E7; Step 7: Email Writing Guide</h2>
+
+    <div class="card">
+      <h3>Email Structure (Every Email Needs These)</h3>
+      <table class="grammar-table">
+        <tr><th>Part</th><th>What to Write</th><th>Example</th></tr>
+        <tr><td style="font-weight:700">Subject Line</td><td>Short &amp; clear topic</td><td>Thank you!</td></tr>
+        <tr><td style="font-weight:700">Greeting</td><td>Dear / Hi + name</td><td>Hi Nour,</td></tr>
+        <tr><td style="font-weight:700">Opening</td><td>Why you're writing</td><td>I want to thank you for...</td></tr>
+        <tr><td style="font-weight:700">Body</td><td>Details + examples</td><td>You helped me when... You are so kind because...</td></tr>
+        <tr><td style="font-weight:700">Closing</td><td>End nicely</td><td>Thank you for everything!</td></tr>
+        <tr><td style="font-weight:700">Sign-off</td><td>Your name</td><td>Your friend, Ebrahim</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>&#x1F4A1; Model Email</h3>
+      <div class="email-frame">
+        <div class="email-header"><strong>Subject:</strong> Thank you for being a great friend!</div>
+        <div class="email-body">
+          <p>Hi Nour,</p>
+          <p style="margin-top:8px">I want to thank you for being such a wonderful friend. You are <strong>kind</strong> and <strong>supportive</strong>. <strong>This</strong> friendship means a lot to me.</p>
+          <p style="margin-top:8px">When I was sad last week, you said "Don't worry, you can do it!" <strong>That</strong> really helped me feel better. You also shared your notes with me before the exam. <strong>Those</strong> moments are why you are my best friend.</p>
+          <p style="margin-top:8px"><strong>These</strong> are the reasons I am <strong>grateful</strong> to have you in my life. Thank you for everything!</p>
+          <p style="margin-top:8px">Your friend,<br>Ebrahim</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div style="background:linear-gradient(135deg,#ffeaea,#fce8f4);border:2px solid var(--red);border-radius:12px;padding:14px 18px;margin-bottom:16px">
+        <p style="font-weight:700;color:var(--red);font-size:0.92rem">&#x1F6A8; Assessment Next Session — Session 5 is Email Writing!</p>
+        <p style="font-size:0.82rem;color:var(--text-dim);margin-top:4px">This is your last practice before the assessment. Write a complete email and check every item below!</p>
+      </div>
+      <h3>&#x2705; Email Checklist</h3>
+      <div class="checklist" id="email-checklist">
+        <label><input type="checkbox" onchange="updateEmailCheck()"> Has a greeting (Hi/Dear + name)</label>
+        <label><input type="checkbox" onchange="updateEmailCheck()"> Says WHY you're writing in the first sentence</label>
+        <label><input type="checkbox" onchange="updateEmailCheck()"> Uses at least 2 personality traits</label>
+        <label><input type="checkbox" onchange="updateEmailCheck()"> Uses this/that/these/those correctly</label>
+        <label><input type="checkbox" onchange="updateEmailCheck()"> Gives a specific example or memory</label>
+        <label><input type="checkbox" onchange="updateEmailCheck()"> Has a friendly closing sentence</label>
+        <label><input type="checkbox" onchange="updateEmailCheck()"> Has sign-off (Your friend, [name])</label>
+        <label><input type="checkbox" onchange="updateEmailCheck()"> Checked spelling and punctuation</label>
+        <label><input type="checkbox" onchange="updateEmailCheck()"> Word count: 50-80 words</label>
+      </div>
+      <div id="email-check-result" class="mt-8" style="font-family:'Fredoka',sans-serif;font-size:0.9rem"></div>
+    </div>
+
+    <div class="card">
+      <h3>&#x270F;&#xFE0F; Practice: Write Your Email</h3>
+      <textarea class="writing-area" id="email-area" placeholder="Subject: Thank you!
+
+Hi [name],
+
+I want to thank you for...
+
+Your friend,
+[your name]" oninput="updateEmailWordCount()"></textarea>
+      <div class="word-count">Words: <span id="email-wc">0</span> / 50-80 target</div>
+    </div>
+  </div>
+
+  <!-- ====== PHASE 7: WRITING (Assessment) ====== -->
+  <div class="section" id="writing">
+    <h2>&#x270F;&#xFE0F; Step 7: Thank-You Card (Assessment Practice)</h2>
+
+    <div class="card" style="border-color:var(--red);border-width:2px">
+      <h3 style="color:var(--red)">&#x1F6A8; This is your assessed task (20 points)</h3>
+      <p style="font-size:0.88rem">Think of a good friend. Write 3 traits. Match each trait to an action. Then write a thank-you card using this/that/these/those.</p>
+    </div>
+
+    <div class="card">
+      <h3>&#x1F4A1; Model Card</h3>
+      <div style="background:linear-gradient(135deg,#fff9f0,#fff3e6);padding:18px;border-radius:12px;border:2px solid #f0dcc0;font-size:0.9rem;line-height:1.9">
+        <p>Dear Nour,</p>
+        <p style="margin-top:6px"><strong>This</strong> card is to say thank you. You are the most <strong>kind</strong> and <strong>honest</strong> friend I have. When I was stressed about my exam, you said "You can do it!" <strong>That</strong> support made me feel strong.</p>
+        <p style="margin-top:6px">You always share your notes and help me study. <strong>These</strong> are the things that make you special. I am <strong>grateful</strong> for <strong>those</strong> moments we spend together.</p>
+        <p style="margin-top:6px">Thank you for being my best friend!</p>
+        <p style="margin-top:6px">Your friend, Ebrahim</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>&#x270F;&#xFE0F; Write Your Card</h3>
+      <textarea class="writing-area" id="card-area" placeholder="Dear [friend's name],
+
+This card is to say thank you...
+
+Your friend,
+[your name]" oninput="updateCardWC()"></textarea>
+      <div class="word-count">Words: <span id="card-wc">0</span> / 50-80 target</div>
+    </div>
+
+    <div class="card">
+      <h3>&#x2705; Assessment Checklist</h3>
+      <div class="checklist" id="card-checklist">
+        <label><input type="checkbox" onchange="updateCardCheck()"> Used at least 2 personality traits</label>
+        <label><input type="checkbox" onchange="updateCardCheck()"> Used this/that/these/those correctly</label>
+        <label><input type="checkbox" onchange="updateCardCheck()"> Gave a specific memory or example</label>
+        <label><input type="checkbox" onchange="updateCardCheck()"> Has greeting + closing</label>
+        <label><input type="checkbox" onchange="updateCardCheck()"> Checked punctuation (capitals, periods, commas)</label>
+        <label><input type="checkbox" onchange="updateCardCheck()"> 50-80 words</label>
+      </div>
+      <div id="card-check-result" class="mt-8" style="font-family:'Fredoka',sans-serif;font-size:0.9rem"></div>
+    </div>
+  </div>
+
+  <!-- ====== PHASE 8: QUIZ ====== -->
+  <div class="section" id="quiz">
+    <span class="section-label" style="background:var(--red-light);color:var(--red);">Phase 4 &mdash; Test</span>
+    <h2>&#x1F3AF; Step 8: Final Quiz</h2>
+    <p style="color:var(--text-dim);margin-bottom:14px;font-size:0.88rem;">15 questions. Pick an answer &mdash; green = correct, red = wrong. No answers shown so you can retry!</p>
+
+    <div id="quiz-container"></div>
+    <div class="text-center mt-20">
+      <button class="btn btn-green" onclick="showQuizScore()" style="padding:10px 28px;font-size:0.95rem">Show My Score &#x1F3C6;</button>
+      <button class="btn btn-outline" onclick="retryQuiz()" style="margin-left:10px;padding:10px 28px;font-size:0.95rem">Retry Quiz &#x1F504;</button>
+    </div>
+    <div id="quiz-final" class="hidden mt-16 text-center card" style="border-width:2px"></div>
+  </div>
+
+  <!-- ====== SUMMARY TABLE ====== -->
+  <div class="section" id="summary">
+    <span class="section-label" style="background:var(--yellow-light);color:var(--orange);">&#x1F4CA; Summary</span>
+    <h2>Everything You Learned Today</h2>
+
+    <div class="card">
+      <h3>&#x1F4D6; New Vocabulary (22 words)</h3>
+      <table class="summary-table">
+        <tr><th>Word</th><th>Type</th><th>Meaning</th><th>&#x1F50A;</th></tr>
+      </table>
+      <div id="summary-vocab-table"></div>
+    </div>
+
+    <div class="card">
+      <h3>&#x1F525; Idioms & Expressions (8 phrases)</h3>
+      <table class="summary-table" id="summary-idioms-table">
+        <tr><th>Idiom</th><th>Meaning</th><th>Example</th></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>&#x1F517; Key Collocations</h3>
+      <table class="summary-table">
+        <tr><th>Collocation</th><th>Meaning</th></tr>
+        <tr><td><strong>make</strong> friends</td><td>to form a new friendship</td></tr>
+        <tr><td><strong>become</strong> friends</td><td>to start being friends</td></tr>
+        <tr><td><strong>hang out</strong> with</td><td>to spend casual time together</td></tr>
+        <tr><td><strong>catch up</strong> with</td><td>to talk after not seeing someone for a while</td></tr>
+        <tr><td><strong>get to know</strong> someone</td><td>to learn about a new person</td></tr>
+        <tr><td><strong>have something in common</strong></td><td>to share similar interests</td></tr>
+        <tr><td><strong>care about</strong> someone</td><td>to feel love or worry about them</td></tr>
+        <tr><td><strong>lift someone's spirit</strong></td><td>to make someone feel happier</td></tr>
+        <tr><td><strong>close / childhood</strong> friend</td><td>a very good friend / friend since you were young</td></tr>
+        <tr><td><strong>tell the truth</strong> in a kind way</td><td>to be honest but gentle</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>&#x1F4DD; Grammar Rule</h3>
+      <table class="summary-table">
+        <tr><th>Word</th><th>Near/Far</th><th>Singular/Plural</th><th>Example</th></tr>
+        <tr><td><span class="demo-word">this</span></td><td>Near</td><td>Singular</td><td>This is my friend.</td></tr>
+        <tr><td><span class="demo-word">that</span></td><td>Far</td><td>Singular</td><td>That is her classmate over there.</td></tr>
+        <tr><td><span class="demo-word">these</span></td><td>Near</td><td>Plural</td><td>These are my close friends.</td></tr>
+        <tr><td><span class="demo-word">those</span></td><td>Far</td><td>Plural</td><td>Those are their teammates.</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ====== CHEAT SHEET ====== -->
+  <div class="section" id="cheat">
+    <span class="section-label" style="background:var(--yellow-light);color:var(--orange);">&#x1F4CB; Reference</span>
+    <h2>Cheat Sheet</h2>
+
+    <h3 style="margin-bottom:10px">Session 4: Friendship</h3>
+    <div class="cheat-grid">
+      <div class="cheat-cell">
+        <h4 style="color:var(--accent)">Grammar</h4>
+        <p style="font-size:0.82rem">this (near, 1) &bull; that (far, 1)<br>these (near, 2+) &bull; those (far, 2+)<br>As pronoun OR before a noun</p>
+      </div>
+      <div class="cheat-cell">
+        <h4 style="color:var(--green)">Traits</h4>
+        <p style="font-size:0.82rem">kind, honest, helpful, friendly, loyal, trustworthy, supportive, encouraging, empathetic, faithful, optimistic</p>
+      </div>
+      <div class="cheat-cell">
+        <h4 style="color:var(--orange)">Actions</h4>
+        <p style="font-size:0.82rem">care for, support, share, encourage, trust, listen, help, make someone laugh</p>
+      </div>
+      <div class="cheat-cell">
+        <h4 style="color:var(--pink)">Assessment Tips</h4>
+        <p style="font-size:0.82rem">Use demonstratives + traits + specific example. Greeting + closing. 50-80 words. Check punctuation!</p>
+      </div>
+    </div>
+
+    <h3 style="margin:20px 0 10px">Sessions 1-3: Words You Should Still Remember</h3>
+    <div class="cheat-grid">
+      <div class="cheat-cell">
+        <h4 style="color:var(--accent)">&#x1F382; S1-2: Parties</h4>
+        <p style="font-size:0.82rem">invite, celebrate, decoration, guest, plan, organize, surprise, costume, lantern, graduation, engagement, bachelor's party, promotion</p>
+      </div>
+      <div class="cheat-cell">
+        <h4 style="color:var(--accent)">&#x1F382; S1-2: Help Phrases</h4>
+        <p style="font-size:0.82rem">Can I help you with...? &bull; Would you like me to...? &bull; How about I take care of...? &bull; Thank you for + verb(ing) &bull; I refuse to... &bull; I offer to...</p>
+      </div>
+      <div class="cheat-cell">
+        <h4 style="color:var(--accent)">&#x1F382; S1-2: Grammar</h4>
+        <p style="font-size:0.82rem">'will' for future plans &bull; verb+ing after at/with/in/for/of &bull; to+infinitive after refuse/offer/would like</p>
+      </div>
+      <div class="cheat-cell">
+        <h4 style="color:var(--green)">&#x1F35C; S3: Food Words</h4>
+        <p style="font-size:0.82rem">tasty, delicious, spicy, bland, crispy, crunchy, creamy, chewy, oily, fluffy, disgusting, mouth-watering, starving</p>
+      </div>
+      <div class="cheat-cell">
+        <h4 style="color:var(--green)">&#x1F35C; S3: Adjective Categories</h4>
+        <p style="font-size:0.82rem">Taste: sweet, sour, spicy, bland &bull; Texture: crispy, soft, hard, chewy &bull; Shape: round, oval, cylindrical &bull; Origin: Chinese, Indian, Italian, Japanese</p>
+      </div>
+      <div class="cheat-cell">
+        <h4 style="color:var(--green)">&#x1F35C; S3: Grammar</h4>
+        <p style="font-size:0.82rem">some (affirmative/offers) &bull; any (questions/negatives) &bull; a/an = one, singular &bull; the = specific thing &bull; countable vs uncountable</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== PREVIEW ====== -->
+  <div class="section" id="preview">
+    <span class="section-label" style="background:var(--accent-light);color:var(--accent);">&#x1F52E; Coming Next</span>
+    <h2>Session 5: Friendship Stories</h2>
+    <div class="preview-box">
+      <h4>What's Coming</h4>
+      <p style="font-size:0.88rem">You'll tell stories about helping a friend using:</p>
+      <p style="font-size:0.88rem;margin-top:4px"><strong>Past Simple</strong> (I helped, she said) &mdash; completed actions</p>
+      <p style="font-size:0.88rem"><strong>Past Continuous</strong> (I was walking, she was studying) &mdash; background actions</p>
+      <p style="font-size:0.88rem;margin-top:6px;color:var(--text-dim)">Start thinking: <em>"A time when you helped a friend or a friend helped you."</em></p>
+      <p style="font-size:0.88rem;margin-top:8px;color:var(--red);font-weight:700">&#x1F6A8; Session 5 includes an Email Writing Assessment — make sure you've practiced!</p>
+    </div>
+    <div class="tip-box"><strong>Sessions 6-7 preview:</strong> After friendship you'll learn about <strong>Feelings</strong> (positive, then negative emotions). The personality traits you learn now connect directly to describing emotions.</div>
+  </div>
+
+</div>
+
+<!-- SCORE BANNER -->
+<div class="score-banner">
+  <div class="score-item"><div class="label">Cards</div><div class="val" id="sb-cards" style="color:var(--accent)">0</div></div>
+  <div class="score-item"><div class="label">Grammar</div><div class="val" id="sb-grammar" style="color:var(--green)">0/8</div></div>
+  <div class="score-item"><div class="label">Quiz</div><div class="val" id="sb-quiz" style="color:var(--red)">0/15</div></div>
+  <div class="score-item"><div class="label">Written</div><div class="val" id="sb-words" style="color:var(--orange)">0</div></div>
+</div>
+
+<script>
+// ===== VOCAB DATA =====
+const VP=[
+  {w:"Best friend",p:"noun",m:"Your closest, most special friend",ar:"اقرب صاحب / صديق مقرب",ex:"Tom is my best friend. I tell him everything."},
+  {w:"Classmate",p:"noun",m:"Someone in your class at school",ar:"زميل في الفصل",ex:"Sara is my classmate. We study together."},
+  {w:"Neighbor",p:"noun",m:"A person who lives near your house",ar:"جار / جارة",ex:"My neighbor is very nice. She has a lovely dog."},
+  {w:"Acquaintance",p:"noun",m:"Someone you know but not a close friend",ar:"معرفة (تعرفه بس مش صاحبك)",ex:"He's just an acquaintance from work."},
+];
+const VT=[
+  {w:"Friendly",p:"adj",m:"Nice and likes to talk to people",ar:"ودود",ex:"She says hello to everyone. She's friendly."},
+  {w:"Helpful",p:"adj",m:"Likes to help other people",ar:"متعاون / بيساعد",ex:"He helps me carry my books."},
+  {w:"Kind",p:"adj",m:"Cares about others, does nice things",ar:"طيب / لطيف",ex:"She gives me her umbrella when it rains."},
+  {w:"Honest",p:"adj",m:"Always tells the truth",ar:"صادق / أمين",ex:"He does not lie. He is honest."},
+  {w:"Unkind",p:"adj",m:"Not nice, does bad things to others",ar:"قاسي / مش لطيف",ex:"The unkind boy laughed at his classmates."},
+  {w:"Faithful",p:"adj",m:"Always stays with you, doesn't leave",ar:"وفي / مخلص",ex:"A faithful friend stays in good and bad times."},
+  {w:"Loyal",p:"adj",m:"Always supports you, doesn't betray you",ar:"وفي / مخلص",ex:"She always defends me. She's loyal."},
+  {w:"Trustworthy",p:"adj",m:"You can trust them with your secrets",ar:"جدير بالثقة / بيحفظ السر",ex:"I tell him my secrets. He is trustworthy."},
+  {w:"Supportive",p:"adj",m:"Helps and encourages when you need it",ar:"داعم / بيسندك",ex:"She always says 'You can do it!'"},
+  {w:"Encouraging",p:"adj",m:"Makes you feel you can do something",ar:"مشجع / بيحمسك",ex:"He motivates me to study harder."},
+  {w:"Optimistic",p:"adj",m:"Expects good things to happen",ar:"متفائل",ex:"She always sees the good side of things."},
+  {w:"Empathetic",p:"adj",m:"Understands your feelings, gives emotional support",ar:"متعاطف / حاسس بيك",ex:"She lifts my spirit when I'm sad."},
+];
+const VA=[
+  {w:"To care about",p:"verb",m:"To feel love or worry about someone",ar:"يهتم بـ / يحب",ex:"Good friends care about each other."},
+  {w:"To support",p:"verb",m:"To help someone when they need it",ar:"يدعم / يساند",ex:"My friends support me when I'm sad."},
+  {w:"To share",p:"verb",m:"To give some of what you have",ar:"يشارك / يتقاسم",ex:"Friends share their food and notes."},
+  {w:"To encourage",p:"verb",m:"To give confidence to try something",ar:"يشجع",ex:"She encouraged me to try again."},
+  {w:"To trust",p:"verb",m:"To believe someone is honest and reliable",ar:"يثق في",ex:"I trust my best friend with my secrets."},
+  {w:"To listen",p:"verb",m:"To pay attention when someone talks",ar:"ينصت / يسمع",ex:"A good friend listens to your problems."},
+];
+
+// ===== ROLEPLAY TOGGLE =====
+function toggleRole(role){
+  const el=document.getElementById(role+'-convo');
+  el.classList.toggle('show');
+}
+
+// ===== TEXT-TO-SPEECH =====
+function speak(word,btn){
+  if(!('speechSynthesis' in window))return;
+  window.speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(word);
+  u.lang='en-US';u.rate=0.85;u.pitch=1;
+  // Try to pick a good English voice
+  const voices=window.speechSynthesis.getVoices();
+  const engVoice=voices.find(v=>v.lang.startsWith('en')&&v.name.includes('Female'))||voices.find(v=>v.lang.startsWith('en'));
+  if(engVoice)u.voice=engVoice;
+  if(btn){btn.classList.add('playing');u.onend=()=>btn.classList.remove('playing')}
+  window.speechSynthesis.speak(u);
+}
+// Preload voices
+if('speechSynthesis' in window){speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices()}
+
+// ===== RECAP EXERCISES (S1+S2+S3 grammar applied to S4 topic) =====
+const recapEx=[
+  {q:'I ______ always be there for my best friend.',opts:['will','am','do'],ans:0},
+  {q:'______ you like me to help you with your homework?',opts:['Will','Would','Do'],ans:1},
+  {q:'A good friend ______ not talk about you behind your back.',opts:['will','does','is'],ans:0},
+  {q:'Do you have ______ close friends at school?',opts:['some','any','a'],ans:1},
+  {q:'She has ______ really kind classmates who always support her.',opts:['some','any','a'],ans:0},
+  {q:'Can I help you ______ your problem? That\'s what friends do.',opts:['with','to','for'],ans:0},
+  {q:'I ______ invite my loyal friends to the party next week.',opts:['will','am','do'],ans:0},
+  {q:'There aren\'t ______ honest people like her — she\'s special.',opts:['any','some','the'],ans:0}
+];
+function buildRecap(){
+  const c=document.getElementById('recap-exercises');if(!c)return;
+  recapEx.forEach((ex,i)=>{
+    const row=document.createElement('div');row.className='fill-row';row.id='rex-'+i;
+    let opts=ex.opts.map(o=>`<option value="${o}">${o}</option>`).join('');
+    row.innerHTML=`<span style="font-size:0.85rem;flex:1">${i+1}. ${ex.q.replace('______','<select id="rsel-'+i+'"><option value="">—</option>'+opts+'</select>')}</span><span class="result" id="rres-${i}"></span>`;
+    c.appendChild(row);
+  });
+}
+function checkRecap(){
+  let correct=0;
+  recapEx.forEach((ex,i)=>{
+    const sel=document.getElementById('rsel-'+i),res=document.getElementById('rres-'+i),row=document.getElementById('rex-'+i);
+    if(sel.value===ex.opts[ex.ans]){correct++;res.textContent='✅';row.style.borderColor='var(--green)';row.style.background='var(--green-light)'}
+    else{res.textContent='❌';row.style.borderColor='var(--red)';row.style.background='var(--red-light)'}
+  });
+  document.getElementById('recap-score').textContent=correct+' / '+recapEx.length;
+}
+function retryRecap(){
+  recapEx.forEach((ex,i)=>{document.getElementById('rsel-'+i).value='';document.getElementById('rres-'+i).textContent='';const row=document.getElementById('rex-'+i);row.style.borderColor='var(--border)';row.style.background=''});
+  document.getElementById('recap-score').textContent='';
+}
+buildRecap();
+
+function buildCards(id,data){
+  const c=document.getElementById(id);
+  data.forEach(v=>{
+    const d=document.createElement('div');d.className='vocab-card';
+    d.onclick=(e)=>{if(e.target.classList.contains('tts-btn'))return;d.classList.toggle('flipped');updateSB()};
+    d.innerHTML=`<div class="vocab-inner"><div class="vocab-front"><div class="word">${v.w} <button class="tts-btn" onclick="event.stopPropagation();speak('${v.w.replace(/'/g,"\\'")}',this)" title="Listen">&#x1F50A;</button></div><div class="pos">${v.p}</div><div class="hint">Tap to flip &bull; &#x1F50A; to hear</div></div><div class="vocab-back"><div class="meaning">${v.m}</div><div class="arabic">${v.ar}</div><div class="example">"${v.ex}"</div><button class="tts-btn" onclick="event.stopPropagation();speak('${v.w.replace(/'/g,"\\'")}',this)" title="Listen again" style="margin-top:6px;font-size:1.3rem">&#x1F50A;</button></div></div>`;
+    c.appendChild(d);
+  });
+}
+buildCards('vg-people',VP);buildCards('vg-traits',VT);buildCards('vg-actions',VA);
+
+// ===== IDIOMS =====
+const idioms=[
+  {i:"A friend in need is a friend indeed",m:"A real friend helps you when you have problems.",ex:"When I was sick, only Ahmed visited. A friend in need is a friend indeed."},
+  {i:"Hit it off",m:"To become friends quickly.",ex:"We hit it off at the party and became best friends."},
+  {i:"Through thick and thin",m:"In good times and bad times.",ex:"Sara has been with me through thick and thin."},
+  {i:"Get on like a house on fire",m:"To become very good friends very fast.",ex:"My sister and my friend get on like a house on fire!"},
+  {i:"A shoulder to cry on",m:"Someone who listens when you're sad.",ex:"My best friend is always a shoulder to cry on."},
+  {i:"Birds of a feather flock together",m:"Similar people become friends.",ex:"They both love gaming — birds of a feather!"},
+  {i:"Social butterfly",m:"Someone who talks to everyone, very friendly.",ex:"She knows everyone at the party — total social butterfly."},
+  {i:"Know someone inside out",m:"To know someone very well.",ex:"We've been friends 10 years. I know her inside out."},
+];
+const ib=document.getElementById('idioms-box');
+idioms.forEach(x=>{const d=document.createElement('div');d.className='idiom-card';d.innerHTML=`<div class="idiom">"${x.i}"</div><div class="idiom-meaning">${x.m}</div><div class="idiom-example">${x.ex}</div>`;ib.appendChild(d)});
+
+// ===== GRAMMAR EXERCISES =====
+const gExercises=[
+  {text:"___ are my helpful friends. (nearby group)",ans:"these"},
+  {text:"___ is the friendly boy, over there. (far, one)",ans:"that"},
+  {text:"___ are my friends from the trip, over there. (far group)",ans:"those"},
+  {text:"___ is my classmate, Mona. (next to you, one)",ans:"this"},
+  {text:"___ girl is my sister's friend. (near, one)",ans:"this"},
+  {text:"I don't know ___ girl over there. (far, one)",ans:"that"},
+  {text:"___ classmates are having a party. (nearby group)",ans:"these"},
+  {text:"___ people are from my football team. (far group)",ans:"those"},
+];
+const ge=document.getElementById('grammar-exercises');
+gExercises.forEach((g,i)=>{
+  const d=document.createElement('div');d.style.cssText='margin-bottom:10px;font-size:0.88rem;';
+  const parts=g.text.split('___');
+  d.innerHTML=`<span>${i+1}. ${parts[0]}</span><input type="text" class="fill-input gi" data-ans="${g.ans}" placeholder="?"><span>${parts[1]}</span>`;
+  ge.appendChild(d);
+});
+
+function checkGrammar(){
+  let c=0;
+  document.querySelectorAll('.gi').forEach(inp=>{
+    const ok=inp.value.trim().toLowerCase()===inp.dataset.ans;
+    inp.classList.remove('correct','wrong');
+    inp.classList.add(ok?'correct':'wrong');
+    if(ok)c++;
+  });
+  const r=document.getElementById('grammar-result');r.classList.remove('hidden');
+  r.style.color=c===8?'var(--green)':'var(--orange)';
+  r.textContent=c===8?`${c}/8 Perfect! 🎉`:`${c}/8 — Try the red ones again!`;
+  document.getElementById('sb-grammar').textContent=`${c}/8`;
+  updateProgress();
+}
+function retryGrammar(){
+  document.querySelectorAll('.gi').forEach(inp=>{inp.value='';inp.classList.remove('correct','wrong')});
+  document.getElementById('grammar-result').classList.add('hidden');
+  document.getElementById('sb-grammar').textContent='0/8';
+  updateProgress();
+}
+
+// ===== QUIZ (no answers shown) =====
+const QQ=[
+  {q:"What does a good friend usually do?",o:["Helps you feel happy and supported","Says yes to everything","Gives presents every day"],a:0,cat:"Vocabulary",why:"A good friend supports you emotionally — not by agreeing with everything or buying gifts. The reading said: 'helps you feel happy and supported.'"},
+  {q:"A person who always tells the truth is:",o:["Honest","Unkind","Optimistic"],a:0,cat:"Vocabulary",why:"Honest (صادق) = always tells the truth. Unkind = not nice. Optimistic = expects good things (different meaning)."},
+  {q:"'She always helps and says kind words.' She is ___.",o:["Supportive","Jealous","Unkind"],a:0,cat:"Vocabulary",why:"Supportive (داعم) = someone who helps and encourages you. 'Helps + kind words' = support."},
+  {q:"What does 'empathetic' mean?",o:["Understanding other people's feelings","Being very funny","Talking a lot"],a:0,cat:"Vocabulary",why:"Empathetic (متعاطف) = you understand how someone FEELS and give emotional support. It's about feelings, not humor or talking."},
+  {q:"Which is NOT a quality of a good friend?",o:["Being unkind","Being helpful","Being loyal"],a:0,cat:"Vocabulary",why:"Unkind = not nice, does bad things. That's a NEGATIVE trait. Helpful and loyal are positive qualities of good friends."},
+  {q:"'___ is my best friend.' (next to you, singular)",o:["This","That","Those"],a:0,cat:"Grammar",why:"Near + singular = THIS. The person is next to you (near) and it's one person (singular)."},
+  {q:"'___ are my classmates over there.' (far, plural)",o:["Those","These","This"],a:0,cat:"Grammar",why:"Far + plural = THOSE. 'Over there' means far away, and 'classmates' is plural (more than one)."},
+  {q:"'I enjoy spending time with ___ friends.' (nearby group)",o:["these","those","that"],a:0,cat:"Grammar",why:"Near + plural = THESE. A nearby group of friends = plural + near. 'That' is singular, 'those' is far."},
+  {q:"'___ boy over there is very friendly.' (far, singular)",o:["That","This","These"],a:0,cat:"Grammar",why:"Far + singular = THAT. 'Over there' = far, 'boy' = one person (singular)."},
+  {q:"'___ moments with my friend are special.' (near, plural)",o:["These","Those","That"],a:0,cat:"Grammar",why:"Near + plural = THESE. 'Moments' is plural. They are close/personal to you (near)."},
+  {q:"What did Patricia call Sarah to say?",o:["Thank you for helping with homework","Sorry for being late","Happy birthday"],a:0,cat:"Comprehension",why:"Patricia said: 'I just wanted to say thank you for helping me with my homework yesterday.'"},
+  {q:"What did Sarah do when Patricia forgot lunch?",o:["Shared her lunch","Bought her food","Ignored her"],a:0,cat:"Comprehension",why:"Sarah said: 'when I forgot my lunch, you shared yours with me.' Sharing = a kind action between friends."},
+  {q:"When Wendy was sad about a test, Anna said:",o:["'You can do it next time!'","'That's your problem'","'Study harder'"],a:0,cat:"Comprehension",why:"Anna said: 'Don't worry. You can do it next time!' This is supportive and encouraging — what good friends do."},
+  {q:"What makes friendship special according to Wendy?",o:["Moments when friends help each other","Having a lot of money","Going to the same school"],a:0,cat:"Comprehension",why:"Wendy said: 'Those moments when she helps me are what make our friendship special.' It's about help, not money or school."},
+  {q:"What does Wendy believe?",o:["To have a good friend, be a good friend","Friends should always agree","Friendship doesn't last"],a:0,cat:"Comprehension",why:"Wendy said: 'To have a good friend, you need to be a good friend.' Friendship is about giving, not just receiving."},
+];
+
+let quizState={answered:0,correct:0};
+
+function buildQuiz(){
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  quizState={answered:0,correct:0};
+  QQ.forEach((qq,i)=>{
+    const idx=[0,1,2];for(let j=2;j>0;j--){const k=Math.floor(Math.random()*(j+1));[idx[j],idx[k]]=[idx[k],idx[j]]}
+    const ci=idx.indexOf(qq.a);
+    const catColor=qq.cat==='Vocabulary'?'var(--green)':qq.cat==='Grammar'?'var(--accent)':'var(--pink)';
+    const d=document.createElement('div');d.className='quiz-q';d.id=`qq${i}`;
+    d.innerHTML=`<div class="q-num" style="color:${catColor}">Q${i+1} — ${qq.cat}</div><div class="q-text">${qq.q}</div>${idx.map((oi,bi)=>`<button class="quiz-option" data-q="${i}" data-c="${bi===ci?1:0}" onclick="ansQ(this,${i})">${qq.o[oi]}</button>`).join('')}<button class="why-btn" id="wb${i}" onclick="toggleWhy(${i})">&#x1F4A1; Why is this correct?</button><div class="why-text" id="wt${i}">${qq.why}</div>`;
+    c.appendChild(d);
+  });
+  document.getElementById('sb-quiz').textContent='0/15';
+  document.getElementById('quiz-final').classList.add('hidden');
+}
+buildQuiz();
+
+function ansQ(btn,qi){
+  const p=document.getElementById(`qq${qi}`);
+  if(p.dataset.done)return;p.dataset.done='1';
+  const btns=p.querySelectorAll('.quiz-option');
+  if(btn.dataset.c==='1'){btn.classList.add('correct');quizState.correct++}
+  else{btn.classList.add('wrong')}
+  btns.forEach(b=>b.disabled=true);
+  quizState.answered++;
+  // Show "Why?" button after answering
+  document.getElementById(`wb${qi}`).classList.add('show');
+  document.getElementById('sb-quiz').textContent=`${quizState.correct}/15`;
+  updateProgress();
+}
+
+function toggleWhy(qi){
+  const t=document.getElementById(`wt${qi}`);
+  t.classList.toggle('show');
+  const b=document.getElementById(`wb${qi}`);
+  b.textContent=t.classList.contains('show')?'Hide explanation':'💡 Why is this correct?';
+}
+
+function showQuizScore(){
+  const d=document.getElementById('quiz-final');d.classList.remove('hidden');
+  const pct=Math.round((quizState.correct/15)*100);
+  const emoji=pct>=80?'&#x1F389;':pct>=60?'&#x1F44D;':'&#x1F4AA;';
+  const msg=pct>=80?'Amazing! You\'re ready!':pct>=60?'Good! Retry to improve.':'Keep practicing! Hit Retry below.';
+  const col=pct>=80?'var(--green)':pct>=60?'var(--orange)':'var(--red)';
+  d.style.borderColor=col;d.innerHTML=`<div style="font-size:2rem">${emoji}</div><h3 style="color:${col}">${quizState.correct}/15 (${pct}%)</h3><p style="color:var(--text-dim);margin-top:6px">${msg}</p>`;
+}
+
+function retryQuiz(){buildQuiz()}
+
+// ===== WORD COUNTS =====
+function wc(id){const t=document.getElementById(id).value.trim();return t?t.split(/\s+/).length:0}
+function updateEmailWordCount(){const c=wc('email-area');document.getElementById('email-wc').textContent=c;updateSB()}
+function updateCardWC(){const c=wc('card-area');document.getElementById('card-wc').textContent=c;updateSB()}
+
+function updateEmailCheck(){
+  const ch=[...document.querySelectorAll('#email-checklist input')];
+  const n=ch.filter(c=>c.checked).length;
+  document.getElementById('email-check-result').textContent=n===ch.length?'✓ All checks passed! Great email!':n+'/'+ch.length+' completed';
+  document.getElementById('email-check-result').style.color=n===ch.length?'var(--green)':'var(--orange)';
+}
+function updateCardCheck(){
+  const ch=[...document.querySelectorAll('#card-checklist input')];
+  const n=ch.filter(c=>c.checked).length;
+  document.getElementById('card-check-result').textContent=n===ch.length?'✓ Ready for assessment!':n+'/'+ch.length+' completed';
+  document.getElementById('card-check-result').style.color=n===ch.length?'var(--green)':'var(--orange)';
+}
+
+// ===== SCORE BANNER UPDATE =====
+function updateSB(){
+  document.getElementById('sb-cards').textContent=document.querySelectorAll('.vocab-card.flipped').length;
+  const totalWords=wc('email-area')+wc('card-area');
+  document.getElementById('sb-words').textContent=totalWords;
+  updateProgress();
+}
+
+function updateProgress(){
+  const cards=document.querySelectorAll('.vocab-card.flipped').length;
+  const totalCards=document.querySelectorAll('.vocab-card').length;
+  const grammarDone=document.querySelectorAll('.gi.correct').length;
+  const quizDone=quizState.answered;
+  const wordsWritten=wc('email-area')+wc('card-area');
+  const p=Math.round(
+    (cards/totalCards)*20+
+    (grammarDone/8)*20+
+    (quizDone/15)*30+
+    Math.min(wordsWritten/80,1)*30
+  );
+  document.getElementById('progress-pct').textContent=p+'%';
+  document.getElementById('progress-fill').style.width=p+'%';
+}
+
+// ===== BUILD SUMMARY TABLES =====
+(function(){
+  // Vocab summary
+  const allVocab=[...VP,...VT,...VA];
+  const catMap={};VP.forEach(v=>catMap[v.w]='People');VT.forEach(v=>catMap[v.w]='Trait');VA.forEach(v=>catMap[v.w]='Action');
+  const catColors={People:'var(--accent)',Trait:'var(--green)',Action:'var(--orange)'};
+  const container=document.getElementById('summary-vocab-table');
+  const tbl=document.createElement('table');tbl.className='summary-table';
+  allVocab.forEach(v=>{
+    const cat=catMap[v.w];
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td><strong>${v.w}</strong></td><td><span class="cat-tag" style="background:${catColors[cat]}20;color:${catColors[cat]}">${cat}</span></td><td>${v.m}<br><span style="color:var(--pink);font-size:0.78rem">${v.ar}</span></td><td><button class="tts-btn" onclick="speak('${v.w.replace(/'/g,"\\'")}',this)">&#x1F50A;</button></td>`;
+    tbl.appendChild(tr);
+  });
+  container.appendChild(tbl);
+
+  // Idioms summary
+  const itbl=document.getElementById('summary-idioms-table');
+  idioms.forEach(x=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td><strong style="color:var(--orange)">${x.i}</strong></td><td>${x.m}</td><td style="font-style:italic;font-size:0.8rem">${x.ex}</td>`;
+    itbl.appendChild(tr);
+  });
+})();
+</script>
+</body>
+</html>

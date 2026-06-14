@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session 3 - Street Food | AUC English A2A</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap');
+  :root {
+    --bg: #f8f6f1; --card: #ffffff; --card-alt: #fefcf7;
+    --accent: #5b6abf; --accent-light: #e8eaff;
+    --green: #2d9d78; --green-light: #e6f7f1;
+    --orange: #e8862a; --orange-light: #fff3e6;
+    --red: #d94f4f; --red-light: #ffeaea;
+    --pink: #c45ba1; --pink-light: #fce8f4;
+    --yellow: #f0c929; --yellow-light: #fef9e7;
+    --text: #2d3142; --text-dim: #6b7280;
+    --border: #e5e2db; --shadow: 0 2px 12px rgba(0,0,0,0.06); --radius: 16px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+  h1,h2,h3,.fun-title{font-family:'Fredoka',sans-serif}
+
+  .hero{background:linear-gradient(135deg,#e8862a 0%,#d94f4f 40%,#c45ba1 100%);padding:50px 24px 40px;text-align:center;color:#fff;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,0.08)}
+  .hero-emoji{font-size:3rem;margin-bottom:8px}
+  .hero h1{font-size:2.2rem;font-weight:700;margin-bottom:4px}
+  .hero .sub{opacity:0.9;font-size:1rem}
+  .badge-row{display:flex;gap:8px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+  .badge{background:rgba(255,255,255,0.18);padding:4px 14px;border-radius:20px;font-size:0.78rem;font-weight:600}
+
+  .method-banner{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 24px;margin:20px auto 0;max-width:860px;box-shadow:var(--shadow)}
+  .method-steps{display:flex;justify-content:center;align-items:center;gap:4px;flex-wrap:wrap;margin-top:10px}
+  .method-step{display:flex;align-items:center;gap:6px;padding:6px 14px;border-radius:10px;font-size:0.82rem;font-weight:600;white-space:nowrap}
+  .method-arrow{color:var(--text-dim);font-size:1rem}
+
+  .nav{position:sticky;top:0;z-index:100;background:rgba(248,246,241,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+  .nav-inner{max-width:900px;margin:0 auto;display:flex;overflow-x:auto;gap:2px;padding:8px 16px}
+  .nav-inner::-webkit-scrollbar{height:0}
+  .nav a{color:var(--text-dim);text-decoration:none;font-size:0.8rem;font-weight:500;white-space:nowrap;padding:6px 12px;border-radius:8px;transition:all 0.2s}
+  .nav a:hover{color:var(--accent);background:var(--accent-light)}
+
+  .container{max-width:860px;margin:0 auto;padding:0 16px}
+  .section{margin-top:40px;scroll-margin-top:60px}
+  .section-label{display:inline-flex;align-items:center;gap:8px;font-family:'Fredoka',sans-serif;font-size:0.78rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;padding:4px 14px;border-radius:20px;margin-bottom:10px}
+  .section h2{font-size:1.5rem;font-weight:700;margin-bottom:16px}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:16px;box-shadow:var(--shadow)}
+  .card h3{font-size:1.1rem;margin-bottom:10px}
+
+  .progress-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 24px;margin-top:16px;box-shadow:var(--shadow)}
+  .progress-label{font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.95rem;margin-bottom:8px;display:flex;justify-content:space-between}
+  .progress-bar{height:12px;background:#e8e6e0;border-radius:6px;overflow:hidden}
+  .progress-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--green),#2dd4a8);transition:width 0.6s ease;width:0%}
+
+  .recap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-bottom:20px}
+  .recap-chip{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center;box-shadow:var(--shadow);transition:transform 0.2s}
+  .recap-chip:hover{transform:translateY(-2px)}
+  .recap-chip .num{font-family:'Fredoka',sans-serif;font-size:0.72rem;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:1px}
+  .recap-chip .topic{font-weight:700;font-size:0.95rem;margin:4px 0 2px}
+  .recap-chip .detail{font-size:0.78rem;color:var(--text-dim)}
+  .fill-row{background:var(--card);border:1.5px solid var(--border);border-radius:12px;padding:14px;margin:8px 0;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .fill-row select{padding:6px 10px;border-radius:8px;border:1.5px solid var(--border);font-size:0.85rem;font-family:inherit}
+  .fill-row .result{font-size:0.85rem;font-weight:600;margin-left:auto}
+  .recap-current{border-color:var(--orange);background:var(--orange-light)}
+
+  .vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+  .vocab-card{perspective:800px;height:190px;cursor:pointer}
+  .vocab-inner{position:relative;width:100%;height:100%;transition:transform 0.5s;transform-style:preserve-3d}
+  .vocab-card.flipped .vocab-inner{transform:rotateY(180deg)}
+  .vocab-front,.vocab-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:14px;padding:16px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border:1px solid var(--border);box-shadow:var(--shadow)}
+  .vocab-front{background:var(--card)}
+  .vocab-front .word{font-family:'Fredoka',sans-serif;font-size:1.25rem;font-weight:700;color:var(--accent)}
+  .vocab-front .pos{font-size:0.72rem;color:var(--text-dim);margin-top:2px}
+  .vocab-front .hint{font-size:0.7rem;color:var(--pink);margin-top:8px;font-weight:500}
+  .vocab-back{background:linear-gradient(135deg,var(--accent-light),#f3e8ff);transform:rotateY(180deg)}
+  .vocab-back .meaning{font-weight:600;font-size:0.9rem;margin-bottom:4px}
+  .vocab-back .arabic{font-size:0.82rem;color:var(--pink);margin-bottom:4px}
+  .vocab-back .example{font-size:0.8rem;color:var(--text-dim);font-style:italic}
+
+  .grammar-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:12px;overflow:hidden;margin:12px 0;border:1px solid var(--border)}
+  .grammar-table th{background:var(--accent);color:#fff;padding:10px 14px;font-weight:600;font-size:0.85rem;text-align:center}
+  .grammar-table td{padding:10px 14px;text-align:center;font-size:0.88rem;border-bottom:1px solid var(--border)}
+  .grammar-table tr:last-child td{border-bottom:0}
+  .grammar-table tr:nth-child(even) td{background:#faf9f6}
+  .demo-word{display:inline-block;background:var(--accent-light);color:var(--accent);font-weight:700;padding:2px 10px;border-radius:6px;font-size:0.85rem}
+
+  .audio-card{background:linear-gradient(135deg,#f0f0ff,#fce8f4);border:1px solid #e0ddf5;border-radius:var(--radius);padding:18px;margin-bottom:14px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .audio-icon{font-size:2rem}
+  .audio-info h4{font-family:'Fredoka',sans-serif;font-size:0.95rem}
+  .audio-info p{font-size:0.8rem;color:var(--text-dim)}
+  .audio-link{display:inline-block;padding:7px 16px;background:var(--accent);color:#fff;border-radius:10px;text-decoration:none;font-weight:600;font-size:0.82rem;transition:background 0.2s}
+  .subtitle-toggle{margin-top:8px;width:100%}
+  .subtitle-toggle summary{cursor:pointer;font-size:0.82rem;font-weight:600;color:var(--accent);padding:6px 0;user-select:none}
+  .subtitle-toggle summary:hover{color:var(--green)}
+  .subtitle-text{background:#faf9f6;border-radius:10px;padding:14px 16px;margin-top:6px;font-size:0.82rem;line-height:1.9;color:var(--text);max-height:300px;overflow-y:auto}
+  .audio-link:hover{background:#4a59ae}
+
+  .quiz-q{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:14px;box-shadow:var(--shadow)}
+  .quiz-q .q-num{font-family:'Fredoka',sans-serif;font-size:0.72rem;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+  .quiz-q .q-text{font-weight:600;font-size:0.93rem;margin-bottom:12px}
+  .quiz-option{display:block;width:100%;text-align:left;padding:10px 14px;margin-bottom:6px;background:#faf9f6;border:2px solid var(--border);border-radius:10px;cursor:pointer;font-size:0.86rem;transition:all 0.2s;font-family:'Inter',sans-serif}
+  .quiz-option:hover:not(:disabled){border-color:var(--accent);background:var(--accent-light)}
+  .quiz-option.correct{border-color:var(--green);background:var(--green-light);color:var(--green);font-weight:600}
+  .quiz-option.wrong{border-color:var(--red);background:var(--red-light);color:var(--red)}
+  .quiz-option:disabled{cursor:default}
+
+  .fill-input{display:inline-block;width:100px;padding:4px 8px;border:2px solid var(--border);border-radius:8px;font-size:0.88rem;font-family:'Inter',sans-serif;text-align:center;background:#faf9f6;transition:border-color 0.2s}
+  .fill-input:focus{outline:none;border-color:var(--accent)}
+  .fill-input.correct{border-color:var(--green);background:var(--green-light)}
+  .fill-input.wrong{border-color:var(--red);background:var(--red-light)}
+
+  .btn{display:inline-block;padding:8px 20px;border:none;border-radius:10px;font-weight:600;font-size:0.88rem;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.2s}
+  .btn-accent{background:var(--accent);color:#fff}.btn-accent:hover{background:#4a59ae}
+  .btn-green{background:var(--green);color:#fff}.btn-green:hover{background:#248a68}
+  .btn-orange{background:var(--orange);color:#fff}.btn-orange:hover{background:#cf7524}
+  .btn-outline{background:transparent;border:2px solid var(--accent);color:var(--accent)}.btn-outline:hover{background:var(--accent-light)}
+
+  .writing-area{width:100%;min-height:140px;padding:14px;border:2px solid var(--border);border-radius:12px;font-family:'Inter',sans-serif;font-size:0.88rem;line-height:1.7;resize:vertical;background:#fefefe;transition:border-color 0.2s}
+  .writing-area:focus{outline:none;border-color:var(--accent)}
+  .word-count{font-size:0.78rem;color:var(--text-dim);margin-top:6px;text-align:right}
+
+  .idiom-card{background:var(--card);border-left:4px solid var(--orange);border-radius:0 12px 12px 0;padding:14px 16px;margin-bottom:10px;box-shadow:var(--shadow)}
+  .idiom-card .idiom{font-family:'Fredoka',sans-serif;font-size:1rem;color:var(--orange);font-weight:600}
+  .idiom-card .idiom-meaning{font-size:0.85rem;color:var(--text-dim);margin-top:3px}
+  .idiom-card .idiom-example{font-size:0.82rem;font-style:italic;margin-top:3px}
+
+  .challenge-box{background:linear-gradient(135deg,#fff3e6,#ffeaea);border:2px dashed var(--orange);border-radius:var(--radius);padding:22px;text-align:center;margin:14px 0}
+  .challenge-box h3{font-family:'Fredoka',sans-serif;color:var(--orange)}
+
+  .preview-box{background:linear-gradient(135deg,#e8eaff,#f3e8ff);border:1px solid #d0d3f0;border-radius:var(--radius);padding:20px;margin:14px 0}
+  .preview-box h4{font-family:'Fredoka',sans-serif;color:var(--accent);margin-bottom:6px}
+
+  .tip-box{background:var(--green-light);border-left:4px solid var(--green);border-radius:0 12px 12px 0;padding:12px 16px;margin:10px 0;font-size:0.85rem}
+  .tip-box strong{color:var(--green)}
+
+  .cheat-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:600px){.cheat-grid{grid-template-columns:1fr}.vocab-grid{grid-template-columns:1fr}.recap-grid{grid-template-columns:1fr 1fr}}
+  .cheat-cell{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;box-shadow:var(--shadow)}
+  .cheat-cell h4{font-family:'Fredoka',sans-serif;font-size:0.9rem;margin-bottom:6px}
+
+  .score-banner{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--border);padding:8px 16px;display:flex;justify-content:center;align-items:center;gap:18px;box-shadow:0 -2px 10px rgba(0,0,0,0.06);z-index:99;font-family:'Fredoka',sans-serif}
+  .score-item{text-align:center}
+  .score-item .label{font-size:0.65rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px}
+  .score-item .val{font-size:1.1rem;font-weight:700}
+
+  .pb-80{padding-bottom:80px}
+  .mt-8{margin-top:8px}.mt-12{margin-top:12px}.mt-16{margin-top:16px}.mt-20{margin-top:20px}
+  .text-center{text-align:center}
+  .hidden{display:none}
+
+  .email-frame{background:#fff;border:1px solid #d0d0d0;border-radius:10px;overflow:hidden;margin:12px 0}
+  .email-header{background:#f0f0f0;padding:10px 16px;border-bottom:1px solid #d0d0d0;font-size:0.82rem}
+  .email-header span{color:var(--text-dim)}
+  .email-body{padding:16px;font-size:0.88rem;line-height:1.8}
+
+  .checklist label{display:flex;align-items:flex-start;gap:8px;padding:6px 0;cursor:pointer;font-size:0.88rem}
+  .checklist input[type=checkbox]{margin-top:4px;accent-color:var(--green);width:16px;height:16px}
+
+  .tts-btn{background:none;border:none;cursor:pointer;font-size:1.1rem;padding:2px 4px;border-radius:6px;transition:all 0.2s;vertical-align:middle}
+  .tts-btn:hover{background:var(--accent-light);transform:scale(1.15)}
+  .tts-btn.playing{animation:pulse 0.8s infinite}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+
+  .summary-table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;font-size:0.84rem}
+  .summary-table th{background:var(--accent);color:#fff;padding:10px 12px;font-weight:600;text-align:left;font-size:0.8rem}
+  .summary-table td{padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+  .summary-table tr:last-child td{border-bottom:0}
+  .summary-table tr:nth-child(even) td{background:#faf9f6}
+  .summary-table .cat-tag{display:inline-block;padding:1px 8px;border-radius:10px;font-size:0.7rem;font-weight:600}
+
+  .why-btn{display:none;margin-top:8px;padding:5px 14px;background:var(--accent-light);border:1px solid var(--accent);color:var(--accent);border-radius:8px;cursor:pointer;font-size:0.78rem;font-weight:600;font-family:'Inter',sans-serif;transition:all 0.2s}
+  .why-btn:hover{background:var(--accent);color:#fff}
+  .why-btn.show{display:inline-block}
+  .why-text{display:none;margin-top:6px;padding:10px 14px;background:var(--accent-light);border-radius:10px;font-size:0.82rem;color:var(--accent);font-weight:500}
+  .why-text.show{display:block}
+
+  .session-nav{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:16px 0}
+  .session-nav a{display:inline-flex;align-items:center;gap:4px;padding:6px 14px;border-radius:10px;font-size:0.8rem;font-weight:600;text-decoration:none;border:2px solid var(--border);color:var(--text-dim);transition:all 0.2s}
+  .session-nav a:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light)}
+  .session-nav a.active{border-color:var(--orange);background:var(--orange);color:#fff}
+  .session-nav a.disabled{opacity:0.4;pointer-events:none}
+
+  .role-card{background:var(--card);border:2px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:14px;box-shadow:var(--shadow);cursor:pointer;transition:all 0.3s}
+  .role-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.1)}
+  .role-card h4{font-family:'Fredoka',sans-serif;font-size:1.05rem;margin-bottom:8px}
+  .role-card .role-points{list-style:none;padding:0}
+  .role-card .role-points li{font-size:0.85rem;padding:3px 0;padding-left:18px;position:relative}
+  .role-card .role-points li::before{content:'•';position:absolute;left:4px;color:var(--orange);font-weight:700}
+  .role-convo{display:none;background:#faf9f6;border-radius:12px;padding:16px;margin-top:12px;font-size:0.86rem;line-height:1.9}
+  .role-convo.show{display:block}
+
+  .correction{text-decoration:line-through;color:var(--red);font-size:0.85rem}
+  .corrected{color:var(--green);font-weight:600;font-size:0.85rem}
+</style>
+</head>
+<body class="pb-80">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-emoji">&#x1F35C;</div>
+  <h1>Session 3: Street Food</h1>
+  <p class="sub">Explore street food from around the world!</p>
+  <div class="badge-row">
+    <span class="badge">&#x1F4DA; A2 Level</span>
+    <span class="badge">&#x1F3AF; some/any &bull; countable/uncountable</span>
+    <span class="badge">&#x1F374; Food Adjectives</span>
+  </div>
+</div>
+
+<!-- SESSION NAVIGATOR -->
+<div class="container">
+  <div class="session-nav" style="margin-top:16px">
+    <a href="session-1.html">&#x1F382; S1</a>
+    <a href="session-2.html">&#x1F389; S2</a>
+    <a href="#" class="active">&#x1F35C; S3</a>
+    <a href="session-4.html">&#x1F91D; S4</a>
+    <a href="../Session 5/Session-5-Friendship-Stories-Study.html">&#x1F4F1; S5</a>
+    <a href="#" class="disabled">&#x1F60A; S6</a>
+    <a href="#" class="disabled">&#x1F614; S7</a>
+    <a href="#" class="disabled">&#x1F4B0; S8</a>
+    <a href="#" class="disabled">&#x1F3DD; S9</a>
+    <a href="#" class="disabled">&#x1F3DD; S10</a>
+    <a href="#" class="disabled">&#x1F455; S11</a>
+    <a href="#" class="disabled">&#x1F455; S12</a>
+  </div>
+  <p style="text-align:center;font-size:0.72rem;color:var(--text-dim)">Sessions unlock as you send me materials. Navigate between ready sessions!</p>
+</div>
+
+<!-- SCIENTIFIC METHOD BANNER -->
+<div class="container">
+  <div class="method-banner">
+    <div style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.9rem;text-align:center;">&#x1F9EA; This page follows the scientifically proven learning sequence</div>
+    <div class="method-steps">
+      <span class="method-step" style="background:var(--pink-light);color:var(--pink);">&#x1F3A7; Listen</span>
+      <span class="method-arrow">&rarr;</span>
+      <span class="method-step" style="background:var(--accent-light);color:var(--accent);">&#x1F4D6; Read & Learn</span>
+      <span class="method-arrow">&rarr;</span>
+      <span class="method-step" style="background:var(--orange-light);color:var(--orange);">&#x1F5E3; Speak</span>
+      <span class="method-arrow">&rarr;</span>
+      <span class="method-step" style="background:var(--green-light);color:var(--green);">&#x270F; Write</span>
+      <span class="method-arrow">&rarr;</span>
+      <span class="method-step" style="background:var(--red-light);color:var(--red);">&#x1F3AF; Test</span>
+    </div>
+    <p style="font-size:0.75rem;color:var(--text-dim);text-align:center;margin-top:8px;">Based on Krashen's Input Hypothesis + Swain's Output Hypothesis + Spaced Repetition research.</p>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#recap">Recap</a>
+    <a href="#listen">1. Listen</a>
+    <a href="#vocab">2. Vocabulary</a>
+    <a href="#grammar">3. Grammar</a>
+    <a href="#reading">4. Read</a>
+    <a href="#speaking">5. Speak</a>
+    <a href="#roleplay">6. Roleplay</a>
+    <a href="#email">7. Email</a>
+    <a href="#writing">8. Write</a>
+    <a href="#quiz">9. Quiz</a>
+    <a href="#summary">Summary</a>
+    <a href="#cheat">Cheat Sheet</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- PROGRESS -->
+  <div class="progress-wrap">
+    <div class="progress-label"><span>Your Session Progress</span><span id="progress-pct">0%</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+  </div>
+
+  <!-- ====== RECAP ====== -->
+  <div class="section" id="recap">
+    <span class="section-label" style="background:var(--accent-light);color:var(--accent);">&#x1F519; Quick Recap</span>
+    <h2>&#x1F504; Recap &amp; Apply — Sessions 1-2 Grammar</h2>
+    <div class="recap-grid">
+      <div class="recap-chip"><div class="num">Session 1</div><div class="topic">&#x1F382; Birthdays</div><div class="detail">'will' for plans</div></div>
+      <div class="recap-chip"><div class="num">Session 2</div><div class="topic">&#x1F389; Parties</div><div class="detail">offer/accept/refuse help</div></div>
+      <div class="recap-chip recap-current"><div class="num">Now!</div><div class="topic">&#x1F35C; Street Food</div><div class="detail">some/any, food adjectives</div></div>
+    </div>
+
+    <div class="card" style="border-left:4px solid var(--accent)">
+      <p style="font-size:0.88rem"><strong>S1:</strong> You learned <strong>"will"</strong> for future plans. <strong>S2:</strong> You learned to <strong>offer, accept, and refuse help</strong>. Now apply both to today's street food topic!</p>
+      <div style="margin-top:10px;font-size:0.82rem;color:var(--text-dim)">
+        <strong>S1 Grammar:</strong> will + base verb → "I <em>will try</em> the kebab." / won't → "I <em>won't eat</em> spicy food."<br>
+        <strong>S2 Grammar:</strong> "Can I help you with...?" / "Would you like me to...?" / "Thanks, but I can manage."
+      </div>
+    </div>
+
+    <div class="card" style="border-left:4px solid var(--green)">
+      <h3>&#x1F9EA; Apply S1-S2 Grammar to Street Food</h3>
+      <p style="font-size:0.82rem;color:var(--text-dim);margin-bottom:10px">Choose the correct answer — use "will" and offer/accept phrases with food:</p>
+      <div id="recap-exercises"></div>
+      <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn" style="background:var(--green);color:#fff;border:none;padding:8px 20px;border-radius:10px;font-weight:600;cursor:pointer" onclick="checkRecap()">Check</button>
+        <button class="btn" style="background:var(--accent);color:#fff;border:none;padding:8px 20px;border-radius:10px;font-weight:600;cursor:pointer" onclick="retryRecap()">Retry</button>
+        <span id="recap-score" style="font-family:'Fredoka',sans-serif;font-size:1rem;font-weight:700;margin-left:auto;display:flex;align-items:center"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== PHASE 1: LISTEN ====== -->
+  <div class="section" id="listen">
+    <span class="section-label" style="background:var(--pink-light);color:var(--pink);">Phase 1 &mdash; Input</span>
+    <h2>&#x1F3A7; Step 1: Listen First</h2>
+    <p style="color:var(--text-dim);margin-bottom:12px;font-size:0.88rem;">Your brain picks up pronunciation and rhythm before you study words. Just listen &mdash; don't read yet.</p>
+
+    <div class="audio-card">
+      <div class="audio-icon">&#x1F3AC;</div>
+      <div class="audio-info" style="flex:1"><h4>Top 10 Street Foods Video</h4><p>Watch the video about street food around the world</p></div>
+      <video controls preload="none" style="width:100%;max-width:320px;margin-top:4px;border-radius:8px"><source src="https://scemoodle.aucegypt.edu/pluginfile.php/3170030/mod_hvp/content/171748/videos/files-68227283dede5.mp4" type="video/mp4"></video>
+      <details class="subtitle-toggle">
+        <summary>📝 Show Subtitle / Transcript</summary>
+        <div class="subtitle-text">
+          <p>This video shows the top 10 most popular street foods from around the world.</p>
+          <p>You'll see foods like <strong>tacos</strong> from Mexico, <strong>kebabs</strong> from Turkey, <strong>falafel</strong> from Egypt, <strong>samosas</strong> from India, <strong>noodles</strong> from China, <strong>pho</strong> from Vietnam, and more.</p>
+          <p>Watch how vendors prepare the food and notice the different ingredients, flavors, and cooking methods used in each country.</p>
+          <p>Pay attention to words like: <strong>crispy, spicy, savory, tender, delicious, bland, greasy, juicy</strong>.</p>
+        </div>
+      </details>
+    </div>
+    <div class="audio-card">
+      <div class="audio-icon">&#x1F4DE;</div>
+      <div class="audio-info" style="flex:1"><h4>Listening: Kariman &amp; Heba</h4><p>Two friends talking about trying street food together</p></div>
+      <audio controls preload="none" style="width:100%;max-width:280px;margin-top:4px"><source src="https://scemoodle.aucegypt.edu/pluginfile.php/3170033/mod_hvp/content/171751/audios/files-6826f23dead16.mp3" type="audio/mpeg"></audio>
+      <details class="subtitle-toggle">
+        <summary>📝 Show Subtitle / Transcript</summary>
+        <div class="subtitle-text">
+          <p><strong>Kariman:</strong> Hey, have you tried the noodles from that street vendor yet?</p>
+          <p><strong>Heba:</strong> No, I haven't. Are they good?</p>
+          <p><strong>Kariman:</strong> They're amazing! You have to try them.</p>
+          <p><strong>Heba:</strong> What kind of noodles are they?</p>
+          <p><strong>Kariman:</strong> The cook is from China, so they're traditional noodles with chicken and some vegetables on top.</p>
+          <p><strong>Heba:</strong> That sounds delicious. Maybe we can also get some rice from there, too.</p>
+          <p><strong>Kariman:</strong> There isn't any rice there, actually.</p>
+          <p><strong>Heba:</strong> Oh, okay. Then let's get some samosas from the other cart.</p>
+          <p><strong>Kariman:</strong> Oh yeah, I heard the samosas are great.</p>
+          <p><strong>Heba:</strong> And what about a taco or a burger from the food truck over there?</p>
+          <p><strong>Kariman:</strong> There are burgers there, but there aren't any tacos.</p>
+          <p><strong>Heba:</strong> Let's go and get some burgers then. Do you want cheese on yours?</p>
+          <p><strong>Kariman:</strong> Definitely. And maybe an egg as well.</p>
+          <p><strong>Heba:</strong> Sounds good. We can add some potatoes and onions too.</p>
+          <p><strong>Kariman:</strong> Yum. That sounds delicious.</p>
+          <p><strong>Heba:</strong> After this, we should try the falafel from the next block.</p>
+          <p><strong>Kariman:</strong> Yes, let's do it. Maybe we can even get lamb or beef kebabs later in the day.</p>
+          <p><strong>Heba:</strong> Sounds like a plan. This is one of my favorite parts about traveling — trying all kinds of street foods.</p>
+          <p><strong>Kariman:</strong> Me too. It's always an adventure.</p>
+        </div>
+      </details>
+    </div>
+    <div class="audio-card" style="background:linear-gradient(135deg,#e8eaff,#f0f0ff);border-color:#d0d3f0">
+      <div class="audio-icon">&#x1F3A7;</div>
+      <div class="audio-info" style="flex:1"><h4>Street Food Vocabulary &amp; Grammar</h4><p>Audio lesson covering key words and grammar rules</p></div>
+      <audio controls style="width:100%;max-width:280px;margin-top:2px"><source src="https://drive.google.com/uc?export=download&id=1XMICt_zvvi7_wYQZ4WJr2HH_i6Fuh4o0" type="audio/mpeg"></audio>
+      <details class="subtitle-toggle">
+        <summary>📝 Show Subtitle / Transcript</summary>
+        <div class="subtitle-text">
+          <p>Welcome to Session 3 — Street Food: Vocabulary and Grammar.</p>
+          <p>In this lesson, you'll learn food vocabulary: <strong>noodles, samosa, kebab, falafel, taco, burger, pho, koshari, kunafa, gyro</strong>.</p>
+          <p>You'll also learn food adjectives: <strong>delicious, tasty, crispy, spicy, bland, greasy, tender, savory, juicy, salty, sweet, sour</strong>.</p>
+          <p>For grammar, we study <strong>some</strong> and <strong>any</strong>:</p>
+          <p><strong>Some</strong> — used in positive sentences: "I want some rice." "There are some vegetables."</p>
+          <p><strong>Any</strong> — used in negative sentences and questions: "There isn't any rice." "Are there any samosas?"</p>
+          <p>We also review <strong>a/an</strong> for singular countable nouns: "a burger", "an egg".</p>
+          <p>And <strong>how much</strong> (uncountable) vs <strong>how many</strong> (countable): "How much rice?" vs "How many burgers?"</p>
+        </div>
+      </details>
+    </div>
+    <div class="audio-card" style="background:linear-gradient(135deg,#fff3e6,#fce8f4);border-color:#e0d5c5">
+      <div class="audio-icon">&#x1F9E0;</div>
+      <div class="audio-info" style="flex:1"><h4>Psychology of Street Food Negotiation</h4><p>How to bargain and order at food stalls</p></div>
+      <audio controls style="width:100%;max-width:280px;margin-top:2px"><source src="https://drive.google.com/uc?export=download&id=1kz9_97YS75fRpNCvYW3tegCAtg3ROFpe" type="audio/mpeg"></audio>
+      <details class="subtitle-toggle">
+        <summary>📝 Show Subtitle / Transcript</summary>
+        <div class="subtitle-text">
+          <p>The Psychology of Street Food Negotiation.</p>
+          <p>When you buy street food, you often need to communicate with the vendor. Here are useful phrases:</p>
+          <p><strong>Ordering:</strong> "Can I have some falafel, please?" "I'd like a kebab." "How much is it?"</p>
+          <p><strong>Asking about ingredients:</strong> "Is there any cheese in this?" "Does it have any spice?" "What's in the samosa?"</p>
+          <p><strong>Describing what you want:</strong> "I want something spicy." "Do you have anything sweet?" "I'd like it without onions."</p>
+          <p><strong>Negotiating:</strong> "Is that the best price?" "Can I get two for less?" "That's a bit expensive."</p>
+          <p><strong>Complimenting:</strong> "This is delicious!" "The falafel is really crispy!" "It's the best koshari I've ever had!"</p>
+          <p>Practice these phrases — you'll need them when traveling!</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- ====== PHASE 2: VOCABULARY ====== -->
+  <div class="section" id="vocab">
+    <span class="section-label" style="background:var(--green-light);color:var(--green);">Phase 2 &mdash; Learn</span>
+    <h2>&#x1F4D6; Step 2: Vocabulary</h2>
+    <p style="color:var(--text-dim);margin-bottom:4px;font-size:0.88rem;">Click to flip. Try to guess before flipping!</p>
+
+    <h3 style="margin:16px 0 10px">&#x1F35C; Street Food Types</h3>
+    <div class="vocab-grid" id="vg-food"></div>
+    <h3 style="margin:16px 0 10px">&#x1F3A8; Food Adjectives</h3>
+    <div class="vocab-grid" id="vg-adj"></div>
+    <h3 style="margin:16px 0 10px">&#x1F373; Cooking &amp; Eating</h3>
+    <div class="vocab-grid" id="vg-cook"></div>
+
+    <h3 style="margin:16px 0 10px">&#x1F517; Adjective Categories</h3>
+    <div class="card" style="background:var(--card-alt)">
+      <table class="grammar-table">
+        <tr><th>Taste</th><th>Texture</th><th>Shape</th><th>Color</th><th>Origin</th></tr>
+        <tr><td>sweet, sour, spicy, bland, hot, cold, delicious, disgusting</td><td>crispy, crunchy, chewy, creamy, soft, hard, fluffy, oily, crumbly</td><td>round, oval, cylindrical</td><td>green, purple, cream, white</td><td>Chinese, Indian, Italian, Japanese</td></tr>
+      </table>
+    </div>
+
+    <h3 style="margin:16px 0 10px">&#x1F525; Food Idioms</h3>
+    <div id="idioms-box"></div>
+  </div>
+
+  <!-- ====== PHASE 3: GRAMMAR ====== -->
+  <div class="section" id="grammar">
+    <h2>&#x1F4DD; Step 3: Grammar</h2>
+
+    <!-- Countable vs Uncountable -->
+    <div class="card">
+      <h3>Countable vs Uncountable Nouns</h3>
+      <p style="font-size:0.88rem;margin-bottom:8px"><strong>Countable:</strong> things you can count &mdash; 1 taco, 2 tacos, 3 eggs</p>
+      <p style="font-size:0.88rem;margin-bottom:8px"><strong>Uncountable:</strong> things you can't count &mdash; rice, chicken (as food), bread, water</p>
+      <div class="tip-box"><strong>Trick:</strong> Some words change! <em>One chicken</em> = the animal (countable). <em>Chicken</em> on your plate = food (uncountable). Same with <em>lamb</em>.</div>
+      <p style="font-size:0.88rem;margin-top:8px"><strong>How to count uncountable things?</strong> Put them in a container: a <strong>bottle</strong> of water, a <strong>bag</strong> of rice, a <strong>can</strong> of soda, a <strong>carton</strong> of milk.</p>
+    </div>
+
+    <!-- Articles -->
+    <div class="card">
+      <h3>Articles: a / an / the / zero article</h3>
+      <table class="grammar-table">
+        <tr><th>Article</th><th>Rule</th><th>Example</th></tr>
+        <tr><td><span class="demo-word">a</span></td><td>ONE thing (consonant sound), first mention</td><td>I had <strong>a</strong> falafel sandwich</td></tr>
+        <tr><td><span class="demo-word">an</span></td><td>ONE thing (vowel sound), first mention</td><td>She bought <strong>an</strong> orange</td></tr>
+        <tr><td><span class="demo-word">the</span></td><td>SPECIFIC thing (both know which one)</td><td><strong>The</strong> tacos we ate were tasty</td></tr>
+        <tr><td><span class="demo-word">zero</span></td><td>General / plural / uncountable (not specific)</td><td>We love eating <strong>&mdash;</strong> street food</td></tr>
+      </table>
+    </div>
+
+    <!-- Some / Any -->
+    <div class="card">
+      <h3>Some &amp; Any</h3>
+      <table class="grammar-table">
+        <tr><th></th><th>Countable</th><th>Uncountable</th></tr>
+        <tr><td style="font-weight:700;color:var(--green)">&#x2705; Positive</td><td>There <strong>are some</strong> tacos.</td><td>There <strong>is some</strong> rice.</td></tr>
+        <tr><td style="font-weight:700;color:var(--red)">&#x274C; Negative</td><td>There <strong>aren't any</strong> tacos.</td><td>There <strong>isn't any</strong> rice.</td></tr>
+        <tr><td style="font-weight:700;color:var(--accent)">&#x2753; Question</td><td><strong>Are there any</strong> tacos?</td><td><strong>Is there any</strong> rice?</td></tr>
+      </table>
+      <div class="tip-box"><strong>Exception:</strong> Use <em>some</em> in questions when <strong>offering</strong>: "Would you like <strong>some</strong> tea?" or "Do you need <strong>some</strong> chicken?"</div>
+    </div>
+
+    <!-- How much / How many -->
+    <div class="card">
+      <h3>How much / How many / Too much / Too many / Enough</h3>
+      <table class="grammar-table">
+        <tr><th>Word</th><th>Use With</th><th>Example</th></tr>
+        <tr><td><span class="demo-word">How much</span></td><td>Uncountable</td><td>How much sugar is there?</td></tr>
+        <tr><td><span class="demo-word">How many</span></td><td>Countable</td><td>How many eggs are left?</td></tr>
+        <tr><td><span class="demo-word">Too much</span></td><td>Uncountable (excessive)</td><td>There's too much salt!</td></tr>
+        <tr><td><span class="demo-word">Too many</span></td><td>Countable (excessive)</td><td>There are too many onions.</td></tr>
+        <tr><td><span class="demo-word">Enough</span></td><td>Both (sufficient)</td><td>We have enough food. / There are enough plates.</td></tr>
+      </table>
+    </div>
+
+    <!-- Grammar Practice -->
+    <div class="card">
+      <h3>&#x270F;&#xFE0F; Practice (12 questions)</h3>
+      <div id="grammar-exercises"></div>
+      <div class="text-center mt-12">
+        <button class="btn btn-accent" onclick="checkGrammar()">Check Answers &#x2714;</button>
+        <button class="btn btn-outline" onclick="retryGrammar()" style="margin-left:8px">Retry &#x1F504;</button>
+      </div>
+      <div id="grammar-result" class="hidden mt-12 text-center" style="font-family:'Fredoka',sans-serif;font-size:1rem"></div>
+    </div>
+  </div>
+
+  <!-- ====== PHASE 4: READING ====== -->
+  <div class="section" id="reading">
+    <h2>&#x1F4D6; Step 4: Read &amp; Understand</h2>
+    <p style="color:var(--text-dim);margin-bottom:12px;font-size:0.88rem;">Now read while you listen again. Notice the highlighted vocabulary.</p>
+
+    <div class="card">
+      <h3>&#x1F30D; 10 Best Street Foods Around the World</h3>
+      <div style="background:#faf9f6;padding:14px;border-radius:10px;font-size:0.86rem;line-height:2">
+        Hey everyone, welcome back to World Insights by Heron. If you're a foodie like us, you'll love today's video. We're exploring the 10 best street foods around the world, from sizzling <span class="demo-word">skewers</span> in Istanbul to <span class="demo-word">spicy</span> bites in India.<br><br>
+        At number 10, we kick things off with a <span class="demo-word">savory</span>-filled classic from Pakistan: the <span class="demo-word">Samosa</span>. These triangle pockets of goodness are stuffed with spiced potatoes, peas, and sometimes meat. They're deep-fried to golden perfection and served with a variety of chutneys.<br><br>
+        Next up at number nine, we have <span class="demo-word">Vada Pav</span> from India. Often dubbed as Mumbai's very own burger, this dish features a <span class="demo-word">crispy</span> potato fritter called Vada, which is stuffed in a pav bread roll, topped with chutneys and fried green chillies.<br><br>
+        At number eight, we're heading to Mexico for the iconic <span class="demo-word">Taco</span>. These street foods come in many flavors and with fresh toppings like cilantro, onion, and a splash of lime. Over 10 billion tacos are consumed annually in Mexico.<br><br>
+        At number seven, we've got the <span class="demo-word">Doner Kebab</span> from Turkey. The tender seasoned meat, usually lamb or chicken, is roasted on a vertical rotisserie and served in a pita or flatbread with a variety of fresh toppings.<br><br>
+        Coming in at number six is <span class="demo-word">Pho</span>, Vietnam's national dish. This fragrant soup features rice noodles, aromatic herbs, and a rich broth, often with slices of beef or chicken.
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>&#x1F4DE; Kariman &amp; Heba: Talking about Street Food</h3>
+      <div style="background:#faf9f6;padding:14px;border-radius:10px;font-size:0.86rem;line-height:2">
+        <strong>Kariman:</strong> Hey, have you tried the <span class="demo-word">noodles</span> from that street <span class="demo-word">vendor</span> yet?<br>
+        <strong>Heba:</strong> No, I haven't. Are they good?<br>
+        <strong>Kariman:</strong> They're amazing! You have to try them.<br>
+        <strong>Heba:</strong> What kind of noodles are they?<br>
+        <strong>Kariman:</strong> The cook is from China, so they're traditional noodles with chicken and <span class="demo-word">some</span> vegetables on top.<br>
+        <strong>Heba:</strong> That sounds delicious. Maybe we can also get <span class="demo-word">some</span> rice from there, too.<br>
+        <strong>Kariman:</strong> There <span class="demo-word">isn't any</span> rice there, actually.<br>
+        <strong>Heba:</strong> Oh, okay. Then let's get <span class="demo-word">some</span> samosas from the other cart.<br>
+        <strong>Kariman:</strong> Oh yeah, I heard the samosas are great.<br>
+        <strong>Heba:</strong> And what about <span class="demo-word">a</span> taco or <span class="demo-word">a</span> burger from the food truck over there?<br>
+        <strong>Kariman:</strong> There are burgers there, but there <span class="demo-word">aren't any</span> tacos.<br>
+        <strong>Heba:</strong> Let's go and get <span class="demo-word">some</span> burgers then. Do you want cheese on yours?<br>
+        <strong>Kariman:</strong> Definitely. And maybe <span class="demo-word">an</span> egg as well.<br>
+        <strong>Heba:</strong> Sounds good. We can add <span class="demo-word">some</span> potatoes and onions too.<br>
+        <strong>Kariman:</strong> Yum. That sounds <span class="demo-word">delicious</span>.<br>
+        <strong>Heba:</strong> Absolutely. After this, we should try the <span class="demo-word">falafel</span> from the next block.<br>
+        <strong>Kariman:</strong> Yes, let's do it. Maybe we can even get lamb or beef kebabs later in the day.<br>
+        <strong>Heba:</strong> Sounds like a plan. This is one of my favorite parts about traveling &mdash; trying all kinds of street foods.<br>
+        <strong>Kariman:</strong> Me too. It's always an adventure.
+      </div>
+      <div class="tip-box mt-8"><strong>Did you notice?</strong> Kariman and Heba used <em>some</em> (positive), <em>any</em> (negative/question), <em>a/an</em> (singular), and <em>isn't any</em> naturally in conversation!</div>
+    </div>
+  </div>
+
+  <!-- ====== PHASE 5: SPEAKING ====== -->
+  <div class="section" id="speaking">
+    <span class="section-label" style="background:var(--orange-light);color:var(--orange);">Phase 3 &mdash; Output</span>
+    <h2>&#x1F5E3; Step 5: Speaking Practice</h2>
+
+    <div class="card">
+      <h3>&#x1F3A4; 1-Minute Challenge</h3>
+      <p style="font-size:0.88rem;margin-bottom:8px">Set a timer. Speak for 60 seconds without stopping:</p>
+      <div class="challenge-box"><h3>"Describe your favorite street food. What does it taste like? Where can you find it?"</h3><p style="font-size:0.82rem;color:var(--text-dim);margin-top:6px">Use: 3 food adjectives + some/any + 1 idiom</p></div>
+    </div>
+
+    <div class="card">
+      <h3>&#x1F6E1; Rescue Phrases (when you get stuck)</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">
+        <span style="background:var(--accent-light);padding:5px 12px;border-radius:20px;font-size:0.82rem;font-weight:500">"Let me think..."</span>
+        <span style="background:var(--green-light);padding:5px 12px;border-radius:20px;font-size:0.82rem;font-weight:500">"What I mean is..."</span>
+        <span style="background:var(--orange-light);padding:5px 12px;border-radius:20px;font-size:0.82rem;font-weight:500">"For example..."</span>
+        <span style="background:var(--pink-light);padding:5px 12px;border-radius:20px;font-size:0.82rem;font-weight:500">"In my opinion..."</span>
+        <span style="background:var(--yellow-light);padding:5px 12px;border-radius:20px;font-size:0.82rem;font-weight:500">"It tastes like..."</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== PHASE 5B: ROLEPLAY ====== -->
+  <div class="section" id="roleplay">
+    <h2>&#x1F3AD; Step 6: Roleplay &mdash; At the Food Market</h2>
+    <p style="color:var(--text-dim);margin-bottom:14px;font-size:0.88rem;">Click each role card to see the guiding points and an example conversation. Practice with a partner or read aloud!</p>
+
+    <!-- Vendor -->
+    <div class="role-card" style="border-color:var(--orange)" onclick="toggleRole('vendor')">
+      <h4 style="color:var(--orange)">&#x1F9D1;&#x200D;&#x1F373; Role 1: Street Food Vendor</h4>
+      <ul class="role-points">
+        <li>Offer a specific food to the customer</li>
+        <li>Ask how much/how many the customer wants</li>
+        <li>Offer options (vegetarian, spicy, etc.)</li>
+        <li>Ask if they want extra items</li>
+        <li>Offer a sample and ask how many they want to buy</li>
+        <li>Suggest the most popular item from the menu</li>
+      </ul>
+      <div class="role-convo" id="vendor-convo">
+        <strong>Vendor:</strong> Hello! Would you like to try <span class="demo-word">some</span> falafel? It's our most popular item!<br>
+        <strong>Customer:</strong> Yes, it smells <span class="demo-word">delicious</span>! How much is it?<br>
+        <strong>Vendor:</strong> One sandwich is 30 pounds. <span class="demo-word">How many</span> would you like?<br>
+        <strong>Customer:</strong> I'll take two, please. Do you have <span class="demo-word">any</span> spicy sauce?<br>
+        <strong>Vendor:</strong> Yes! We have <span class="demo-word">some</span> hot chili sauce. Would you like to try <span class="demo-word">a</span> sample first?<br>
+        <strong>Customer:</strong> Sure! Oh, that's really <span class="demo-word">spicy</span> but <span class="demo-word">tasty</span>! Can I also get <span class="demo-word">some</span> fries with that?<br>
+        <strong>Vendor:</strong> Of course! Here you go. Enjoy your meal!
+      </div>
+    </div>
+
+    <!-- Food Lover -->
+    <div class="role-card" style="border-color:var(--pink)" onclick="toggleRole('foodlover')">
+      <h4 style="color:var(--pink)">&#x2764;&#xFE0F; Role 2: Food Lover</h4>
+      <ul class="role-points">
+        <li>Talk about what food you want to try</li>
+        <li>Ask for the name of a specific food and describe its flavors</li>
+        <li>Ask how much something costs or how many you can get</li>
+        <li>Say if you like or don't like some food</li>
+        <li>Ask if there are any vegetarian or special options</li>
+        <li>Mention how many servings you want to order</li>
+      </ul>
+      <div class="role-convo" id="foodlover-convo">
+        <strong>Food Lover:</strong> Excuse me, what are those <span class="demo-word">round</span> things? They smell amazing!<br>
+        <strong>Vendor:</strong> Those are samosas! They're filled with <span class="demo-word">some</span> spiced potatoes and peas.<br>
+        <strong>Food Lover:</strong> Mmm, <span class="demo-word">mouth-watering</span>! Are there <span class="demo-word">any</span> vegetarian options?<br>
+        <strong>Vendor:</strong> Yes, the potato samosa is vegetarian. We also have <span class="demo-word">some</span> cheese rolls.<br>
+        <strong>Food Lover:</strong> <span class="demo-word">How much</span> are the cheese rolls?<br>
+        <strong>Vendor:</strong> 25 pounds each.<br>
+        <strong>Food Lover:</strong> I'll try two samosas and <span class="demo-word">a</span> cheese roll. I love trying new food. I'm <span class="demo-word">starving</span>!
+      </div>
+    </div>
+
+    <!-- Budget Shopper -->
+    <div class="role-card" style="border-color:var(--green)" onclick="toggleRole('budget')">
+      <h4 style="color:var(--green)">&#x1F4B0; Role 3: Budget-Careful Shopper</h4>
+      <ul class="role-points">
+        <li>Ask about the price (use how much)</li>
+        <li>Ask if there are any cheaper options or discounts</li>
+        <li>Talk about how many portions you'd like</li>
+        <li>Ask if any items are on sale or if they can make it smaller</li>
+        <li>Request some extra food like toppings or sides</li>
+      </ul>
+      <div class="role-convo" id="budget-convo">
+        <strong>Shopper:</strong> <span class="demo-word">How much</span> is <span class="demo-word">a</span> plate of noodles?<br>
+        <strong>Vendor:</strong> A full plate is 45 pounds.<br>
+        <strong>Shopper:</strong> That's <span class="demo-word">too much</span> for me. Are there <span class="demo-word">any</span> cheaper options?<br>
+        <strong>Vendor:</strong> We have a small plate for 25 pounds.<br>
+        <strong>Shopper:</strong> That sounds better. <span class="demo-word">How many</span> pieces of chicken come with it?<br>
+        <strong>Vendor:</strong> Three pieces. Would you like <span class="demo-word">some</span> extra vegetables? They're free!<br>
+        <strong>Shopper:</strong> Yes, please! Can I also get <span class="demo-word">some</span> bread on the side?<br>
+        <strong>Vendor:</strong> Sure, here's <span class="demo-word">a</span> piece of fresh bread. Enjoy!
+      </div>
+    </div>
+
+    <!-- Food Critic -->
+    <div class="role-card" style="border-color:var(--accent)" onclick="toggleRole('critic')">
+      <h4 style="color:var(--accent)">&#x1F4DD; Role 4: Food Critic</h4>
+      <ul class="role-points">
+        <li>Ask for a description of the food (flavor, ingredients)</li>
+        <li>Talk about the qualities of the food (spicy, sweet, etc.)</li>
+        <li>Ask if the food is good for certain diets</li>
+        <li>Ask if any changes can be made (less spicy, add something)</li>
+        <li>Ask about how much/how many ingredients are used</li>
+      </ul>
+      <div class="role-convo" id="critic-convo">
+        <strong>Critic:</strong> Good afternoon. Can you describe this dish for me? What's in it?<br>
+        <strong>Vendor:</strong> It's a traditional <span class="demo-word">doner kebab</span> with <span class="demo-word">some</span> lamb, fresh vegetables, and our special sauce.<br>
+        <strong>Critic:</strong> Interesting. Is it <span class="demo-word">spicy</span>?<br>
+        <strong>Vendor:</strong> It's a little spicy, yes. We use <span class="demo-word">some</span> chili flakes.<br>
+        <strong>Critic:</strong> Can you make it less spicy? I don't want <span class="demo-word">too much</span> chili.<br>
+        <strong>Vendor:</strong> Of course! We can leave out the chili.<br>
+        <strong>Critic:</strong> The meat is very <span class="demo-word">tender</span> and <span class="demo-word">juicy</span>. <span class="demo-word">How many</span> spices do you use?<br>
+        <strong>Vendor:</strong> We use seven different spices! It's our secret recipe.<br>
+        <strong>Critic:</strong> Impressive. The bread is <span class="demo-word">soft</span> and <span class="demo-word">fluffy</span> too. I'd rate this four out of five stars!
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== PHASE 6: EMAIL ====== -->
+  <div class="section" id="email">
+    <h2>&#x1F4E7; Step 7: Email Writing Guide</h2>
+
+    <div class="card">
+      <h3>Email Structure (Every Email Needs These)</h3>
+      <table class="grammar-table">
+        <tr><th>Part</th><th>What to Write</th><th>Example</th></tr>
+        <tr><td style="font-weight:700">Subject Line</td><td>Short &amp; clear topic</td><td>Egyptian Street Food</td></tr>
+        <tr><td style="font-weight:700">Greeting</td><td>Dear / Hi + name</td><td>Hi Marwa,</td></tr>
+        <tr><td style="font-weight:700">Opening</td><td>Why you're writing</td><td>I want to tell you about...</td></tr>
+        <tr><td style="font-weight:700">Body</td><td>Details + descriptions</td><td>The food is delicious because... I tried some...</td></tr>
+        <tr><td style="font-weight:700">Closing</td><td>End nicely</td><td>I hope you can try it too!</td></tr>
+        <tr><td style="font-weight:700">Sign-off</td><td>Your name</td><td>Your friend, Ebrahim</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>&#x1F4A1; Model Email</h3>
+      <div class="email-frame">
+        <div class="email-header"><strong>Subject:</strong> Egyptian Street Food</div>
+        <div class="email-body">
+          <p>Hi Marwa,</p>
+          <p style="margin-top:8px">I want to tell you about <strong>some</strong> amazing Egyptian street food! Last week I tried <strong>some</strong> koshari from a small stall near downtown. It was <strong>delicious</strong> and <strong>mouth-watering</strong>.</p>
+          <p style="margin-top:8px">The koshari had <strong>some</strong> rice, lentils, pasta, and <strong>crispy</strong> onion on top. I also tried <strong>a</strong> falafel sandwich. It was <strong>crunchy</strong> on the outside and <strong>soft</strong> inside.</p>
+          <p style="margin-top:8px">You should try <strong>some</strong> Egyptian street food when you visit. There are <strong>so many</strong> options!</p>
+          <p style="margin-top:8px">Your friend,<br>Ebrahim</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMAIL ARCHIVE: Corrected Email from Class -->
+    <div class="card" style="border-color:var(--pink);border-width:2px">
+      <h3 style="color:var(--pink)">&#x1F4DA; Email Archive: Corrected Email from Class</h3>
+      <p style="font-size:0.82rem;color:var(--text-dim);margin-bottom:10px">This is Safaa's email from class with the instructor's corrections in green. Learn from the mistakes!</p>
+      <div class="email-frame">
+        <div class="email-header"><strong>Subject:</strong> Egyptian Street Food<br><strong>From:</strong> Safaa &nbsp; <strong>To:</strong> Marwa</div>
+        <div class="email-body" style="font-size:0.86rem;line-height:2">
+          <p>Hi Marwa,</p>
+          <p style="margin-top:8px">I want to tell you about <span class="correction">you're</span> <span class="corrected">your</span> <span class="correction">experinse</span> <span class="corrected">experience</span> with Egyptian street food. I <span class="correction">tried</span> <span class="corrected">was trying</span> <span class="demo-word">some</span> amazing food last week.</p>
+          <p style="margin-top:8px">First, I tried koshari. It <span class="correction">makes</span> <span class="corrected">is made</span> with rice, <span class="correction">lenties</span> <span class="corrected">lentils</span>, pasta, and <span class="correction">onine</span> <span class="corrected">onion</span>. It's really <span class="demo-word">delicious</span>!</p>
+          <p style="margin-top:8px">I also tried <span class="demo-word">some</span> <span class="correction">origan</span> <span class="corrected">local</span> <span class="correction">edition</span> <span class="corrected">additions like</span> <span class="demo-word">crispy</span> fried onion and spicy tomato sauce.</p>
+          <p style="margin-top:8px">For <span class="correction">desert</span> <span class="corrected">dessert</span>, I had kunafa. It was <span class="demo-word">sweet</span> and <span class="demo-word">creamy</span>.</p>
+          <p style="margin-top:8px">Your friend,<br>Safaa</p>
+        </div>
+      </div>
+      <div class="tip-box mt-8"><strong>Common mistakes to avoid:</strong> your &#x2260; you're &bull; dessert (food) &#x2260; desert (sand) &bull; lentils (not lenties) &bull; onion (not onine) &bull; experience (not experinse)</div>
+    </div>
+
+    <div class="card">
+      <div style="background:linear-gradient(135deg,#ffeaea,#fce8f4);border:2px solid var(--red);border-radius:12px;padding:14px 18px;margin-bottom:16px">
+        <p style="font-weight:700;color:var(--red);font-size:0.92rem">&#x1F6A8; Assessment Preparation — Session 5 is Email Writing!</p>
+        <p style="font-size:0.82rem;color:var(--text-dim);margin-top:4px">Practice writing emails every session. Use the textarea below and check off each requirement as you write.</p>
+      </div>
+      <h3>&#x2705; Email Checklist</h3>
+      <div class="checklist" id="email-checklist">
+        <label><input type="checkbox" onchange="updateEmailCheck()"> Has a greeting (Hi/Dear + name)</label>
+        <label><input type="checkbox" onchange="updateEmailCheck()"> Says what you're writing about in the first sentence</label>
+        <label><input type="checkbox" onchange="updateEmailCheck()"> Uses at least 3 food adjectives</label>
+        <label><input type="checkbox" onchange="updateEmailCheck()"> Uses some/any correctly</label>
+        <label><input type="checkbox" onchange="updateEmailCheck()"> Describes specific food with details</label>
+        <label><input type="checkbox" onchange="updateEmailCheck()"> Has a friendly closing sentence</label>
+        <label><input type="checkbox" onchange="updateEmailCheck()"> Has sign-off (Your friend, [name])</label>
+        <label><input type="checkbox" onchange="updateEmailCheck()"> Checked spelling (dessert, lentils, delicious)</label>
+        <label><input type="checkbox" onchange="updateEmailCheck()"> Word count: 50-80 words</label>
+      </div>
+      <div id="email-check-result" class="mt-8" style="font-family:'Fredoka',sans-serif;font-size:0.9rem"></div>
+    </div>
+
+    <div class="card">
+      <h3>&#x270F;&#xFE0F; Practice: Write Your Email About Street Food</h3>
+      <textarea class="writing-area" id="email-area" placeholder="Subject: Street Food in Egypt
+
+Hi [name],
+
+I want to tell you about some amazing street food...
+
+Your friend,
+[your name]" oninput="updateEmailWordCount()"></textarea>
+      <div class="word-count">Words: <span id="email-wc">0</span> / 50-80 target</div>
+    </div>
+  </div>
+
+  <!-- ====== PHASE 7: WRITING ====== -->
+  <div class="section" id="writing">
+    <h2>&#x270F;&#xFE0F; Step 8: Writing Practice &mdash; Food Review</h2>
+
+    <div class="card">
+      <h3>&#x1F4A1; Write a Short Food Review</h3>
+      <p style="font-size:0.88rem;margin-bottom:8px">Imagine you visited a street food market. Write about what you tried. Use food adjectives, some/any, and countable/uncountable nouns.</p>
+      <div style="background:linear-gradient(135deg,#fff9f0,#fff3e6);padding:18px;border-radius:12px;border:2px solid #f0dcc0;font-size:0.9rem;line-height:1.9">
+        <p><em>Model:</em></p>
+        <p>Last Friday, I went to <strong>a</strong> street food market in Maadi. I tried <strong>some</strong> grilled <strong>chicken skewers</strong>. They were <strong>crispy</strong> and <strong>spicy</strong>. I also had <strong>a</strong> plate of koshari with <strong>some</strong> <strong>crunchy</strong> onion on top. For dessert, I ate <strong>some</strong> kunafa. It was <strong>sweet</strong> and <strong>creamy</strong>. There weren't <strong>any</strong> tacos, but I didn't mind. The food was <strong>delicious</strong>!</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>&#x270F;&#xFE0F; Write Your Food Review</h3>
+      <textarea class="writing-area" id="review-area" placeholder="Last week, I went to a street food market...
+
+I tried some...
+
+The food was..." oninput="updateReviewWC()"></textarea>
+      <div class="word-count">Words: <span id="review-wc">0</span> / 50-80 target</div>
+    </div>
+
+    <div class="card">
+      <h3>&#x2705; Writing Checklist</h3>
+      <div class="checklist" id="review-checklist">
+        <label><input type="checkbox" onchange="updateReviewCheck()"> Used at least 3 food adjectives</label>
+        <label><input type="checkbox" onchange="updateReviewCheck()"> Used some/any correctly</label>
+        <label><input type="checkbox" onchange="updateReviewCheck()"> Used a/an/the correctly</label>
+        <label><input type="checkbox" onchange="updateReviewCheck()"> Used at least one countable + one uncountable noun</label>
+        <label><input type="checkbox" onchange="updateReviewCheck()"> Described taste AND texture</label>
+        <label><input type="checkbox" onchange="updateReviewCheck()"> 50-80 words</label>
+      </div>
+      <div id="review-check-result" class="mt-8" style="font-family:'Fredoka',sans-serif;font-size:0.9rem"></div>
+    </div>
+  </div>
+
+  <!-- ====== PHASE 8: QUIZ ====== -->
+  <div class="section" id="quiz">
+    <span class="section-label" style="background:var(--red-light);color:var(--red);">Phase 4 &mdash; Test</span>
+    <h2>&#x1F3AF; Step 9: Final Quiz</h2>
+    <p style="color:var(--text-dim);margin-bottom:14px;font-size:0.88rem;">18 questions. Pick an answer &mdash; green = correct, red = wrong. No answers shown so you can retry!</p>
+
+    <div id="quiz-container"></div>
+    <div class="text-center mt-20">
+      <button class="btn btn-green" onclick="showQuizScore()" style="padding:10px 28px;font-size:0.95rem">Show My Score &#x1F3C6;</button>
+      <button class="btn btn-outline" onclick="retryQuiz()" style="margin-left:10px;padding:10px 28px;font-size:0.95rem">Retry Quiz &#x1F504;</button>
+    </div>
+    <div id="quiz-final" class="hidden mt-16 text-center card" style="border-width:2px"></div>
+  </div>
+
+  <!-- ====== SUMMARY TABLE ====== -->
+  <div class="section" id="summary">
+    <span class="section-label" style="background:var(--yellow-light);color:var(--orange);">&#x1F4CA; Summary</span>
+    <h2>Everything You Learned Today</h2>
+
+    <div class="card">
+      <h3>&#x1F4D6; New Vocabulary</h3>
+      <div id="summary-vocab-table"></div>
+    </div>
+
+    <div class="card">
+      <h3>&#x1F525; Idioms &amp; Expressions</h3>
+      <table class="summary-table" id="summary-idioms-table">
+        <tr><th>Idiom</th><th>Meaning</th><th>Example</th></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>&#x1F4DD; Grammar Rules</h3>
+      <table class="summary-table">
+        <tr><th>Rule</th><th>Use</th><th>Example</th></tr>
+        <tr><td><span class="demo-word">a / an</span></td><td>One, singular, first mention</td><td>I had <strong>a</strong> taco and <strong>an</strong> egg.</td></tr>
+        <tr><td><span class="demo-word">the</span></td><td>Specific thing (both know which)</td><td><strong>The</strong> noodles we ordered were great.</td></tr>
+        <tr><td><span class="demo-word">some</span></td><td>Positive sentences + offers</td><td>I want <strong>some</strong> rice. / Would you like <strong>some</strong> tea?</td></tr>
+        <tr><td><span class="demo-word">any</span></td><td>Questions + negatives</td><td>Are there <strong>any</strong> tacos? / There isn't <strong>any</strong> rice.</td></tr>
+        <tr><td><span class="demo-word">how much</span></td><td>Uncountable quantity</td><td><strong>How much</strong> sugar is there?</td></tr>
+        <tr><td><span class="demo-word">how many</span></td><td>Countable quantity</td><td><strong>How many</strong> eggs do we need?</td></tr>
+        <tr><td><span class="demo-word">too much / too many</span></td><td>Excessive amount</td><td>There's <strong>too much</strong> salt. / <strong>Too many</strong> onions.</td></tr>
+        <tr><td><span class="demo-word">enough</span></td><td>Sufficient amount</td><td>We have <strong>enough</strong> food for everyone.</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ====== CHEAT SHEET ====== -->
+  <div class="section" id="cheat">
+    <span class="section-label" style="background:var(--yellow-light);color:var(--orange);">&#x1F4CB; Reference</span>
+    <h2>Cheat Sheet</h2>
+
+    <h3 style="margin-bottom:10px">Session 3: Street Food</h3>
+    <div class="cheat-grid">
+      <div class="cheat-cell">
+        <h4 style="color:var(--accent)">Grammar: Articles</h4>
+        <p style="font-size:0.82rem">a/an = one, singular, first mention<br>the = specific thing both know<br>zero article = general / uncountable</p>
+      </div>
+      <div class="cheat-cell">
+        <h4 style="color:var(--green)">Grammar: Some/Any</h4>
+        <p style="font-size:0.82rem">some = positive + offers<br>any = negative + questions<br>how much = uncountable<br>how many = countable</p>
+      </div>
+      <div class="cheat-cell">
+        <h4 style="color:var(--orange)">Taste Words</h4>
+        <p style="font-size:0.82rem">delicious, tasty, mouth-watering, spicy, sweet, sour, bland, disgusting, starving</p>
+      </div>
+      <div class="cheat-cell">
+        <h4 style="color:var(--pink)">Texture Words</h4>
+        <p style="font-size:0.82rem">crispy, crunchy, chewy, creamy, soft, hard, fluffy, oily, crumbly, tender, juicy</p>
+      </div>
+    </div>
+
+    <h3 style="margin:20px 0 10px">Sessions 1-2: Words You Should Still Remember</h3>
+    <div class="cheat-grid">
+      <div class="cheat-cell">
+        <h4 style="color:var(--accent)">&#x1F382; S1-2: Party Words</h4>
+        <p style="font-size:0.82rem">invite, celebrate, decoration, guest, plan, organize, surprise, costume, lantern, graduation, engagement, bachelor's party, promotion</p>
+      </div>
+      <div class="cheat-cell">
+        <h4 style="color:var(--accent)">&#x1F382; S1-2: Help Phrases</h4>
+        <p style="font-size:0.82rem">Can I help you with...? &bull; Would you like me to...? &bull; How about I take care of...? &bull; Thank you for + verb(ing) &bull; I offer to... &bull; I refuse to...</p>
+      </div>
+      <div class="cheat-cell">
+        <h4 style="color:var(--accent)">&#x1F382; S1-2: Grammar</h4>
+        <p style="font-size:0.82rem">'will' for future plans &bull; verb+ing after at/with/in/for/of &bull; to+infinitive after refuse/offer/would like</p>
+      </div>
+      <div class="cheat-cell">
+        <h4 style="color:var(--green)">&#x1F35C; S3: Food Types</h4>
+        <p style="font-size:0.82rem">taco, samosa, skewer, kebab, falafel, noodles, pho, vada pav, koshari, kunafa, gyro</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== PREVIEW ====== -->
+  <div class="section" id="preview">
+    <span class="section-label" style="background:var(--accent-light);color:var(--accent);">&#x1F52E; Coming Next</span>
+    <h2>Session 4: Friendship</h2>
+    <div class="preview-box">
+      <h4>What's Coming</h4>
+      <p style="font-size:0.88rem">You'll describe your friends and what makes them special using:</p>
+      <p style="font-size:0.88rem;margin-top:4px"><strong>this / that / these / those</strong> (demonstratives)</p>
+      <p style="font-size:0.88rem"><strong>Personality traits:</strong> kind, honest, loyal, supportive, encouraging</p>
+      <p style="font-size:0.88rem;margin-top:6px;color:var(--text-dim)">Start thinking: <em>"Who is your best friend and why?"</em></p>
+      <p style="font-size:0.88rem;margin-top:6px;color:var(--red);font-weight:600">&#x1F6A8; Assessment Alert: Session 5 is an email writing assessment — keep practicing your emails!</p>
+    </div>
+    <div class="tip-box"><strong>Connection:</strong> The food adjectives you learned today (tasty, crispy, spicy) follow the same adjective pattern as personality traits in Session 4 (kind, honest, loyal). Adjective + noun!</div>
+  </div>
+
+</div>
+
+<!-- SCORE BANNER -->
+<div class="score-banner">
+  <div class="score-item"><div class="label">Cards</div><div class="val" id="sb-cards" style="color:var(--accent)">0</div></div>
+  <div class="score-item"><div class="label">Grammar</div><div class="val" id="sb-grammar" style="color:var(--green)">0/12</div></div>
+  <div class="score-item"><div class="label">Quiz</div><div class="val" id="sb-quiz" style="color:var(--red)">0/18</div></div>
+  <div class="score-item"><div class="label">Written</div><div class="val" id="sb-words" style="color:var(--orange)">0</div></div>
+</div>
+
+<script>
+// ===== VOCAB DATA =====
+const VF=[
+  {w:"Taco",p:"noun",m:"Mexican food: meat & vegetables in a folded tortilla",ar:"تاكو (أكلة مكسيكية)",ex:"I ate a spicy taco from the food truck."},
+  {w:"Samosa",p:"noun",m:"Triangle pastry filled with potatoes and peas",ar:"سمبوسة",ex:"The samosas are crispy and delicious!"},
+  {w:"Skewer",p:"noun",m:"Pieces of meat/vegetables on a stick, grilled",ar:"سيخ (لحم أو خضار مشوي)",ex:"I love chicken skewers from street vendors."},
+  {w:"Vendor",p:"noun",m:"A person who sells food on the street",ar:"بائع (في الشارع)",ex:"The vendor gave me a free sample."},
+  {w:"Falafel",p:"noun",m:"Fried balls made from chickpeas, popular in Egypt",ar:"فلافل / طعمية",ex:"Egyptian falafel is made from fava beans."},
+  {w:"Noodles",p:"noun",m:"Long thin pasta, common in Asian food",ar:"نودلز / شعيرية",ex:"The noodles had chicken and vegetables."},
+  {w:"Kebab",p:"noun",m:"Grilled meat, often on a stick or in bread",ar:"كباب",ex:"The doner kebab was tender and juicy."},
+  {w:"Koshari",p:"noun",m:"Egyptian dish: rice, lentils, pasta, and sauce",ar:"كشري",ex:"Koshari is the most popular street food in Egypt."},
+];
+const VA=[
+  {w:"Delicious",p:"adj",m:"Very good taste, you love it",ar:"لذيذ جدا",ex:"This koshari is absolutely delicious!"},
+  {w:"Tasty",p:"adj",m:"Having a good, pleasant flavor",ar:"لذيذ / طيب المذاق",ex:"The grilled chicken is very tasty."},
+  {w:"Mouth-watering",p:"adj",m:"Looks/smells so good you want to eat it immediately",ar:"يسيل له اللعاب",ex:"That burger looks mouth-watering!"},
+  {w:"Spicy",p:"adj",m:"Has hot pepper or chili flavor",ar:"حار / حراق",ex:"The sauce is too spicy for me!"},
+  {w:"Crispy",p:"adj",m:"Hard and crunchy outside, makes a sound when you bite",ar:"مقرمش",ex:"The falafel is crispy on the outside."},
+  {w:"Creamy",p:"adj",m:"Smooth and soft like cream",ar:"كريمي / ناعم",ex:"The hummus is smooth and creamy."},
+  {w:"Bland",p:"adj",m:"No taste, boring food",ar:"بدون طعم / سادة",ex:"The rice was bland. It needed some salt."},
+  {w:"Disgusting",p:"adj",m:"Terrible taste, you hate it",ar:"مقرف / بشع",ex:"The old fish smelled disgusting!"},
+  {w:"Starving",p:"adj",m:"Extremely hungry",ar:"جعان جدا (بموت من الجوع)",ex:"I'm starving! Let's find some street food."},
+  {w:"Tender",p:"adj",m:"Soft meat, easy to cut and chew",ar:"طري (لحم ناعم)",ex:"The lamb kebab was tender and juicy."},
+];
+const VC=[
+  {w:"Grill",p:"verb",m:"To cook food over fire or hot coals",ar:"يشوي على الفحم",ex:"Let's grill some skewers for dinner."},
+  {w:"Fry",p:"verb",m:"To cook food in hot oil",ar:"يقلي في زيت",ex:"The vendor fries the falafel fresh every morning."},
+  {w:"Serve",p:"verb",m:"To give food to someone to eat",ar:"يقدم (الأكل)",ex:"They serve the noodles with chopsticks."},
+  {w:"Taste",p:"verb",m:"To try food to see if it's good",ar:"يتذوق",ex:"Can I taste the soup before I order?"},
+  {w:"Order",p:"verb",m:"To ask for food at a restaurant/stall",ar:"يطلب (أكل)",ex:"I want to order some falafel and juice."},
+];
+
+// ===== TEXT-TO-SPEECH =====
+function speak(word,btn){
+  if(!('speechSynthesis' in window))return;
+  window.speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(word);
+  u.lang='en-US';u.rate=0.85;u.pitch=1;
+  const voices=window.speechSynthesis.getVoices();
+  const engVoice=voices.find(v=>v.lang.startsWith('en')&&v.name.includes('Female'))||voices.find(v=>v.lang.startsWith('en'));
+  if(engVoice)u.voice=engVoice;
+  if(btn){btn.classList.add('playing');u.onend=()=>btn.classList.remove('playing')}
+  window.speechSynthesis.speak(u);
+}
+if('speechSynthesis' in window){speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices()}
+
+// ===== RECAP EXERCISES (S1+S2 grammar applied to S3 topic) =====
+const recapEx=[
+  {q:'I ______ try the falafel — it looks delicious!',opts:['will','am','do'],ans:0},
+  {q:'______ you like me to order some kebabs for you?',opts:['Will','Would','Do'],ans:1},
+  {q:'She ______ not eat spicy food. She doesn\'t like it.',opts:['will','does','is'],ans:0},
+  {q:'Can I ______ you with choosing a dish?',opts:['help','will','offer'],ans:0},
+  {q:'We ______ share the samosas — they\'re too many for one person!',opts:['will','are','do'],ans:0},
+  {q:'Thanks for offering, but I can ______ .',opts:['manage','will','help'],ans:0},
+  {q:'______ you bring some drinks to the food market?',opts:['Do','Will','Are'],ans:1},
+  {q:'I\'d love to help! What ______ you need me to do?',opts:['do','will','are'],ans:0}
+];
+function buildRecap(){
+  const c=document.getElementById('recap-exercises');if(!c)return;
+  recapEx.forEach((ex,i)=>{
+    const row=document.createElement('div');row.className='fill-row';row.id='rex-'+i;
+    let opts=ex.opts.map(o=>`<option value="${o}">${o}</option>`).join('');
+    row.innerHTML=`<span style="font-size:0.85rem;flex:1">${i+1}. ${ex.q.replace('______','<select id="rsel-'+i+'"><option value="">—</option>'+opts+'</select>')}</span><span class="result" id="rres-${i}"></span>`;
+    c.appendChild(row);
+  });
+}
+function checkRecap(){
+  let correct=0;
+  recapEx.forEach((ex,i)=>{
+    const sel=document.getElementById('rsel-'+i),res=document.getElementById('rres-'+i),row=document.getElementById('rex-'+i);
+    if(sel.value===ex.opts[ex.ans]){correct++;res.textContent='✅';row.style.borderColor='var(--green)';row.style.background='var(--green-light)'}
+    else{res.textContent='❌';row.style.borderColor='var(--red)';row.style.background='var(--red-light)'}
+  });
+  document.getElementById('recap-score').textContent=correct+' / '+recapEx.length;
+}
+function retryRecap(){
+  recapEx.forEach((ex,i)=>{document.getElementById('rsel-'+i).value='';document.getElementById('rres-'+i).textContent='';const row=document.getElementById('rex-'+i);row.style.borderColor='var(--border)';row.style.background=''});
+  document.getElementById('recap-score').textContent='';
+}
+buildRecap();
+
+function buildCards(id,data){
+  const c=document.getElementById(id);
+  data.forEach(v=>{
+    const d=document.createElement('div');d.className='vocab-card';
+    d.onclick=(e)=>{if(e.target.classList.contains('tts-btn'))return;d.classList.toggle('flipped');updateSB()};
+    d.innerHTML=`<div class="vocab-inner"><div class="vocab-front"><div class="word">${v.w} <button class="tts-btn" onclick="event.stopPropagation();speak('${v.w.replace(/'/g,"\\'")}',this)" title="Listen">&#x1F50A;</button></div><div class="pos">${v.p}</div><div class="hint">Tap to flip &bull; &#x1F50A; to hear</div></div><div class="vocab-back"><div class="meaning">${v.m}</div><div class="arabic">${v.ar}</div><div class="example">"${v.ex}"</div><button class="tts-btn" onclick="event.stopPropagation();speak('${v.w.replace(/'/g,"\\'")}',this)" title="Listen again" style="margin-top:6px;font-size:1.3rem">&#x1F50A;</button></div></div>`;
+    c.appendChild(d);
+  });
+}
+buildCards('vg-food',VF);buildCards('vg-adj',VA);buildCards('vg-cook',VC);
+
+// ===== IDIOMS =====
+const idioms=[
+  {i:"The best thing since sliced bread",m:"Something that is really excellent or useful.",ex:"This falafel sandwich is the best thing since sliced bread!"},
+  {i:"A piece of cake",m:"Something very easy to do.",ex:"The grammar quiz was a piece of cake!"},
+  {i:"Spill the beans",m:"To tell a secret.",ex:"Don't spill the beans about the surprise party!"},
+  {i:"Cry over spilled milk",m:"To be upset about something you can't change.",ex:"The food is cold, but don't cry over spilled milk."},
+  {i:"Full plate",m:"Very busy, lots of things to do.",ex:"I have a full plate today with homework and work."},
+  {i:"Food for thought",m:"Something interesting to think about.",ex:"The lecture gave me some real food for thought."},
+  {i:"In a nutshell",m:"In a few words, briefly.",ex:"In a nutshell, Egyptian street food is amazing!"},
+  {i:"Bring home the bacon",m:"To earn money for your family.",ex:"He works hard to bring home the bacon."},
+];
+const ib=document.getElementById('idioms-box');
+idioms.forEach(x=>{const d=document.createElement('div');d.className='idiom-card';d.innerHTML=`<div class="idiom">"${x.i}"</div><div class="idiom-meaning">${x.m}</div><div class="idiom-example">${x.ex}</div>`;ib.appendChild(d)});
+
+// ===== ROLEPLAY TOGGLE =====
+function toggleRole(role){
+  const el=document.getElementById(role+'-convo');
+  el.classList.toggle('show');
+}
+
+// ===== GRAMMAR EXERCISES =====
+const gExercises=[
+  {text:"I had ___ falafel sandwich for lunch. (one)",ans:"a"},
+  {text:"We love eating ___ street food when we travel. (general)",ans:"zero article",accept:["zero article","","nothing"]},
+  {text:"We ordered ___ hummus to share. (a bit of)",ans:"some"},
+  {text:"They didn't have ___ samosas left at the stall.",ans:"any"},
+  {text:"Would you like ___ juice with your sandwich? (offering)",ans:"some"},
+  {text:"He bought ___ bowl of noodles from the food stall. (one)",ans:"a"},
+  {text:"Can I get ___ fries with my burger? (asking for)",ans:"some"},
+  {text:"Are there ___ food trucks near the park today?",ans:"any"},
+  {text:"She bought ___ orange from the fruit stand. (one, vowel)",ans:"an"},
+  {text:"___ tacos we ate yesterday were very tasty. (specific ones)",ans:"the"},
+  {text:"How ___ sugar is there? (uncountable)",ans:"much"},
+  {text:"How ___ eggs are left in the fridge? (countable)",ans:"many"},
+];
+const GTOTAL=gExercises.length;
+const ge=document.getElementById('grammar-exercises');
+gExercises.forEach((g,i)=>{
+  const d=document.createElement('div');d.style.cssText='margin-bottom:10px;font-size:0.88rem;';
+  const parts=g.text.split('___');
+  d.innerHTML=`<span>${i+1}. ${parts[0]}</span><input type="text" class="fill-input gi" data-ans="${g.ans}" placeholder="?"><span>${parts[1]}</span>`;
+  ge.appendChild(d);
+});
+
+function checkGrammar(){
+  let c=0;
+  document.querySelectorAll('.gi').forEach(inp=>{
+    const val=inp.value.trim().toLowerCase();
+    const ans=inp.dataset.ans.toLowerCase();
+    const ok=val===ans||(val===''&&ans==='zero article')||(val==='nothing'&&ans==='zero article');
+    inp.classList.remove('correct','wrong');
+    inp.classList.add(ok?'correct':'wrong');
+    if(ok)c++;
+  });
+  const r=document.getElementById('grammar-result');r.classList.remove('hidden');
+  r.style.color=c===GTOTAL?'var(--green)':'var(--orange)';
+  r.textContent=c===GTOTAL?`${c}/${GTOTAL} Perfect! 🎉`:`${c}/${GTOTAL} — Try the red ones again!`;
+  document.getElementById('sb-grammar').textContent=`${c}/${GTOTAL}`;
+  updateProgress();
+}
+function retryGrammar(){
+  document.querySelectorAll('.gi').forEach(inp=>{inp.value='';inp.classList.remove('correct','wrong')});
+  document.getElementById('grammar-result').classList.add('hidden');
+  document.getElementById('sb-grammar').textContent=`0/${GTOTAL}`;
+  updateProgress();
+}
+
+// ===== QUIZ =====
+const QTOTAL=18;
+const QQ=[
+  {q:"What is a samosa filled with?",o:["Potatoes and peas","Mango and rice","Chicken only"],a:0,cat:"Vocabulary",why:"The reading said samosas are 'stuffed with spiced potatoes, peas, and sometimes meat.' Potatoes and peas is the classic filling."},
+  {q:"What does 'bland' mean?",o:["No taste, boring","Very sweet","Extremely hot"],a:0,cat:"Vocabulary",why:"Bland (بدون طعم) = food with no interesting taste. It's the opposite of delicious or spicy."},
+  {q:"If food is 'crispy', it is:",o:["Hard and crunchy outside","Soft and creamy","Cold and wet"],a:0,cat:"Vocabulary",why:"Crispy (مقرمش) = hard outside, makes a crunch sound when you bite it. Think of fried falafel or chips."},
+  {q:"'Starving' means:",o:["Extremely hungry","A little full","Not interested in food"],a:0,cat:"Vocabulary",why:"Starving (بموت من الجوع) = very, very hungry. Much stronger than just 'hungry'."},
+  {q:"A 'vendor' is someone who:",o:["Sells food on the street","Cooks at home","Eats a lot"],a:0,cat:"Vocabulary",why:"Vendor (بائع) = a person who sells things, especially food, on the street or at a market."},
+  {q:"'I had ___ falafel sandwich.' Which article?",o:["a","an","the"],a:0,cat:"Grammar",why:"'Falafel' starts with a consonant sound /f/. One sandwich, first mention = 'a'. Use 'an' only before vowel sounds."},
+  {q:"'She bought ___ orange.' Which article?",o:["an","a","the"],a:0,cat:"Grammar",why:"'Orange' starts with a vowel sound /o/. One orange, not specific = 'an'. We use 'an' before vowel sounds (a, e, i, o, u)."},
+  {q:"'___ tacos we ate yesterday were tasty.' Which article?",o:["The","A","Some"],a:0,cat:"Grammar",why:"Both speaker and listener know WHICH tacos (the ones from yesterday). Specific = 'the'."},
+  {q:"'Would you like ___ tea?' (offering)",o:["some","any","a"],a:0,cat:"Grammar",why:"When offering something, we use 'some' even in questions. 'Would you like some...?' is an offer."},
+  {q:"'There aren't ___ tacos left.'",o:["any","some","the"],a:0,cat:"Grammar",why:"In negative sentences, we use 'any'. 'There aren't any...' = zero, nothing left."},
+  {q:"'Is there ___ bread?' (asking if available)",o:["any","some","a"],a:0,cat:"Grammar",why:"In normal questions (not offers), we use 'any'. 'Is there any bread?' = asking about availability."},
+  {q:"'How ___ sugar is there?' (uncountable)",o:["much","many","some"],a:0,cat:"Grammar",why:"Sugar is uncountable (you can't say one sugar, two sugars). Use 'how much' with uncountable nouns."},
+  {q:"'How ___ eggs are left?' (countable)",o:["many","much","any"],a:0,cat:"Grammar",why:"Eggs are countable (1 egg, 2 eggs). Use 'how many' with countable nouns."},
+  {q:"Sarah uses 3 cups of flour but needs only 2. That's:",o:["too much flour","not enough flour","too many flour"],a:0,cat:"Grammar",why:"Flour is uncountable = 'too much'. 3 cups when you need 2 = excessive. 'Too many' is for countable things."},
+  {q:"In the dialogue, what doesn't the food truck have?",o:["Tacos","Burgers","Fries"],a:0,cat:"Comprehension",why:"Kariman said: 'There are burgers there, but there aren't any tacos.' The truck has burgers but NOT tacos."},
+  {q:"In the dialogue, what does Kariman add to the burger?",o:["Cheese and an egg","Tomato and lettuce","Ketchup and mustard"],a:0,cat:"Comprehension",why:"Kariman said: 'Do you want cheese on yours? Definitely. And maybe an egg as well.'"},
+  {q:"What is Pho?",o:["A Vietnamese soup with noodles","A Mexican wrap","An Indian curry"],a:0,cat:"Comprehension",why:"The reading said: 'Pho, Vietnam's national dish. This fragrant soup features rice noodles, aromatic herbs, and a rich broth.'"},
+  {q:"Where is Vada Pav from?",o:["India (Mumbai)","Turkey","Mexico"],a:0,cat:"Comprehension",why:"The reading said: 'Vada Pav from India. Often dubbed as Mumbai's very own burger.'"},
+];
+
+let quizState={answered:0,correct:0};
+
+function buildQuiz(){
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  quizState={answered:0,correct:0};
+  QQ.forEach((qq,i)=>{
+    const idx=[0,1,2];for(let j=2;j>0;j--){const k=Math.floor(Math.random()*(j+1));[idx[j],idx[k]]=[idx[k],idx[j]]}
+    const ci=idx.indexOf(qq.a);
+    const catColor=qq.cat==='Vocabulary'?'var(--green)':qq.cat==='Grammar'?'var(--accent)':'var(--pink)';
+    const d=document.createElement('div');d.className='quiz-q';d.id=`qq${i}`;
+    d.innerHTML=`<div class="q-num" style="color:${catColor}">Q${i+1} — ${qq.cat}</div><div class="q-text">${qq.q}</div>${idx.map((oi,bi)=>`<button class="quiz-option" data-q="${i}" data-c="${bi===ci?1:0}" onclick="ansQ(this,${i})">${qq.o[oi]}</button>`).join('')}<button class="why-btn" id="wb${i}" onclick="toggleWhy(${i})">&#x1F4A1; Why is this correct?</button><div class="why-text" id="wt${i}">${qq.why}</div>`;
+    c.appendChild(d);
+  });
+  document.getElementById('sb-quiz').textContent=`0/${QTOTAL}`;
+  document.getElementById('quiz-final').classList.add('hidden');
+}
+buildQuiz();
+
+function ansQ(btn,qi){
+  const p=document.getElementById(`qq${qi}`);
+  if(p.dataset.done)return;p.dataset.done='1';
+  const btns=p.querySelectorAll('.quiz-option');
+  if(btn.dataset.c==='1'){btn.classList.add('correct');quizState.correct++}
+  else{btn.classList.add('wrong')}
+  btns.forEach(b=>b.disabled=true);
+  quizState.answered++;
+  document.getElementById(`wb${qi}`).classList.add('show');
+  document.getElementById('sb-quiz').textContent=`${quizState.correct}/${QTOTAL}`;
+  updateProgress();
+}
+
+function toggleWhy(qi){
+  const t=document.getElementById(`wt${qi}`);
+  t.classList.toggle('show');
+  const b=document.getElementById(`wb${qi}`);
+  b.textContent=t.classList.contains('show')?'Hide explanation':'💡 Why is this correct?';
+}
+
+function showQuizScore(){
+  const d=document.getElementById('quiz-final');d.classList.remove('hidden');
+  const pct=Math.round((quizState.correct/QTOTAL)*100);
+  const emoji=pct>=80?'&#x1F389;':pct>=60?'&#x1F44D;':'&#x1F4AA;';
+  const msg=pct>=80?"Amazing! You're ready for Session 4!":pct>=60?'Good! Retry to improve.':'Keep practicing! Hit Retry below.';
+  const col=pct>=80?'var(--green)':pct>=60?'var(--orange)':'var(--red)';
+  d.style.borderColor=col;d.innerHTML=`<div style="font-size:2rem">${emoji}</div><h3 style="color:${col}">${quizState.correct}/${QTOTAL} (${pct}%)</h3><p style="color:var(--text-dim);margin-top:6px">${msg}</p>`;
+}
+function retryQuiz(){buildQuiz()}
+
+// ===== WORD COUNTS =====
+function wc(id){const t=document.getElementById(id).value.trim();return t?t.split(/\s+/).length:0}
+function updateEmailWordCount(){const c=wc('email-area');document.getElementById('email-wc').textContent=c;updateSB()}
+function updateReviewWC(){const c=wc('review-area');document.getElementById('review-wc').textContent=c;updateSB()}
+
+function updateEmailCheck(){
+  const ch=[...document.querySelectorAll('#email-checklist input')];
+  const n=ch.filter(c=>c.checked).length;
+  document.getElementById('email-check-result').textContent=n===ch.length?'✓ All checks passed! Great email!':n+'/'+ch.length+' completed';
+  document.getElementById('email-check-result').style.color=n===ch.length?'var(--green)':'var(--orange)';
+}
+function updateReviewCheck(){
+  const ch=[...document.querySelectorAll('#review-checklist input')];
+  const n=ch.filter(c=>c.checked).length;
+  document.getElementById('review-check-result').textContent=n===ch.length?'✓ Great review!':n+'/'+ch.length+' completed';
+  document.getElementById('review-check-result').style.color=n===ch.length?'var(--green)':'var(--orange)';
+}
+
+// ===== SCORE BANNER UPDATE =====
+function updateSB(){
+  document.getElementById('sb-cards').textContent=document.querySelectorAll('.vocab-card.flipped').length;
+  const totalWords=wc('email-area')+wc('review-area');
+  document.getElementById('sb-words').textContent=totalWords;
+  updateProgress();
+}
+
+function updateProgress(){
+  const cards=document.querySelectorAll('.vocab-card.flipped').length;
+  const totalCards=document.querySelectorAll('.vocab-card').length;
+  const grammarDone=document.querySelectorAll('.gi.correct').length;
+  const quizDone=quizState.answered;
+  const wordsWritten=wc('email-area')+wc('review-area');
+  const p=Math.round(
+    (cards/totalCards)*20+
+    (grammarDone/GTOTAL)*20+
+    (quizDone/QTOTAL)*30+
+    Math.min(wordsWritten/100,1)*30
+  );
+  document.getElementById('progress-pct').textContent=p+'%';
+  document.getElementById('progress-fill').style.width=p+'%';
+}
+
+// ===== BUILD SUMMARY TABLES =====
+(function(){
+  const allVocab=[...VF,...VA,...VC];
+  const catMap={};VF.forEach(v=>catMap[v.w]='Food');VA.forEach(v=>catMap[v.w]='Adjective');VC.forEach(v=>catMap[v.w]='Cooking');
+  const catColors={Food:'var(--orange)',Adjective:'var(--green)',Cooking:'var(--accent)'};
+  const container=document.getElementById('summary-vocab-table');
+  const tbl=document.createElement('table');tbl.className='summary-table';
+  const hdr=document.createElement('tr');
+  hdr.innerHTML='<th>Word</th><th>Type</th><th>Meaning</th><th>&#x1F50A;</th>';
+  tbl.appendChild(hdr);
+  allVocab.forEach(v=>{
+    const cat=catMap[v.w];
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td><strong>${v.w}</strong></td><td><span class="cat-tag" style="background:${catColors[cat]}20;color:${catColors[cat]}">${cat}</span></td><td>${v.m}<br><span style="color:var(--pink);font-size:0.78rem">${v.ar}</span></td><td><button class="tts-btn" onclick="speak('${v.w.replace(/'/g,"\\'")}',this)">&#x1F50A;</button></td>`;
+    tbl.appendChild(tr);
+  });
+  container.appendChild(tbl);
+
+  const itbl=document.getElementById('summary-idioms-table');
+  idioms.forEach(x=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td><strong style="color:var(--orange)">${x.i}</strong></td><td>${x.m}</td><td style="font-style:italic;font-size:0.8rem">${x.ex}</td>`;
+    itbl.appendChild(tr);
+  });
+})();
+</script>
+</body>
+</html>

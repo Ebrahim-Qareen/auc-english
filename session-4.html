@@ -98,6 +98,8 @@
   .audio-icon{font-size:2rem}
   .audio-info h4{font-family:'Fredoka',sans-serif;font-size:0.95rem}
   .audio-info p{font-size:0.8rem;color:var(--text-dim)}
+  .drive-play-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#4285f4,#3367d6);color:#fff;padding:10px 20px;border-radius:24px;text-decoration:none;font-family:'Fredoka',sans-serif;font-size:0.88rem;font-weight:600;transition:all 0.3s;box-shadow:0 2px 8px rgba(66,133,244,0.3)}
+  .drive-play-btn:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(66,133,244,0.4)}
   .audio-link{display:inline-block;padding:7px 16px;background:var(--accent);color:#fff;border-radius:10px;text-decoration:none;font-weight:600;font-size:0.82rem;transition:background 0.2s}
   .subtitle-toggle{margin-top:8px;width:100%}
   .subtitle-toggle summary{cursor:pointer;font-size:0.82rem;font-weight:600;color:var(--accent);padding:6px 0;user-select:none}
@@ -389,7 +391,7 @@
     <div class="audio-card" style="background:linear-gradient(135deg,#e8eaff,#f0f0ff);border-color:#d0d3f0">
       <div class="audio-icon">&#x1F3A7;</div>
       <div class="audio-info" style="flex:1"><h4>Describing Friends with This & That</h4><p>Grammar + vocabulary combined naturally</p></div>
-      <iframe src="https://drive.google.com/file/d/1qAxZ7xMwK_S6PXEIShCBsi0yUSjaKUa0/preview" allow="autoplay" style="width:100%;max-width:300px;height:80px;border:none;border-radius:10px"></iframe>
+      <a href="https://drive.google.com/file/d/1qAxZ7xMwK_S6PXEIShCBsi0yUSjaKUa0/view" target="_blank" class="drive-play-btn">&#9654; Play on Google Drive</a>
       <details class="subtitle-toggle">
         <summary>📝 Show Subtitle / Transcript</summary>
         <div class="subtitle-text">

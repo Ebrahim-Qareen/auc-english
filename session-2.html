@@ -1046,4 +1046,24 @@ function checkRecap(){
     if(sel.value===ex.opts[ex.ans]){correct++;res.textContent='✅';row.style.borderColor='var(--green)';row.style.background='var(--green-light)'}
     else{res.textContent='❌';row.style.borderColor='var(--red)';row.style.background='var(--red-light)'}
   });
-  docume
+  document.getElementById('recap-score').textContent=correct+' / '+recapEx.length;
+}
+function retryRecap(){
+  recapEx.forEach((ex,i)=>{document.getElementById('rsel-'+i).value='';document.getElementById('rres-'+i).textContent='';const row=document.getElementById('rex-'+i);row.style.borderColor='var(--border)';row.style.background=''});
+  document.getElementById('recap-score').textContent='';
+}
+
+// ===== INIT =====
+document.addEventListener('DOMContentLoaded',()=>{
+  buildRecap();
+  buildCards(partyVocab,'party-cards');
+  buildCards(helpVocab,'help-cards');
+  buildCards(actionVocab,'action-cards');
+  buildIdioms();
+  buildGrammar();
+  buildQuiz();
+  updateProgress();
+});
+</script>
+</body>
+</html>

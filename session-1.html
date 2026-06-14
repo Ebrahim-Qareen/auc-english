@@ -805,4 +805,21 @@ function updateProgress(){
   const allFlash=document.querySelectorAll('.vocab-card'),flipped=document.querySelectorAll('.vocab-card.flipped');
   if(allFlash.length){total+=30;done+=30*(flipped.length/allFlash.length)}
   const gScore=document.getElementById('grammar-score').textContent;
-  if(gScore){const parts=gScore.split('/').map(s=>parseInt(s.trim()));if(parts.length===2&&parts[1]>0){
+  if(gScore){const parts=gScore.split('/').map(s=>parseInt(s.trim()));if(parts.length===2&&parts[1]>0){total+=25;done+=25*(parts[0]/parts[1])}} else {total+=25}
+  total+=35;if(quizData.length)done+=35*(quizCorrect/quizData.length);
+  total+=10;
+  const emailText=document.getElementById('email-textarea');
+  if(emailText&&emailText.value.trim().length>20)done+=10;
+  const pct=total?Math.round(done/total*100):0;
+  document.getElementById('pbar').style.width=pct+'%';document.getElementById('pct').textContent=pct+'%';
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  buildCards(birthdayVocab,'birthday-cards');
+  buildCards(monthVocab,'month-cards');
+  buildCards(actionVocab,'action-cards');
+  buildGrammar();buildQuiz();updateProgress();
+});
+</script>
+</body>
+</html>

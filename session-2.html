@@ -276,7 +276,7 @@
 <div class="card card-blue">
   <span class="step step-blue">Audio 1 — Session Companion</span>
   <p style="font-size:0.88rem;margin:8px 0">Essential English for Planning Birthday Parties</p>
-  <audio controls preload="none" style="width:100%;max-width:280px;margin-top:4px"><source src="https://drive.google.com/uc?export=download&id=18JKCTYcB7iWRZ6-vjQFZBy_AvXWmgUcy" type="audio/mp4"></audio>
+  <audio controls preload="none" style="width:100%;max-width:500px;margin-top:4px"><source src="https://drive.google.com/uc?export=download&id=18JKCTYcB7iWRZ6-vjQFZBy_AvXWmgUcy" type="audio/mp4"></audio>
       <p style="font-size:0.72rem;color:var(--text-dim);margin-top:4px">If audio doesn't play, <a href="https://drive.google.com/file/d/18JKCTYcB7iWRZ6-vjQFZBy_AvXWmgUcy/view" target="_blank" style="color:var(--blue)">open on Google Drive</a></p>
   <details class="subtitle-toggle">
     <summary>📝 Show Subtitle / Transcript</summary>
@@ -1046,24 +1046,4 @@ function checkRecap(){
     if(sel.value===ex.opts[ex.ans]){correct++;res.textContent='✅';row.style.borderColor='var(--green)';row.style.background='var(--green-light)'}
     else{res.textContent='❌';row.style.borderColor='var(--red)';row.style.background='var(--red-light)'}
   });
-  document.getElementById('recap-score').textContent=correct+' / '+recapEx.length;
-}
-function retryRecap(){
-  recapEx.forEach((ex,i)=>{document.getElementById('rsel-'+i).value='';document.getElementById('rres-'+i).textContent='';const row=document.getElementById('rex-'+i);row.style.borderColor='var(--border)';row.style.background=''});
-  document.getElementById('recap-score').textContent='';
-}
-
-// ===== INIT =====
-document.addEventListener('DOMContentLoaded',()=>{
-  buildRecap();
-  buildCards(partyVocab,'party-cards');
-  buildCards(helpVocab,'help-cards');
-  buildCards(actionVocab,'action-cards');
-  buildIdioms();
-  buildGrammar();
-  buildQuiz();
-  updateProgress();
-});
-</script>
-</body>
-</html>
+  docume

@@ -768,7 +768,15 @@ function ansQ(idx,chosen){
 }
 
 function toggleWhy(idx){document.getElementById('qw-'+idx).classList.toggle('show')}
-function retryQuiz(){buildQuiz();updateProgress()}
+function showQuizScore(){
+  const d=document.getElementById('quiz-final');d.style.display='block';
+  const pct=Math.round((quizCorrect/quizData.length)*100);
+  const emoji=pct>=80?'\u{1F389}':pct>=60?'\u{1F44D}':'\u{1F4AA}';
+  const msg=pct>=80?'Amazing! You\'re ready!':pct>=60?'Good! Retry to improve.':'Keep practicing! Hit Retry below.';
+  const col=pct>=80?'var(--green)':pct>=60?'var(--orange)':'var(--red)';
+  d.style.borderColor=col;d.innerHTML='<div style="font-size:2rem">'+emoji+'</div><h3 style="color:'+col+'">'+quizCorrect+'/'+quizData.length+' ('+pct+'%)</h3><p style="color:var(--text-dim);margin-top:6px">'+msg+'</p>';
+}
+function retryQuiz(){document.getElementById('quiz-final').style.display='none';buildQuiz();updateProgress()}
 function toggleRole(role){document.getElementById(role+'-convo').classList.toggle('show')}
 
 // ===== EMAIL FUNCTIONS =====
